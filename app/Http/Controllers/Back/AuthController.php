@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
-use App\Models\AuthModel;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -16,7 +17,12 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view("back.auth.login");
+        return view('back.auth.login');
+    }
+
+    public function register()
+    {
+        return view('back.auth.register');
     }
 
     /**
@@ -24,9 +30,21 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function registerstore(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5',
+        ]);
+        $data = new User;
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        $data->save();
+
+        return redirect()->route('admin.panel');
     }
 
     /**
@@ -37,10 +55,11 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-       if( Auth::attempt(['email'=>$request->email,"password"=>$request->password])){
-return redirect()->route("admin.panel");
-       }
-       return redirect()->route('admin.login')->withErrors("Email ve ya parol sehfdi");
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('admin.panel');
+        }
+
+        return redirect()->route('admin.login')->withErrors('Email ve ya parol sehfdi');
     }
 
     /**
@@ -86,6 +105,7 @@ return redirect()->route("admin.panel");
     public function destroy()
     {
         Auth::logout();
+
         return redirect()->route('admin.login');
     }
 }

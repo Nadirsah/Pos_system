@@ -16,9 +16,11 @@ class isAdmin
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {if(!Auth::check()){
-return redirect()->route("admin.login");
-    }
+    {
+        if (! Auth::check()) {
+            return redirect()->route('admin.login');
+        }
+
         return $next($request);
     }
 }

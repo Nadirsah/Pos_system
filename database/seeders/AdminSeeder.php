@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,9 +15,9 @@ class AdminSeeder extends Seeder
     public function run()
     {
         DB::table('auth_models')->insert([
-            "name"=>'Isayev Nadirsah',
-            "email"=>"isayev.13@mail.ru",
-            'password'=>bcrypt("creed"),
+            'name' => 'Isayev Nadirsah',
+            'email' => 'isayev.13@mail.ru',
+            'password' => bcrypt('creed'),
         ]);
     }
 }

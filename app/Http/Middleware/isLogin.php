@@ -17,9 +17,10 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
-            return redirect()->route("admin.panel");
-                }
+        if (Auth::check()) {
+            return redirect()->route('admin.panel');
+        }
+
         return $next($request);
     }
 }

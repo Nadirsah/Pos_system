@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AuthModel extends Authenticatable
+//use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class AuthModel extends Model
 {
     use HasFactory;
 }
