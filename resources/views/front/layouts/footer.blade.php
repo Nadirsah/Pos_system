@@ -1,5 +1,5 @@
 <footer>
-      <p>
+<p>
         Copyright © {{date('Y')}}. Naxçıvan Muxtar Respublikası Rabitə və Yeni
         Texnologiyalar Nazirliyi
       </p>
@@ -24,6 +24,27 @@
 
     <!-- Initialize Swiper -->
     <script>
+      var swiper = new Swiper(".swiper-container", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        preventClicks: false,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        preventClicksPropagation: false,
+        coverflowEffect: {
+          rotate: 20,
+          stretch: 0,
+          depth: 350,
+          modifier: 1,
+          slideShadows: true,
+        },
+      });
+
       var swiper = new Swiper(".website-slide", {
         navigation: {
           nextEl: ".swiper-button-next",

@@ -352,7 +352,7 @@ header .navbar-nav li:not(:last-of-type):before {
   position: relative;
   padding: 50px 30px !important;
   margin: 120px 0;
-  
+  background: url("img/Rectangle\ 414.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -530,7 +530,7 @@ header .navbar-nav li:not(:last-of-type):before {
   font-weight: 600;
   font-size: 36px;
   line-height: 42px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   color: #501010 !important;
 }
 
@@ -763,4 +763,36 @@ footer p {
 .new h3 {
   font-size: 20px;
   color: #116ec5;
+}
+
+#fix-pic {
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  position: fixed !important;
+  top: 0;
+  z-index: 99999;
+  left: 0;
+}
+
+#fix-pic img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+#close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #000;
+  z-index: 9999999;
+  position: fixed;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

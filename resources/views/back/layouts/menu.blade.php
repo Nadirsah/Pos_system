@@ -52,7 +52,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-folder"></i>
                     <span>Sehife terkibi</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -61,6 +61,32 @@
                         <h6 class="collapse-header">Sehife terkibi</h6>
                         <a class="collapse-item" href="{{route('admin.info.index')}}">Melumatlar</a>
                         <a class="collapse-item" href="{{route('admin.info.create')}}">Melumat elave et</a>
+                        <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <a class="collapse-item" href="utilities-other.html">Other</a> -->
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Esas sehife</span>
+                </a>
+                <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Esas sehife</h6>
+                        <a class="collapse-item" href="{{route('admin.header.index')}}">Basliqlar</a>
+                        <a class="collapse-item" href="{{route('admin.esasinfo.index')}}">Esas melumat</a>
+                        <a class="collapse-item" href="{{route('admin.fotolar.index')}}">Fotolar</a>
+                        <a class="collapse-item" href="{{route('admin.linkler.index')}}">Linkler</a>
+                        <a class="collapse-item" href="{{route('admin.naxcivan.index')}}">Naxcivan MR</a>
+                        <a class="collapse-item" href="{{route('admin.qarabag.index')}}">Qarabag</a>
+                        <a class="collapse-item" href="{{route('admin.qezet.index')}}">Qezet</a>
+                        <a class="collapse-item" href="{{route('admin.xeberler.index')}}">Xeberler</a>
+                        <a class="collapse-item" href="{{route('admin.xronika.index')}}">Xronika</a>
+                      
                         <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a> -->
                     </div>

@@ -19,10 +19,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
+    <link rel="stylesheet" href="slide.css" />
     <title>Document</title>
   </head>
   <body>
@@ -357,38 +359,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="new-links">
-        <h3>Qarabağ tarixi</h3>
-        <p>
-          Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən qədim
-          tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx mağarasında ən
-          qədim insanların yaşayış məskəni aşkar edilmişdir...
-        </p>
-      </div>
-      <div class="new-links">
-        <h3>Qarabağ tarixi</h3>
-        <p>
-          Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən qədim
-          tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx mağarasında ən
-          qədim insanların yaşayış məskəni aşkar edilmişdir...
-        </p>
-      </div>
-      <div class="new-links">
-        <h3>Qarabağ tarixi</h3>
-        <p>
-          Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən qədim
-          tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx mağarasında ən
-          qədim insanların yaşayış məskəni aşkar edilmişdir...
-        </p>
-      </div>
-      <div class="new-links">
-        <h3>Qarabağ tarixi</h3>
-        <p>
-          Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən qədim
-          tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx mağarasında ən
-          qədim insanların yaşayış məskəni aşkar edilmişdir...
-        </p>
-      </div> -->
     </section>
 
     <div class="section websites-slider">
@@ -513,32 +483,40 @@
         <h3>Naxçıvan fotolarda</h3>
       </div>
       <div class="container">
-        <div class="swiper mySwiper gallery-swipe">
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="img/Rectangle 435.png" alt="" />
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
+                <img src="img/Rectangle 435.png" />
+              </div>
             </div>
-            <div class="swiper-slide">
-              <img src="img/Rectangle 441.png" alt="" />
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
+                <img src="img/Rectangle 436.png" />
+              </div>
             </div>
-            <div class="swiper-slide">
-              <img src="img/Rectangle 436.png" alt="" />
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
+                <img src="img/Rectangle 437.png" />
+              </div>
             </div>
-            <div class="swiper-slide">
-              <img src="img/Rectangle 437.png" alt="" />
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
+                <img src="img/Rectangle 438.png" />
+              </div>
             </div>
-            <div class="swiper-slide">
-              <img src="img/Rectangle 438.png" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="img/Rectangle 439.png" alt="" />
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
+                <img src="img/Rectangle 439.png" />
+              </div>
             </div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
         </div>
       </div>
     </section>
+
     <footer>
       <p>
         Copyright © 2022. Naxçıvan Muxtar Respublikası Rabitə və Yeni
@@ -565,6 +543,27 @@
 
     <!-- Initialize Swiper -->
     <script>
+      var swiper = new Swiper(".swiper-container", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        preventClicks: false,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        preventClicksPropagation: false,
+        coverflowEffect: {
+          rotate: 20,
+          stretch: 0,
+          depth: 350,
+          modifier: 1,
+          slideShadows: true,
+        },
+      });
+
       var swiper = new Swiper(".website-slide", {
         navigation: {
           nextEl: ".swiper-button-next",

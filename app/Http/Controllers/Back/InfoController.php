@@ -43,7 +43,7 @@ class InfoController extends Controller
     {
         $request->validate([
             'name' => 'required|min:5',
-           'image' => 'required|image|mimes:jpeg,png,jpg|max:200',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:200',
         ]);
         $data = new InfoModel;
         $data->page_id = $request->info;
@@ -111,9 +111,9 @@ class InfoController extends Controller
 
             $request->image->move(public_path('uploads'), $imagename);
             $data->image = 'uploads/'.$imagename;
-           
         }
         $data->update();
+
         return  redirect()->route('admin.info.index');
     }
 

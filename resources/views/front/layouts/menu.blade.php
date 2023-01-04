@@ -38,7 +38,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <ul class="navbar-nav row">
+          <ul class="navbar-nav row">
               <li class="nav-item col-sm {{(request()->segment(1)=='tebiet') ? 'active': ''}}">
                 <a class="nav-link" href="{{route('tebiet')}}"
                   >Təbiət<span class="sr-only">(current)</span></a
@@ -74,3 +74,5 @@
         </nav>
       </div>
     </header>
+
+   

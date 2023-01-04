@@ -51,21 +51,21 @@
         </div>
         <div class="swiper mySwiper news-slider">
           <div class="swiper-wrapper">
-            @foreach($data as $datas)
+            @foreach($xeber as $xebers)
             <div class="swiper-slide">
               <div class="new">
                 <div class="thumb">
-                  <img src="{{asset($datas->image)}}" alt="" />
+                  <img src="{{asset($xebers->img)}}" alt="" />
                 </div>
                 <div class="news-content">
                   <p>
-                    {!!$datas->content!!}
+                    {!!$xebers->content!!}
                   </p>
                   <div>
                     <div class="vector-icon">
-                    <a href="{{route('news',$datas->id)}}"><i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="{{route('news',$xebers->id)}}"><i class="fa-solid fa-chevron-right"></i></a>
                     </div>
-                    <h6>{{$datas->created_at->format('d-m-Y')}}</h6>
+                    <h6>{{$xebers->created_at->format('d-m-Y')}}</h6>
                   </div>
                 </div>
               </div>
@@ -285,31 +285,45 @@
         <h3>Naxçıvan fotolarda</h3>
       </div>
       <div class="container">
-        <div class="swiper mySwiper gallery-swipe">
+        <!-- Slider main container -->
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
               <img src="{{asset('front/')}}/img/Rectangle 435.png" alt="" />
+              </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
               <img src="{{asset('front/')}}/img/Rectangle 441.png" alt="" />
+              </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
               <img src="{{asset('front/')}}/img/Rectangle 436.png" alt="" />
+              </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
               <img src="{{asset('front/')}}/img/Rectangle 437.png" alt="" />
+              </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
               <img src="{{asset('front/')}}/img/Rectangle 438.png" alt="" />
+              </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide container-gallery">
+              <div class="row display-1">
               <img src="{{asset('front/')}}/img/Rectangle 439.png" alt="" />
+              </div>
             </div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
         </div>
       </div>
     </section>
+
+    <!--  -->
 
 @endsection
