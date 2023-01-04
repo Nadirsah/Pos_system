@@ -29,11 +29,12 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'store'])->name('login.store');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
 });
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
-    Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
+   
     Route::get('/panel', [Dashboard::class, 'index'])->name('panel');
     Route::resource('/page', PageController::class);
     Route::get('/deletepage/{id}', [PageController::class, 'delete'])->name('delete.page');

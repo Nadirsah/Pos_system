@@ -48,9 +48,9 @@
                                     <form class="user" action="{{route('admin.login.store')}}" method="Post">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" name="email" aria-describedby="emailHelp"
-                                                placeholder="E-poct">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputEmail" name="name" aria-describedby="emailHelp"
+                                                placeholder="Istifadeci adi">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
@@ -60,7 +60,7 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block"> Daxil
                                             ol</button>
 
-
+                          <span class="btn btn-info btn-block"><a href="{{route('admin.register')}}">Qeydiyyatdan kec</a></span>
 
                                     </form>
 

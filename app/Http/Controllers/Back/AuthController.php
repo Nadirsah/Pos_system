@@ -34,17 +34,17 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+           
             'password' => 'required|min:5',
         ]);
         $data = new User;
 
         $data->name = $request->name;
-        $data->email = $request->email;
+       
         $data->password = Hash::make($request->password);
         $data->save();
 
-        return redirect()->route('admin.panel');
+        return redirect()->route('admin.login');
     }
 
     /**
@@ -55,11 +55,11 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
             return redirect()->route('admin.panel');
         }
 
-        return redirect()->route('admin.login')->withErrors('Email ve ya parol sehfdi');
+        return redirect()->route('admin.login')->withErrors('Istifadeci adi ve ya parol sehfdi');
     }
 
     /**
