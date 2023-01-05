@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Sehife elave et")
+@section("title","Səhifə əlavə et")
 @section('content')
 
 <form method="Post" action="{{route('admin.page.store')}}">
@@ -10,7 +10,7 @@
     
   </div>
   
-  <button type="submit" class="btn btn-primary">Gonder</button>
+  <button type="submit" class="btn btn-primary">Göndər</button>
 </form>
 
 @endsection

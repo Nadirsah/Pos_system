@@ -41,7 +41,7 @@
           <ul class="navbar-nav row">
             @foreach($page as $pages)
               <li class="nav-item col-sm {{(request()->segment(1)=='tebiet') ? 'active': ''}}">
-                <a class="nav-link" href="{{route('test',$pages->slug)}}"
+                <a class="nav-link" href="{{route('pages',$pages->slug)}}"
                   >{{$pages->name}}<span class="sr-only">(current)</span></a
                 >
               </li>

@@ -1,10 +1,10 @@
 @extends("back.layouts.master")
-@section("title","Xronika")
+@section("title","Xəbərlər")
 @section('content')
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Melumatlar <span><a href="{{route('admin.xeberler.create')}}"><i
+        <h6 class="m-0 font-weight-bold text-primary">Məlumatlar <span><a href="{{route('admin.xeberler.create')}}"><i
                         class="btn btn-success fa-solid fa-circle-plus"></i></a></span></h6>
     </div>
     <div class="card-body">
@@ -13,25 +13,25 @@
                 <thead>
                     <tr>
 
-                        <th>Basliq</th>
+                        <th>Section</th>
                       
                         <th>Title</th>
-                        <th>Mezmun</th>
-                        <th>Sekil</th>
+                        <th>Məzmun</th>
+                        <th>Şəkil</th>
                         
-                        <th>Duymeler</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                    <th>Basliq</th>
+                    <th>Section</th>
                       
-                      <th>Title</th>
-                      <th>Mezmun</th>
-                      <th>Sekil</th>
-                      
-                      <th>Duymeler</th>
+                        <th>Title</th>
+                        <th>Məzmun</th>
+                        <th>Şəkil</th>
+                        
+                        <th>Action</th>
 
                     </tr>
                 </tfoot>

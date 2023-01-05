@@ -50,7 +50,7 @@ class InfoController extends Controller
         $data->page_id = $request->info;
         $data->name = $request->name;
         $data->content = $request->content;
-        $data->slug = $request->page;
+        $data->slug = Str::slug($request->page);
 
         if ($request->hasFile('image')) {
             $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
@@ -105,7 +105,7 @@ class InfoController extends Controller
         $data->page_id = $request->info;
         $data->name = $request->name;
         $data->content = $request->content;
-        $data->slug = $request->page;
+        $data->slug = Str::slug($request->page);
 
         if ($request->hasFile('image')) {
             $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();

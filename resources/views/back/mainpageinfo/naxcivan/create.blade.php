@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Melumat elave et")
+@section("title","Məlumat əlavə et")
 @section('content')
 
 @if($errors->any())
@@ -13,9 +13,9 @@
     @csrf
 
     <div class="mb-3">
-        <label for="#" class="form-label">Basliq</label>
+        <label for="#" class="form-label">Section</label>
         <select name="info" class="form-select" id="">
-            <option value="">Sehife secin</option>
+            <option value="">Section seçin</option>
             @foreach ($header as $headers)
             <option value="{{$headers->id}}">{{$headers->name}}</option>
             @endforeach
@@ -30,49 +30,49 @@
 
 
     <div class="mb-3">
-        <label for="city" class="form-label">Seher</label>
+        <label for="city" class="form-label">Şəhər</label>
         <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp"
             autofocus>
     </div>
     <div class="mb-3">
-        <label for="area" class="form-label">Erazi</label>
+        <label for="area" class="form-label">Ərazi</label>
         <input type="text" name="area" class="form-control" id="area" aria-describedby="emailHelp"
             autofocus>
     </div>
     <div class="mb-3">
-        <label for="people" class="form-label">Ehali</label>
+        <label for="people" class="form-label">Əhali</label>
         <input type="text" name="people" class="form-control" id="people" aria-describedby="emailHelp"
             autofocus>
     </div>
     <div class="mb-3">
-        <label for="city_text" class="form-label">Seher metni</label>
+        <label for="city_text" class="form-label">Şəhər mətni</label>
         <input type="text" name="city_text" class="form-control" id="city_text" aria-describedby="emailHelp"
             autofocus>
     </div>
     <div class="mb-3">
-        <label for="area_text" class="form-label">Erazi metni</label>
+        <label for="area_text" class="form-label">Ərazi mətni</label>
         <input type="text" name="area_text" class="form-control" id="area_text" aria-describedby="emailHelp"
             autofocus>
     </div>
     <div class="mb-3">
-        <label for="people_text" class="form-label">Ehali metni</label>
+        <label for="people_text" class="form-label">Əhali mətni</label>
         <input type="text" name="people_text" class="form-control" id="people_text" aria-describedby="emailHelp"
             autofocus>
     </div>
 
     <div class="mb-3">
-        <label for="city_image" class="form-label">Seher sekil</label>
+        <label for="city_image" class="form-label">Şəhər şəkil</label>
         <input type="file" name="city_image" class="form-control" id="city_image" aria-describedby="emailHelp"
             >
     </div>
 
     <div class="mb-3">
-        <label for="area_image" class="form-label">Erazi sekli</label>
+        <label for="area_image" class="form-label">Ərazi şəkil</label>
         <input type="file" name="area_image" class="form-control" id="area_image" aria-describedby="emailHelp"
            >
     </div>
     <div class="mb-3">
-        <label for="ehali_image" class="form-label">Ehali sekil</label>
+        <label for="ehali_image" class="form-label">Əhali şəkil</label>
         <input type="file" name="people_image" class="form-control" id="ehali_image" aria-describedby="emailHelp"
             >
     </div>
@@ -87,7 +87,7 @@
     
 <br><br>
 
-    <button type="submit" class="btn btn-primary btn-block">Gonder</button>
+    <button type="submit" class="btn btn-primary btn-block">Göndər</button>
 </form>
 
 @endsection

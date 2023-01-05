@@ -45,7 +45,7 @@ class Esasinfo extends Controller
             'name' => 'required|min:5',
 
         ]);
-        $data = EsasModel::findOrFail($id);
+        $data = new HeaderinfoModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
         $data->content = $request->content;

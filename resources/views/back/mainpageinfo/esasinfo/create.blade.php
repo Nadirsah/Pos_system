@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Melumat elave et")
+@section("title","Məlumat əlavə et")
 @section('content')
 
 @if($errors->any())
@@ -13,9 +13,9 @@
     @csrf
 
     <div class="mb-3">
-        <label for="#" class="form-label">Sehife</label>
+        <label for="#" class="form-label">Section</label>
         <select name="info" class="form-select" id="">
-            <option value="">Sehife secin</option>
+            <option value="">Section secin</option>
             @foreach ($header as $headers)
             <option value="{{$headers->id}}">{{$headers->name}}</option>
             @endforeach
@@ -25,7 +25,7 @@
 
 
     <div class="mb-3">
-        <label for="name" class="form-label">Melumat basligi</label>
+        <label for="name" class="form-label">Məlumat başlığı</label>
         <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
     </div>
@@ -38,7 +38,7 @@
     
 
     <div class="mb-3" >
-        <label for="content" class="form-label">Mezmun</label>
+        <label for="content" class="form-label">Məzmun</label>
         <textarea  id="summernote" name="content" class="form-control" id="content" aria-describedby="emailHelp"
             autofocus>
     </textarea>

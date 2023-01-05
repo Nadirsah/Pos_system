@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","sekil elave et")
+@section("title","Qəzet əlavə et")
 @section('content')
 
 @if($errors->any())
@@ -13,9 +13,9 @@
     @csrf
 
     <div class="mb-3">
-        <label for="#" class="form-label">Basliq</label>
+        <label for="#" class="form-label">Section</label>
         <select name="info" class="form-select" id="">
-            <option value="">Sehife secin</option>
+            <option value="">Section seçin</option>
             @foreach ($header as $headers)
             <option value="{{$headers->id}}">{{$headers->name}}</option>
             @endforeach
@@ -27,13 +27,13 @@
     
 
     <div class="mb-3">
-        <label for="image" class="form-label">Sekil</label>
+        <label for="image" class="form-label">Şəkil_1</label>
         <input type="file" name="image" class="form-control" id="image" aria-describedby="emailHelp"
             autofocus>
     </div>
 
     <div class="mb-3">
-        <label for="image_1" class="form-label">Slide Fon</label>
+        <label for="image_1" class="form-label">Şəkil_2 </label>
         <input type="file" name="image_1" class="form-control" id="image_1" aria-describedby="emailHelp"
             autofocus>
     </div>
@@ -48,7 +48,7 @@
     
 <br><br>
 
-    <button type="submit" class="btn btn-primary btn-block">Gonder</button>
+    <button type="submit" class="btn btn-primary btn-block">Göndər</button>
 </form>
 
 @endsection

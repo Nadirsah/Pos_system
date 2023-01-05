@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","sekil elave et")
+@section("title","Məlumat əlavə et")
 @section('content')
 
 @if($errors->any())
@@ -13,9 +13,9 @@
     @csrf
 
     <div class="mb-3">
-        <label for="#" class="form-label">Basliq</label>
+        <label for="#" class="form-label">Section</label>
         <select name="info" class="form-select" id="">
-            <option value="">Sehife secin</option>
+            <option value="">Section seçin</option>
             @foreach ($header as $headers)
             <option value="{{$headers->id}}">{{$headers->name}}</option>
             @endforeach
@@ -25,7 +25,7 @@
 
 
     <div class="mb-3">
-        <label for="name" class="form-label">On Soz</label>
+        <label for="name" class="form-label">Ön söz</label>
         <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
     </div>
@@ -35,13 +35,13 @@
             autofocus>
     </div>
     <div class="mb-3">
-        <label for="content" class="form-label">Mezmun</label>
+        <label for="content" class="form-label">Məzmun</label>
         <input type="text" name="content" class="form-control" id="content" aria-describedby="emailHelp"
             autofocus>
     </div>
 
     <div class="mb-3">
-        <label for="image" class="form-label">Sekil</label>
+        <label for="image" class="form-label">Şəkil</label>
         <input type="file" name="image" class="form-control" id="image" aria-describedby="emailHelp"
             autofocus>
     </div>
@@ -62,7 +62,7 @@
     
 <br><br>
 
-    <button type="submit" class="btn btn-primary btn-block">Gonder</button>
+    <button type="submit" class="btn btn-primary btn-block">Göndər</button>
 </form>
 
 @endsection

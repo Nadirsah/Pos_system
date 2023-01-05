@@ -1,10 +1,10 @@
 @extends("back.layouts.master")
-@section("title","Melumatlar")
+@section("title","Məlumatlar")
 @section('content')
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Melumatlar <span><a href="{{route('admin.esasinfo.create')}}"><i
+        <h6 class="m-0 font-weight-bold text-primary">Məlumatlar <span><a href="{{route('admin.esasinfo.create')}}"><i
                         class="btn btn-success fa-solid fa-circle-plus"></i></a></span></h6>
     </div>
     <div class="card-body">
@@ -13,21 +13,21 @@
                 <thead>
                     <tr>
 
-                        <th>Bolme</th>
-                        <th>Basliq</th>
-                        <th>Mezmun</th>
+                        <th>Section</th>
+                        <th>Başliq</th>
+                        <th>Məzmun</th>
 
-                        <th>Duymeler</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Bolme</th>
-                        <th>Basliq</th>
-                        <th>Mezmun</th>
+                    <th>Section</th>
+                        <th>Başliq</th>
+                        <th>Məzmun</th>
 
-                        <th>Duymeler</th>
+                        <th>Action</th>
 
                     </tr>
                 </tfoot>

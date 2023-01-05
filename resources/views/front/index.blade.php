@@ -2,14 +2,14 @@
 @section('content')
     <section class="general-info">
       <div class="banner">
-     
+        @foreach($headerinfo as $headerinfos)
         <div class="sub-ban">
-          <h2></h2>
+          <h2>{!!$headerinfos->name!!}</h2>
           <p>
-          
+          {!!$headerinfos->content!!}
           </p>
         </div>
-       
+       @endforeach
       </div>
       <div class="headlines"></div>
       <div class="container head-part">
@@ -77,56 +77,22 @@
       </div>
     </section>
 
-    <section class="Karabakh" style="background-image:url('{{asset('front/img/Rectangle 414.png')}}');">
-      <div class="title">
-        <h4>QARABAĞ</h4>
+    <section class="Karabakh" style="background-image:url({{asset('$xeberslideimg->slide_fon')}});">
+      <div class="title" style="background-image:url('{{asset('$xeberimg->img')}}');">
+        <h4>{{$xebertitle->name}}</h4>
       </div>
       <div class="swiper mySwiper karabakh-slider">
         <div class="swiper-wrapper">
+        @foreach($qarabag as $qarabags)
           <div class="swiper-slide">
             <div class="new-links">
-              <h3>Qarabağ tarixi</h3>
+              <h3> {!!$qarabags->title!!}</h3>
               <p>
-                Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən
-                qədim tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx
-                mağarasında ən qədim insanların yaşayış məskəni aşkar
-                edilmişdir...
+                {!!$qarabags->content!!}
               </p>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="new-links">
-              <h3>Qarabağ tarixi</h3>
-              <p>
-                Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən
-                qədim tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx
-                mağarasında ən qədim insanların yaşayış məskəni aşkar
-                edilmişdir...
-              </p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="new-links">
-              <h3>Qarabağ tarixi</h3>
-              <p>
-                Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən
-                qədim tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx
-                mağarasında ən qədim insanların yaşayış məskəni aşkar
-                edilmişdir...
-              </p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="new-links">
-              <h3>Qarabağ tarixi</h3>
-              <p>
-                Qarabağ təkcə Azərbaycanın deyil, ümumiyyətlə, dünyanın da ən
-                qədim tarixə malik olan diyarlarındandır. Bu ərazidəki Azıx
-                mağarasında ən qədim insanların yaşayış məskəni aşkar
-                edilmişdir...
-              </p>
-            </div>
-          </div>
+         @endforeach
         </div>
       </div>
       <!-- <div class="new-links">

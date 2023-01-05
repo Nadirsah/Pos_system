@@ -1,10 +1,10 @@
 @extends("back.layouts.master")
-@section("title","Linkler")
+@section("title","Naxcivan")
 @section('content')
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Melumatlar <span><a href="{{route('admin.naxcivan.create')}}"><i
+        <h6 class="m-0 font-weight-bold text-primary">Məlumatlar <span><a href="{{route('admin.naxcivan.create')}}"><i
                         class="btn btn-success fa-solid fa-circle-plus"></i></a></span></h6>
     </div>
     <div class="card-body">
@@ -13,35 +13,35 @@
                 <thead>
                     <tr>
 
-                        <th>Basliq</th>
+                        <th>Section</th>
                         <th>Title</th>
-                        <th>Seher</th>
-                        <th>Erazi</th>
-                        <th>Ehali</th>
-                        <th>Seher_sekil</th>
-                        <th>Erazi_sekil</th>
-                        <th>Ehali_sekil</th>
-                        <th>Seher_text</th>
-                        <th>Erazi_text</th>
-                        <th>Ehali_text</th>
-                        <th>Duymeler</th>
+                        <th>Şəhər</th>
+                        <th>Ərazi</th>
+                        <th>Əhali</th>
+                        <th>Şəhər_şəkil</th>
+                        <th>Ərazi_şəkil</th>
+                        <th>Əhali_şəkil</th>
+                        <th>Şəhər_text</th>
+                        <th>Ərazi_text</th>
+                        <th>Əhali_text</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Basliq</th>
+                    <th>Section</th>
                         <th>Title</th>
-                        <th>Seher</th>
-                        <th>Erazi</th>
-                        <th>Ehali</th>
-                        <th>Seher_sekil</th>
-                        <th>Erazi_sekil</th>
-                        <th>Ehali_sekil</th>
-                        <th>Seher_text</th>
-                        <th>Erazi_text</th>
-                        <th>Ehali_text</th>
-                        <th>Duymeler</th>
+                        <th>Şəhər</th>
+                        <th>Ərazi</th>
+                        <th>Əhali</th>
+                        <th>Şəhər_şəkil</th>
+                        <th>Ərazi_şəkil</th>
+                        <th>Əhali_şəkil</th>
+                        <th>Şəhər_text</th>
+                        <th>Ərazi_text</th>
+                        <th>Əhali_text</th>
+                        <th>Action</th>
 
                     </tr>
                 </tfoot>

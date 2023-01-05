@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.panel')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fa-solid fa-user"></i>
                 </div>
@@ -37,13 +37,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Sehifeler</span>
+                    <span>Səhifələr</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cari sehifeler:</h6>
-                        <a class="collapse-item" href="{{route('admin.page.index')}}">Sehifeler</a>
-                        <a class="collapse-item" href="{{route('admin.page.create')}}">Sehife elave et</a>
+                        <h6 class="collapse-header">Cari səhifələr:</h6>
+                        <a class="collapse-item" href="{{route('admin.page.index')}}">Səhifələr</a>
+                        
                     </div>
                 </div>
             </li>
@@ -53,14 +53,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Sehife terkibi</span>
+                    <span>Səhifə tərkibi</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sehife terkibi</h6>
-                        <a class="collapse-item" href="{{route('admin.info.index')}}">Melumatlar</a>
-                        <a class="collapse-item" href="{{route('admin.info.create')}}">Melumat elave et</a>
+                        <h6 class="collapse-header">Səhifə tərkibi</h6>
+                        <a class="collapse-item" href="{{route('admin.info.index')}}">Məlumatlar</a>
+                       
                         <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a> -->
                     </div>
@@ -71,20 +71,20 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Esas sehife</span>
+                    <span>Əsas səhifə</span>
                 </a>
                 <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Esas sehife</h6>
                         <a class="collapse-item" href="{{route('admin.header.index')}}">Basliqlar</a>
-                        <a class="collapse-item" href="{{route('admin.esasinfo.index')}}">Esas melumat</a>
+                        <a class="collapse-item" href="{{route('admin.esasinfo.index')}}">Əsas məlumat</a>
                         <a class="collapse-item" href="{{route('admin.fotolar.index')}}">Fotolar</a>
-                        <a class="collapse-item" href="{{route('admin.linkler.index')}}">Linkler</a>
+                        <a class="collapse-item" href="{{route('admin.linkler.index')}}">Linklər</a>
                         <a class="collapse-item" href="{{route('admin.naxcivan.index')}}">Naxcivan MR</a>
                         <a class="collapse-item" href="{{route('admin.qarabag.index')}}">Qarabag</a>
-                        <a class="collapse-item" href="{{route('admin.qezet.index')}}">Qezet</a>
-                        <a class="collapse-item" href="{{route('admin.xeberler.index')}}">Xeberler</a>
+                        <a class="collapse-item" href="{{route('admin.qezet.index')}}">Qəzet</a>
+                        <a class="collapse-item" href="{{route('admin.xeberler.index')}}">Xəbərlər</a>
                         <a class="collapse-item" href="{{route('admin.xronika.index')}}">Xronika</a>
                       
                         <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>

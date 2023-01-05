@@ -75,4 +75,4 @@ Route::get('/iqtisadiyyat', [FrontController::class, 'iqtisadiyyat'])->name('iqt
 Route::get('/medeniyyet', [FrontController::class, 'medeniyyet'])->name('medeniyyet');
 Route::get('/elm_tehsil', [FrontController::class, 'elm_tehsil'])->name('elm_tehsil');
 Route::get('/news/{id}', [FrontController::class, 'news'])->name('news');
-Route::get('/{pages}', [FrontController::class, 'page'])->name('test');
+Route::get('/{page}', [FrontController::class, 'page'])->name('pages');
