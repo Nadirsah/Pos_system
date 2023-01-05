@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\QarabagModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Qarabag extends Controller
 {
@@ -51,9 +52,9 @@ class Qarabag extends Controller
         $data->title = $request->title;
         $data->content = $request->content;
 
-        if ($request->hasFile('image')) {
-            $imagename = ($request->info).'.'.$request->image->getClientOriginalExtension();
-            $slide_fon = 'slide'.'.'.$request->slide_fon->getClientOriginalExtension();
+        if ($request->hasFile('image', 'slide_fon')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
+            $slide_fon = Str::random(5).'.'.$request->slide_fon->getClientOriginalExtension();
             $request->image->move(public_path('uploads'), $imagename);
             $request->slide_fon->move(public_path('uploads'), $slide_fon);
             $data->img = 'uploads/'.$imagename;
@@ -108,9 +109,9 @@ class Qarabag extends Controller
         $data->title = $request->title;
         $data->content = $request->content;
 
-        if ($request->hasFile('image')) {
-            $imagename = ($request->info).'.'.$request->image->getClientOriginalExtension();
-            $slide_fon = 'slide'.'.'.$request->slide_fon->getClientOriginalExtension();
+        if ($request->hasFile('image', 'slide_fon')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
+            $slide_fon = Str::random(5).'.'.$request->slide_fon->getClientOriginalExtension();
             $request->image->move(public_path('uploads'), $imagename);
             $request->slide_fon->move(public_path('uploads'), $slide_fon);
             $data->img = 'uploads/'.$imagename;

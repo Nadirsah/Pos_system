@@ -20,13 +20,12 @@ return new class extends Migration
             $table->string('city');
             $table->string('area');
             $table->string('people');
-            $table->string('city_image');
-            $table->string('area_image');
-            $table->string('people_image');
             $table->string('city_text');
             $table->string('area_text');
             $table->string('people_text');
-
+            $table->string('city_image');
+            $table->string('area_image');
+            $table->string('people_image');
             $table->timestamps();
         });
     }

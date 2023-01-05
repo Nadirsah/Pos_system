@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Sehife elave et")
+@section("title","Melumat elave et")
 @section('content')
 
 @if($errors->any())

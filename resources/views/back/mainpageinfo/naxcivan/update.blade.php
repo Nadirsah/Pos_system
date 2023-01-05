@@ -23,6 +23,11 @@
 
         </select>
     </div>
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" value='{{$data->title}}' class="form-control" id="title" aria-describedby="emailHelp"
+            autofocus>
+    </div>
 
     <div class="mb-3">
         <label for="city" class="form-label">Seher</label>
@@ -53,21 +58,24 @@
         <label for="people_text" class="form-label">Ehali metni</label>
         <input type="text" name="people_text" value='{{$data->people_text}}'  class="form-control" id="people_text" aria-describedby="emailHelp"
             autofocus>
-    </div>
+    </div><br>
 
     <div class="mb-3">
         <label for="city_image" class="form-label">Seher sekil</label>
-        <input type="file" name="city_image" value='{{$data->city_image}}' id="city_image" aria-describedby="emailHelp"
+        <img src="{{asset($data->city_image)}}" alt="" width="100" class="rounded"> <br>
+        <input type="file" name="city_image" value='{{$data->city_image}}' class="form-control" id="city_image" aria-describedby="emailHelp"
             autofocus>
     </div>
 
     <div class="mb-3">
         <label for="area_image" class="form-label">Erazi sekli</label>
+        <img src="{{asset($data->area_image)}}" alt="" width="100" class="rounded"> <br>
         <input type="file" name="area_image" value='{{$data->area_image}}'  class="form-control" id="area_image" aria-describedby="emailHelp"
             autofocus>
     </div>
     <div class="mb-3">
         <label for="ehali_image" class="form-label">Ehali sekil</label>
+        <img src="{{asset($data->people_image)}}" alt="" width="100" class="rounded"> <br>
         <input type="file" name="ehali_image" value='{{$data->ehali_image}}' class="form-control" id="ehali_image" aria-describedby="emailHelp"
             autofocus>
     </div>

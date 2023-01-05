@@ -49,6 +49,7 @@
                     @foreach($info as $infos)
                     <tr>
                         <td>{{$infos->getHeader->name}}</td>
+                        <td>{{$infos->title}}</td>
                         <td>{{$infos->city}}</td>
                         <td>{{$infos->area}}</td>
                         <td>{{$infos->people}}</td>
@@ -63,7 +64,7 @@
 
                             <a href="{{route('admin.naxcivan.edit',$infos->id)}}"><i
                                     class="btn btn-info fa-solid fa-pen-to-square"></i></a>
-                            <a href="{{route('admin.naxcivan.qarabag',$infos->id)}}"><i
+                            <a href="{{route('admin.delete.naxcivan',$infos->id)}}"><i
                                     class="btn btn-danger fa-solid fa-trash"></i></a>
                         </td>
 

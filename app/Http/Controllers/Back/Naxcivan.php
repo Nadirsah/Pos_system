@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\NaxcivanModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Naxcivan extends Controller
 {
@@ -50,10 +51,10 @@ class Naxcivan extends Controller
         $data->city_text = $request->city_text;
         $data->area_text = $request->area_text;
         $data->people_text = $request->people_text;
-        if ($request->hasFile('image')) {
-            $cityimage = ($request->city).'.'.$request->city_image->getClientOriginalExtension();
-            $areaimage = ($request->area).'.'.$request->area_image->getClientOriginalExtension();
-            $peopleimage = ($request->people).'.'.$request->people_image->getClientOriginalExtension();
+        if ($request->hasFile('city_image', 'area_image', 'people_image')) {
+            $cityimage = Str::random(5).'.'.$request->city_image->getClientOriginalExtension();
+            $areaimage = Str::random(5).'.'.$request->area_image->getClientOriginalExtension();
+            $peopleimage = Str::random(5).'.'.$request->people_image->getClientOriginalExtension();
             $request->city_image->move(public_path('uploads'), $cityimage);
             $request->area_image->move(public_path('uploads'), $areaimage);
             $request->people_image->move(public_path('uploads'), $peopleimage);
@@ -61,6 +62,7 @@ class Naxcivan extends Controller
             $data->area_image = 'uploads/'.$areaimage;
             $data->people_image = 'uploads/'.$peopleimage;
         }
+
         $data->save();
 
         return  redirect()->route('admin.naxcivan.index');
@@ -103,7 +105,7 @@ class Naxcivan extends Controller
         $request->validate([
 
         ]);
-        $data = NaxcivanModel::finOrFail($id);
+        $data = NaxcivanModel::findOrFail($id);
         $data->header_id = $request->info;
         $data->title = $request->title;
         $data->city = $request->city;
@@ -113,10 +115,10 @@ class Naxcivan extends Controller
         $data->area_text = $request->area_text;
         $data->people_text = $request->people_text;
 
-        if ($request->hasFile('image')) {
-            $cityimage = ($request->city).'.'.$request->city->getClientOriginalExtension();
-            $areaimage = ($request->area).'.'.$request->area->getClientOriginalExtension();
-            $peopleimage = ($request->people).'.'.$request->people->getClientOriginalExtension();
+        if ($request->hasFile('city_image', 'area_image', 'people_image')) {
+            $cityimage = Str::random(5).'.'.$request->city_image->getClientOriginalExtension();
+            $areaimage = Str::random(5).'.'.$request->area_image->getClientOriginalExtension();
+            $peopleimage = Str::random(5).'.'.$request->people_image->getClientOriginalExtension();
 
             $request->city->move(public_path('uploads'), $cityimage);
             $request->area->move(public_path('uploads'), $areaimage);
@@ -127,7 +129,7 @@ class Naxcivan extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.esasinfo.index');
+        return  redirect()->route('admin.naxcivan.index');
     }
 
     /**

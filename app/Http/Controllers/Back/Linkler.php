@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\LinkModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Linkler extends Controller
 {
@@ -49,9 +50,9 @@ class Linkler extends Controller
         $data->header_id = $request->info;
         $data->name = $request->name;
 
-        if ($request->hasFile('image')) {
-            $imagename = ($request->info).'.'.$request->image->getClientOriginalExtension();
-            $fonname = 'link'.'.'.$request->fon->getClientOriginalExtension();
+        if ($request->hasFile('image', 'fon')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
+            $fonname = Str::random(5).'.'.$request->fon->getClientOriginalExtension();
             $request->image->move(public_path('uploads'), $imagename);
             $request->fon->move(public_path('uploads'), $fonname);
             $data->img = 'uploads/'.$imagename;
@@ -107,9 +108,9 @@ class Linkler extends Controller
         $data->header_id = $request->info;
         $data->name = $request->name;
 
-        if ($request->hasFile('image')) {
-            $imagename = ($request->info).'.'.$request->image->getClientOriginalExtension();
-            $fonname = 'link'.'.'.$request->fon->getClientOriginalExtension();
+        if ($request->hasFile('image', 'fon')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
+            $fonname = Str::random(5).'.'.$request->fon->getClientOriginalExtension();
             $request->image->move(public_path('uploads'), $imagename);
             $request->fon->move(public_path('uploads'), $fonname);
             $data->img = 'uploads/'.$imagename;

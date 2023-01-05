@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\QezetModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Qezet extends Controller
 {
@@ -44,9 +45,9 @@ class Qezet extends Controller
         $data = new qezetModel;
         $data->header_id = $request->info;
 
-        if ($request->hasFile('image')) {
-            $imagename = ($request->info).'.'.$request->image->getClientOriginalExtension();
-            $qezetname = 'qezet'.'.'.$request->image_1->getClientOriginalExtension();
+        if ($request->hasFile('image', 'image_1')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
+            $qezetname = Str::random(5).'.'.$request->image_1->getClientOriginalExtension();
             $request->image->move(public_path('uploads'), $imagename);
             $request->image_1->move(public_path('uploads'), $qezetname);
             $data->img = 'uploads/'.$imagename;
@@ -94,9 +95,9 @@ class Qezet extends Controller
         $data = QezetModel::findOrFail($id);
         $data->header_id = $request->info;
 
-        if ($request->hasFile('image')) {
-            $imagename = ($request->info).'.'.$request->image->getClientOriginalExtension();
-            $qezetname = 'qezet'.'.'.$request->image_1->getClientOriginalExtension();
+        if ($request->hasFile('image', 'image_1')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
+            $qezetname = Str::random(5).'.'.$request->image_1->getClientOriginalExtension();
             $request->image->move(public_path('uploads'), $imagename);
             $request->image_1->move(public_path('uploads'), $qezetname);
             $data->img = 'uploads/'.$imagename;

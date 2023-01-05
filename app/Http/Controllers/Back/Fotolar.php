@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FotoModel;
 use App\Models\HeaderModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Fotolar extends Controller
 {
@@ -50,7 +51,7 @@ class Fotolar extends Controller
         $data->name = $request->name;
 
         if ($request->hasFile('image')) {
-            $imagename = ($request->title).'.'.$request->image->getClientOriginalExtension();
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
 
             $request->image->move(public_path('uploads'), $imagename);
             $data->img = 'uploads/'.$imagename;

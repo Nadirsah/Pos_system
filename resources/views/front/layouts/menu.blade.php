@@ -39,36 +39,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav row">
+            @foreach($page as $pages)
               <li class="nav-item col-sm {{(request()->segment(1)=='tebiet') ? 'active': ''}}">
-                <a class="nav-link" href="{{route('tebiet')}}"
-                  >Təbiət<span class="sr-only">(current)</span></a
+                <a class="nav-link" href="{{route('test',$pages->slug)}}"
+                  >{{$pages->name}}<span class="sr-only">(current)</span></a
                 >
               </li>
-              <li class="nav-item col-sm {{(request()->segment(1)=='tarix') ? 'active': ''}}">
-                <a class="nav-link" href="{{route('tarix')}}"
-                  >Tarix<span class="sr-only">(current)</span></a
-                >
-              </li>
-              <li class="nav-item col-sm {{(request()->segment(1)=='iqtisadiyyat') ? 'active': ''}}">
-                <a class="nav-link" href="{{route('iqtisadiyyat')}}"
-                  >İqtisadiyyat<span class="sr-only">(current)</span></a
-                >
-              </li>
-              <li class="nav-item col-sm {{(request()->segment(1)=='medeniyyet') ? 'active': ''}}">
-                <a class="nav-link" href="{{route('medeniyyet')}}"
-                  >Mədəniyyət<span class="sr-only">(current)</span></a
-                >
-              </li>
-              <li class="nav-item col-sm {{(request()->segment(1)=='elm_tehsil') ? 'active': ''}}">
-                <a class="nav-link" href="{{route('elm_tehsil')}}"
-                  >Elm və təhsil<span class="sr-only">(current)</span></a
-                >
-              </li>
-              <li class="nav-item col-sm {{(request()->segment(1)=='sehiyye') ? 'active': ''}}">
-                <a class="nav-link" href="{{route('sehiyye')}}"
-                  >Səhiyyə<span class="sr-only">(current)</span></a
-                >
-              </li>
+             @endforeach
             </ul>
           </div>
         </nav>
