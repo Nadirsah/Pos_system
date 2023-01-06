@@ -2,13 +2,13 @@
 @section("title","Məlumat əlavə et")
 @section('content')
 
-@if($errors->any())
+<!-- @if($errors->any())
 <div class="alert alert-danger">
     @foreach($errors->all() as $error)
    <li> {{$error}}</li>
     @endforeach
 </div>
-@endif
+@endif -->
 <form method="Post" action="{{route('admin.esasinfo.store')}}" >
     @csrf
 
@@ -21,13 +21,15 @@
             @endforeach
 
         </select>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
 
     <div class="mb-3">
         <label for="name" class="form-label">Məlumat başlığı</label>
-        <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"
+        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     
@@ -39,9 +41,10 @@
 
     <div class="mb-3" >
         <label for="content" class="form-label">Məzmun</label>
-        <textarea  id="summernote" name="content" class="form-control" id="content" aria-describedby="emailHelp"
+        <textarea  id="summernote" value="{{old('content')}}" name="content" class="form-control" id="content" aria-describedby="emailHelp"
             autofocus>
     </textarea>
+    <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 <br><br>
 

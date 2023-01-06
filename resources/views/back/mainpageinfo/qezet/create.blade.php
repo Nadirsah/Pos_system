@@ -2,13 +2,13 @@
 @section("title","Qəzet əlavə et")
 @section('content')
 
-@if($errors->any())
+<!-- @if($errors->any())
 <div class="alert alert-danger">
     @foreach($errors->all() as $error)
    <li> {{$error}}</li>
     @endforeach
 </div>
-@endif
+@endif -->
 <form method="Post" action="{{route('admin.qezet.store')}}"  enctype="multipart/form-data">
     @csrf
 
@@ -21,6 +21,7 @@
             @endforeach
 
         </select>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
 
@@ -28,14 +29,16 @@
 
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil_1</label>
-        <input type="file" name="image" class="form-control" id="image" aria-describedby="emailHelp"
+        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="image_1" class="form-label">Şəkil_2 </label>
-        <input type="file" name="image_1" class="form-control" id="image_1" aria-describedby="emailHelp"
-            autofocus>
+        <input type="file" name="image_1" value="{{old('image_1')}}" class="form-control" id="image_1" aria-describedby="emailHelp"
+            >
+            <span class="text-danger">@error('image_1'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     

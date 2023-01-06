@@ -2,13 +2,7 @@
 @section("title","Məlumat əlavə et")
 @section('content')
 
-@if($errors->any())
-<div class="alert alert-danger">
-    @foreach($errors->all() as $error)
-   <li> {{$error}}</li>
-    @endforeach
-</div>
-@endif
+
 <form method="Post" action="{{route('admin.info.store')}}" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
@@ -20,18 +14,21 @@
             @endforeach
 
         </select>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3" >
         <label for="content1" class="form-label">Səhifə</label>
-        <input  name="page" class="form-control" id="content1" aria-describedby="emailHelp"
+        <input  name="page" class="form-control" value="{{old('page')}}" id="content1" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('page'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
 
     </div>
     <div class="mb-3">
         <label for="name" class="form-label">Məlumat başlıgı</label>
-        <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"
+        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
    
@@ -39,17 +36,20 @@
 
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label>
-        <input type="file" name="image" class="form-control" id="image" aria-describedby="emailHelp"
+        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     
 
     <div class="mb-3" >
         <label for="content" class="form-label">Məzmun</label>
-        <textarea  id="summernote" name="content" class="form-control" id="content" aria-describedby="emailHelp"
+        <textarea  id="summernote" name="content" value="{{old('content')}}" class="form-control" id="content" aria-describedby="emailHelp"
             autofocus>
+           
     </textarea>
+    <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 <br><br>
 

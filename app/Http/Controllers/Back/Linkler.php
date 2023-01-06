@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\LinkModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\LinkPostRequest;
 use Illuminate\Support\Str;
 
 class Linkler extends Controller
@@ -40,12 +41,11 @@ class Linkler extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LinkPostRequest $request)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-
-        ]);
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',
+        'fon' => 'required|image|mimes:jpeg,png,jpg|max:200']);
+       
         $data = new LinkModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
@@ -61,7 +61,7 @@ class Linkler extends Controller
 
         $data->save();
 
-        return  redirect()->route('admin.linkler.index');
+        return  redirect()->route('admin.linkler.index')->with(["success"=>"Məlumat əlavə olundu!"]);
     }
 
     /**
@@ -96,10 +96,10 @@ class Linkler extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LinkPostRequest $request, $id)
     {
         $request->validate([
-            'name' => 'required|min:5',
+            
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
 
         ]);
@@ -118,7 +118,7 @@ class Linkler extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.linkler.index');
+        return  redirect()->route('admin.linkler.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
     }
 
     /**
@@ -137,6 +137,6 @@ class Linkler extends Controller
         $data = LinkModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.linkler.index');
+        return redirect()->route('admin.linkler.index')->with(["success"=>"Məlumat uğurla silindi!"]);
     }
 }

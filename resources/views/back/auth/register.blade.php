@@ -42,6 +42,7 @@
                                 <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" name="name" class="form-control form-control-user"
                                             id="exampleFirstName" placeholder="Istifadeci adi">
+                                            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                                     </div>
                                    
                                 </div>
@@ -50,6 +51,7 @@
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="password" name="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Sifre">
+                                            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                                     </div>
 
                                 </div>

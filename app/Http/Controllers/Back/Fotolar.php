@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FotoModel;
 use App\Models\HeaderModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\FotoPostRequest;
 use Illuminate\Support\Str;
 
 class Fotolar extends Controller
@@ -40,12 +41,9 @@ class Fotolar extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FotoPostRequest $request)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-
-        ]);
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',]);
         $data = new FotoModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
@@ -58,7 +56,7 @@ class Fotolar extends Controller
         }
         $data->save();
 
-        return  redirect()->route('admin.fotolar.index');
+        return  redirect()->route('admin.fotolar.index')->with(["success"=>"Məlumat əlavə olundu!"]);
     }
 
     /**
@@ -93,13 +91,9 @@ class Fotolar extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FotoPostRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-
-        ]);
+        $request->validate(['image' => 'image|mimes:jpeg,png,jpg|max:200',]);
         $data = FotoModel::findOrFail($id);
 
         $data->header_id = $request->info;
@@ -113,7 +107,7 @@ class Fotolar extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.fotolar.index');
+        return  redirect()->route('admin.fotolar.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
     }
 
     /**
@@ -132,6 +126,6 @@ class Fotolar extends Controller
         $data = FotoModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.fotolar.index');
+        return redirect()->route('admin.fotolar.index')->with(["success"=>"Məlumat uğurla silindi!"]);
     }
 }

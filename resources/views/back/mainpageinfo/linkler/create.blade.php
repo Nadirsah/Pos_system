@@ -2,13 +2,13 @@
 @section("title","Link əlavə et")
 @section('content')
 
-@if($errors->any())
+<!-- @if($errors->any())
 <div class="alert alert-danger">
     @foreach($errors->all() as $error)
    <li> {{$error}}</li>
     @endforeach
 </div>
-@endif
+@endif -->
 <form method="Post" action="{{route('admin.linkler.store')}}"  enctype="multipart/form-data">
     @csrf
 
@@ -21,25 +21,29 @@
             @endforeach
 
         </select>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
 
     <div class="mb-3">
         <label for="name" class="form-label">URL</label>
-        <input type="url" name="name" class="form-control" id="name" aria-describedby="emailHelp"
+        <input type="url" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label>
-        <input type="file" name="image" class="form-control" id="image" aria-describedby="emailHelp"
+        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="fon" class="form-label">Fon</label>
-        <input type="file" name="fon" class="form-control" id="fon" aria-describedby="emailHelp"
+        <input type="file" name="fon" value="{{old('fon')}}" class="form-control" id="fon" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('fon'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     

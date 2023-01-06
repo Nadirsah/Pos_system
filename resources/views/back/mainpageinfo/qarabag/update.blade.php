@@ -22,24 +22,28 @@
             @endforeach
 
         </select>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="name" class="form-label">Ön söz</label>
         <input type="text" name="name" value='{{$data->name}}' class="form-control" id="name" aria-describedby="emailHelp"
             >
+            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" name="title" class="form-control" value='{{$data->title}}' id="title" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('title'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="content" class="form-label">Məzmun</label>
         <input type="text" name="content" class="form-control" value='{{$data->content}}' id="content" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
@@ -47,6 +51,7 @@
         <img src="{{asset($data->img)}}" alt="" width="100" class="rounded"> <br>
         <input type="file" name="image" class="form-control" id="image" aria-describedby="emailHelp"
             >
+            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
@@ -54,6 +59,7 @@
         <img src="{{asset($data->slide_fon)}}" alt="" width="100" class="rounded"> <br>
         <input type="file" name="slide_fon" class="form-control" id="slide_fon" aria-describedby="emailHelp"
             >
+            <span class="text-danger">@error('slide_fon'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
 

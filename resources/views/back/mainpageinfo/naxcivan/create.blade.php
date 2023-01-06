@@ -2,13 +2,13 @@
 @section("title","Məlumat əlavə et")
 @section('content')
 
-@if($errors->any())
+<!-- @if($errors->any())
 <div class="alert alert-danger">
     @foreach($errors->all() as $error)
    <li> {{$error}}</li>
     @endforeach
 </div>
-@endif
+@endif -->
 <form method="Post" action="{{route('admin.naxcivan.store')}}"  enctype="multipart/form-data">
     @csrf
 
@@ -21,60 +21,71 @@
             @endforeach
 
         </select>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp"
+        <input type="text" name="title" value="{{old('title')}}" class="form-control" id="title" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('title'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
 
     <div class="mb-3">
         <label for="city" class="form-label">Şəhər</label>
-        <input type="text" name="city" class="form-control" id="city" aria-describedby="emailHelp"
+        <input type="text" name="city" value="{{old('city')}}" class="form-control" id="city" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('city'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="area" class="form-label">Ərazi</label>
-        <input type="text" name="area" class="form-control" id="area" aria-describedby="emailHelp"
+        <input type="text" name="area" value="{{old('area')}}" class="form-control" id="area" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('area'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="people" class="form-label">Əhali</label>
-        <input type="text" name="people" class="form-control" id="people" aria-describedby="emailHelp"
+        <input type="text" name="people" value="{{old('people')}}" class="form-control" id="people" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('people'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="city_text" class="form-label">Şəhər mətni</label>
-        <input type="text" name="city_text" class="form-control" id="city_text" aria-describedby="emailHelp"
+        <input type="text" name="city_text" value="{{old('city_text')}}" class="form-control" id="city_text" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('city_text'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="area_text" class="form-label">Ərazi mətni</label>
-        <input type="text" name="area_text" class="form-control" id="area_text" aria-describedby="emailHelp"
+        <input type="text" name="area_text" value="{{old('area_text')}}" class="form-control" id="area_text" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('area_text'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="people_text" class="form-label">Əhali mətni</label>
-        <input type="text" name="people_text" class="form-control" id="people_text" aria-describedby="emailHelp"
+        <input type="text" name="people_text" value="{{old('people_text')}}" class="form-control" id="people_text" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('people_text'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="city_image" class="form-label">Şəhər şəkil</label>
-        <input type="file" name="city_image" class="form-control" id="city_image" aria-describedby="emailHelp"
+        <input type="file" name="city_image" value="{{old('city_image')}}" class="form-control" id="city_image" aria-describedby="emailHelp"
             >
+            <span class="text-danger">@error('city_image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="area_image" class="form-label">Ərazi şəkil</label>
-        <input type="file" name="area_image" class="form-control" id="area_image" aria-describedby="emailHelp"
+        <input type="file" name="area_image" value="{{old('area_image')}}" class="form-control" id="area_image" aria-describedby="emailHelp"
            >
+           <span class="text-danger">@error('area_image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="ehali_image" class="form-label">Əhali şəkil</label>
-        <input type="file" name="people_image" class="form-control" id="ehali_image" aria-describedby="emailHelp"
+        <input type="file" name="people_image" value="{{old('people_image')}}" class="form-control" id="ehali_image" aria-describedby="emailHelp"
             >
+            <span class="text-danger">@error('people_image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     

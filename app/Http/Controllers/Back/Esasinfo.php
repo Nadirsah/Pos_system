@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderInfoModel;
 use App\Models\HeaderModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\EsasPostRequest;
 
 class Esasinfo extends Controller
 {
@@ -39,7 +40,7 @@ class Esasinfo extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EsasPostRequest $request)
     {
         $request->validate([
             'name' => 'required|min:5',
@@ -52,7 +53,8 @@ class Esasinfo extends Controller
 
         $data->save();
 
-        return  redirect()->route('admin.esasinfo.index');
+        return  redirect()->route('admin.esasinfo.index') ->with(["success"=>"Məlumat əlavə olundu!"])
+        ;
     }
 
     /**
@@ -87,7 +89,7 @@ class Esasinfo extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EsasPostRequest $request, $id)
     {
         $request->validate([
             'name' => 'required|min:5',
@@ -100,7 +102,7 @@ class Esasinfo extends Controller
 
         $data->update();
 
-        return  redirect()->route('admin.esasinfo.index');
+        return  redirect()->route('admin.esasinfo.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
     }
 
     /**
@@ -119,6 +121,6 @@ class Esasinfo extends Controller
         $data = HeaderInfoModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.esasinfo.index');
+        return redirect()->route('admin.esasinfo.index')->with(["success"=>"Məlumat uğurla silindi!"]);
     }
 }

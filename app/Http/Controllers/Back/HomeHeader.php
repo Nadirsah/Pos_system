@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Requests\HeaderPostRequest;
 
 class HomeHeader extends Controller
 {
@@ -37,14 +38,14 @@ class HomeHeader extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HeaderPostRequest $request)
     {
         $data = new HeaderModel;
         $data->name = $request->name;
         $data->slug = Str::slug($request->name);
         $data->save();
 
-        return redirect()->route('admin.header.create');
+        return redirect()->route('admin.header.create')->with(["success"=>"Məlumat əlavə olundu!"]);
     }
 
     /**
@@ -78,13 +79,13 @@ class HomeHeader extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HeaderPostRequest $request, $id)
     {
         $data = HeaderModel::findOrFail($id);
         $data->name = $request->name;
         $data->update();
 
-        return redirect()->route('admin.header.index');
+        return redirect()->route('admin.header.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
     }
 
     /**
@@ -103,6 +104,6 @@ class HomeHeader extends Controller
         $data = HeaderModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.header.index');
+        return redirect()->route('admin.header.index')->with(["success"=>"Məlumat uğurla silindi!"]);
     }
 }

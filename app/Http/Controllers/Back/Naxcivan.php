@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\NaxcivanModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\NaxcivanPostRequest;
 use Illuminate\Support\Str;
 
 class Naxcivan extends Controller
@@ -40,8 +41,10 @@ class Naxcivan extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(NaxcivanPostRequest $request)
+    {$request->validate(['city_image' => 'required|image|mimes:jpeg,png,jpg|max:200',
+        'area_image' => 'required|image|mimes:jpeg,png,jpg|max:200',
+        'people_image' => 'required|image|mimes:jpeg,png,jpg|max:200',]);
         $data = new NaxcivanModel;
         $data->header_id = $request->info;
         $data->title = $request->title;
@@ -65,7 +68,7 @@ class Naxcivan extends Controller
 
         $data->save();
 
-        return  redirect()->route('admin.naxcivan.index');
+        return  redirect()->route('admin.naxcivan.index')->with(["success"=>"Məlumat əlavə olundu!"]);
     }
 
     /**
@@ -100,7 +103,7 @@ class Naxcivan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NaxcivanPostRequest $request, $id)
     {
         $request->validate([
 
@@ -129,7 +132,7 @@ class Naxcivan extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.naxcivan.index');
+        return  redirect()->route('admin.naxcivan.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
     }
 
     /**
@@ -148,6 +151,6 @@ class Naxcivan extends Controller
         $data = NaxcivanModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.naxcivan.index');
+        return redirect()->route('admin.naxcivan.index') ->with(["success"=>"Məlumat uğurla silindi!"]);
     }
 }

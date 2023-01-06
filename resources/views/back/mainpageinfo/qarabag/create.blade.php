@@ -2,13 +2,13 @@
 @section("title","Məlumat əlavə et")
 @section('content')
 
-@if($errors->any())
+<!-- @if($errors->any())
 <div class="alert alert-danger">
     @foreach($errors->all() as $error)
    <li> {{$error}}</li>
     @endforeach
 </div>
-@endif
+@endif -->
 <form method="Post" action="{{route('admin.qarabag.store')}}"  enctype="multipart/form-data">
     @csrf
 
@@ -21,35 +21,39 @@
             @endforeach
 
         </select>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
 
     <div class="mb-3">
         <label for="name" class="form-label">Ön söz</label>
-        <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"
+        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
+            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp"
-            autofocus>
+        <input type="text" name="title" value="{{old('title')}}" class="form-control" id="title" aria-describedby="emailHelp"
+            >
+            <span class="text-danger">@error('title'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     <div class="mb-3">
         <label for="content" class="form-label">Məzmun</label>
-        <input type="text" name="content" class="form-control" id="content" aria-describedby="emailHelp"
-            autofocus>
+        <input type="text" name="content" value="{{old('content')}}" class="form-control" id="content" aria-describedby="emailHelp"
+            >
+            <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label>
-        <input type="file" name="image" class="form-control" id="image" aria-describedby="emailHelp"
-            autofocus>
+        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
+            > <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="slide_fon" class="form-label">Slide Fon</label>
-        <input type="file" name="slide_fon" class="form-control" id="slidefon" aria-describedby="emailHelp"
-            autofocus>
+        <input type="file" name="slide_fon" value="{{old('slide_fon')}}" class="form-control" id="slidefon" aria-describedby="emailHelp"
+            > <span class="text-danger">@error('slide_fon'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     

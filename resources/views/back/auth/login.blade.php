@@ -51,10 +51,12 @@
                                             <input type="text" class="form-control form-control-user"
                                                 id="exampleInputEmail" name="name" aria-describedby="emailHelp"
                                                 placeholder="Istifadeci adi">
+                                                <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" name="password" placeholder="Sifre">
+                                                <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                                         </div>
 
                                         <button type="submit" class="btn btn-primary btn-user btn-block"> Daxil

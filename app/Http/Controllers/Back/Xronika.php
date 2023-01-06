@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\XronikaModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\XronikaPostRequest;
 use Illuminate\Support\Str;
 
 class Xronika extends Controller
@@ -40,11 +41,9 @@ class Xronika extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(XronikaPostRequest $request)
     {
-        $request->validate([
-
-        ]);
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',]);
         $data = new XronikaModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
@@ -60,7 +59,7 @@ class Xronika extends Controller
 
         $data->save();
 
-        return  redirect()->route('admin.xronika.index');
+        return  redirect()->route('admin.xronika.index')->with(["success"=>"Məlumat əlavə olundu!"]);
     }
 
     /**
@@ -95,7 +94,7 @@ class Xronika extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(XronikaPostRequest $request, $id)
     {
         $data = XronikaModel::findOrFail($id);
         $data->header_id = $request->info;
@@ -111,7 +110,7 @@ class Xronika extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.xronika.index');
+        return  redirect()->route('admin.xronika.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
     }
 
     /**
@@ -130,6 +129,6 @@ class Xronika extends Controller
         $data = XronikaModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.xronika.index');
+        return redirect()->route('admin.xronika.index')->with(["success"=>"Məlumat uğurla silindi!"]);
     }
 }

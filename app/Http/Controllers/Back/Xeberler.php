@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\XeberlerModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\XeberlerPostRequest;
 use Illuminate\Support\Str;
 
 class Xeberler extends Controller
@@ -40,11 +41,9 @@ class Xeberler extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(XeberlerPostRequest $request)
     {
-        $request->validate([
-
-        ]);
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',]);
         $data = new XeberlerModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
@@ -59,7 +58,7 @@ class Xeberler extends Controller
         }
         $data->save();
 
-        return  redirect()->route('admin.xeberler.index');
+        return  redirect()->route('admin.xeberler.index')->with(["success"=>"Məlumat əlavə olundu!"]);
     }
 
     /**
@@ -94,7 +93,7 @@ class Xeberler extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(XeberlerPostRequest $request, $id)
     {
         $data = XeberlerModel::findOrFail($id);
         $data->header_id = $request->info;
@@ -111,7 +110,7 @@ class Xeberler extends Controller
 
         $data->update();
 
-        return  redirect()->route('admin.xeberler.index');
+        return  redirect()->route('admin.xeberler.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
     }
 
     /**
@@ -130,6 +129,6 @@ class Xeberler extends Controller
         $data = XeberlerModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.xeberler.index');
+        return redirect()->route('admin.xeberler.index')->with(["success"=>"Məlumat uğurla silindi!"]);
     }
 }
