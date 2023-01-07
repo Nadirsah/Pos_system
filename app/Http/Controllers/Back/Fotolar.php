@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FotoPostRequest;
 use App\Models\FotoModel;
 use App\Models\HeaderModel;
-use Illuminate\Http\Request;
-use App\Http\Requests\FotoPostRequest;
 use Illuminate\Support\Str;
 
 class Fotolar extends Controller
@@ -43,7 +42,7 @@ class Fotolar extends Controller
      */
     public function store(FotoPostRequest $request)
     {
-        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',]);
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new FotoModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
@@ -56,7 +55,7 @@ class Fotolar extends Controller
         }
         $data->save();
 
-        return  redirect()->route('admin.fotolar.index')->with(["success"=>"Məlumat əlavə olundu!"]);
+        return  redirect()->route('admin.fotolar.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -93,7 +92,7 @@ class Fotolar extends Controller
      */
     public function update(FotoPostRequest $request, $id)
     {
-        $request->validate(['image' => 'image|mimes:jpeg,png,jpg|max:200',]);
+        $request->validate(['image' => 'image|mimes:jpeg,png,jpg|max:200']);
         $data = FotoModel::findOrFail($id);
 
         $data->header_id = $request->info;
@@ -107,7 +106,7 @@ class Fotolar extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.fotolar.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
+        return  redirect()->route('admin.fotolar.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -126,6 +125,6 @@ class Fotolar extends Controller
         $data = FotoModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.fotolar.index')->with(["success"=>"Məlumat uğurla silindi!"]);
+        return redirect()->route('admin.fotolar.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

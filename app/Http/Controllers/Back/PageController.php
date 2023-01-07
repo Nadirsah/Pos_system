@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\PageModel;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use App\Http\Requests\StorePostRequest;
+use App\Models\PageModel;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -39,13 +38,13 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StorePostRequest $request)
-    {   
+    {
         $data = new PageModel;
         $data->name = $request->name;
         $data->slug = Str::slug($request->name);
         $data->save();
 
-        return redirect()->route('admin.page.create')->with(["success"=>"Səhifə əlavə olundu!"]);
+        return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);
     }
 
     /**
@@ -85,7 +84,7 @@ class PageController extends Controller
         $data->name = $request->name;
         $data->update();
 
-        return redirect()->route('admin.page.index')->with(["success"=>"Səhifə uğurla yeniləndi!"]);
+        return redirect()->route('admin.page.index')->with(['success' => 'Səhifə uğurla yeniləndi!']);
     }
 
     /**
@@ -103,6 +102,6 @@ class PageController extends Controller
         $data = PageModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.page.index')->with(["success"=>"Səhifə uğurla silindi!"]);
+        return redirect()->route('admin.page.index')->with(['success' => 'Səhifə uğurla silindi!']);
     }
 }

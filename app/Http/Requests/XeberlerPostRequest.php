@@ -27,8 +27,7 @@ class XeberlerPostRequest extends FormRequest
             'info' => 'required',
             'name' => 'required',
             'content' => 'required',
-            
-            
+
         ];
     }
 }

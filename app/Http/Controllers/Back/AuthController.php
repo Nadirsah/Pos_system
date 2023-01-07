@@ -34,17 +34,14 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required',
-
             'password' => 'required|min:5',
         ]);
         $data = new User;
-
         $data->name = $request->name;
-
         $data->password = Hash::make($request->password);
         $data->save();
 
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.login')->with(['success' => 'Qeydiyyat tamamlandi!']);
     }
 
     /**
@@ -55,6 +52,14 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required|min:5',
+            'g-recaptcha-response' => 'required|recaptcha',
+            'g-recaptcha-response.recaptcha' => 'Duzgun deyil',
+            'g-recaptcha-response.required' => 'Qeydiyyati tamamlayin',
+        ]);
+
         if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
             return redirect()->route('admin.panel');
         }

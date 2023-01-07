@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EsasPostRequest;
-use App\Models\HeaderInfoModel;
-use App\Models\HeaderModel;
+use App\Models\User;
+use Hash;
+use Illuminate\Http\Request;
 
-class Esasinfo extends Controller
+class Profile extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class Esasinfo extends Controller
      */
     public function index()
     {
-        $info = HeaderInfoModel::all();
+        $data = User::all();
 
-        return view('back.mainpageinfo.esasinfo.index', compact('info'));
+        return view('back.auth.profile', compact('data'));
     }
 
     /**
@@ -28,9 +28,7 @@ class Esasinfo extends Controller
      */
     public function create()
     {
-        $header = HeaderModel::all();
-
-        return view('back.mainpageinfo.esasinfo.create', compact('header'));
+        //
     }
 
     /**
@@ -39,20 +37,9 @@ class Esasinfo extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EsasPostRequest $request)
+    public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-
-        ]);
-        $data = new HeaderinfoModel;
-        $data->header_id = $request->info;
-        $data->name = $request->name;
-        $data->content = $request->content;
-
-        $data->save();
-
-        return  redirect()->route('admin.esasinfo.index')->with(['success' => 'Məlumat əlavə olundu!']);
+        //
     }
 
     /**
@@ -74,10 +61,9 @@ class Esasinfo extends Controller
      */
     public function edit($id)
     {
-        $header = HeaderModel::all();
-        $data = HeaderInfoModel::findOrFail($id);
+        $data = User::findOrFail($id);
 
-        return view('back.mainpageinfo.esasinfo.update', compact('data', 'header'));
+        return view('back.auth.editprofile', compact('data'));
     }
 
     /**
@@ -87,20 +73,18 @@ class Esasinfo extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EsasPostRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|min:5',
-
+            'name' => 'required',
+            'password' => 'required|min:5',
         ]);
-        $data = new HeaderInfoModel;
-        $data->header_id = $request->info;
+        $data = User::findOrFail($id);
         $data->name = $request->name;
-        $data->content = $request->content;
-
+        $data->password = Hash::make($request->password);
         $data->update();
 
-        return  redirect()->route('admin.esasinfo.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
+        return redirect()->route('admin.profile.index')->with(['success' => 'Məlumat  yeniləndi!']);
     }
 
     /**
@@ -116,9 +100,10 @@ class Esasinfo extends Controller
 
     public function delete($id)
     {
-        $data = HeaderInfoModel::findOrFail($id);
+        $data = User::findOrFail($id);
+
         $data->delete();
 
-        return redirect()->route('admin.esasinfo.index')->with(['success' => 'Məlumat uğurla silindi!']);
+        return redirect()->route('admin.profile.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

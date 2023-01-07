@@ -27,7 +27,7 @@ class EsasPostRequest extends FormRequest
             'info' => 'required',
             'name' => 'required',
             'content' => 'required',
-            
+
         ];
     }
 }

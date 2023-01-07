@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\QarabagPostRequest;
 use App\Models\HeaderModel;
 use App\Models\QarabagModel;
-use Illuminate\Http\Request;
-use App\Http\Requests\QarabagPostRequest;
 use Illuminate\Support\Str;
 
 class Qarabag extends Controller
@@ -43,7 +42,7 @@ class Qarabag extends Controller
      */
     public function store(QarabagPostRequest $request)
     {
-        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',]);
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new QarabagModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
@@ -60,7 +59,7 @@ class Qarabag extends Controller
         }
         $data->save();
 
-        return  redirect()->route('admin.qarabag.index') ->with(["success"=>"Məlumat əlavə olundu!"]);
+        return  redirect()->route('admin.qarabag.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -117,7 +116,7 @@ class Qarabag extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.qarabag.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
+        return  redirect()->route('admin.qarabag.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -136,6 +135,6 @@ class Qarabag extends Controller
         $data = QarabagModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.qarabag.index')->with(["success"=>"Məlumat uğurla silindi!"]);
+        return redirect()->route('admin.qarabag.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

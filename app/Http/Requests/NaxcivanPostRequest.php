@@ -32,7 +32,7 @@ class NaxcivanPostRequest extends FormRequest
             'city_text' => 'required',
             'area_text' => 'required',
             'people_text' => 'required',
-            
+
         ];
     }
 }

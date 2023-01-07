@@ -28,8 +28,7 @@ class QarabagPostRequest extends FormRequest
             'name' => 'required',
             'content' => 'required',
             'title' => 'required',
-            
-        ];
 
+        ];
     }
 }

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\HeaderModel;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use App\Http\Requests\HeaderPostRequest;
+use App\Models\HeaderModel;
+use Illuminate\Support\Str;
 
 class HomeHeader extends Controller
 {
@@ -45,7 +44,7 @@ class HomeHeader extends Controller
         $data->slug = Str::slug($request->name);
         $data->save();
 
-        return redirect()->route('admin.header.create')->with(["success"=>"Məlumat əlavə olundu!"]);
+        return redirect()->route('admin.header.create')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -85,7 +84,7 @@ class HomeHeader extends Controller
         $data->name = $request->name;
         $data->update();
 
-        return redirect()->route('admin.header.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
+        return redirect()->route('admin.header.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -104,6 +103,6 @@ class HomeHeader extends Controller
         $data = HeaderModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.header.index')->with(["success"=>"Məlumat uğurla silindi!"]);
+        return redirect()->route('admin.header.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

@@ -26,8 +26,7 @@ class FotoPostRequest extends FormRequest
         return [
             'info' => 'required',
             'name' => 'required',
-           
-            
+
         ];
     }
 }

@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InfoPostRequest;
 use App\Models\InfoModel;
 use App\Models\PageModel;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Http\Requests\İnfoPostRequest;
 
 class InfoController extends Controller
 {
@@ -41,9 +40,9 @@ class InfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(İnfoPostRequest $request)
+    public function store(InfoPostRequest $request)
     {
-        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',]);
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new InfoModel;
         $data->page_id = $request->info;
         $data->name = $request->name;
@@ -55,11 +54,10 @@ class InfoController extends Controller
 
             $request->image->move(public_path('uploads'), $imagename);
             $data->image = 'uploads/'.$imagename;
-            
         }
         $data->save();
-           
-            return  redirect()->route('admin.info.index')->with(["success"=>"Səhifə əlavə olundu!"]);
+
+        return  redirect()->route('admin.info.index')->with(['success' => 'Səhifə əlavə olundu!']);
     }
 
     /**
@@ -94,9 +92,8 @@ class InfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(İnfoPostRequest $request, $id)
+    public function update(InfoPostRequest $request, $id)
     {
-        
         $data = InfoModel::findOrFail($id);
         $data->page_id = $request->info;
         $data->name = $request->name;
@@ -111,7 +108,7 @@ class InfoController extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.info.index')->with(["success"=>"Səhifə uğurla yeniləndi!"]);
+        return  redirect()->route('admin.info.index')->with(['success' => 'Səhifə uğurla yeniləndi!']);
     }
 
     /**
@@ -130,6 +127,6 @@ class InfoController extends Controller
         $data = InfoModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.info.index')->with(["success"=>"Səhifə uğurla silindi!"]);
+        return redirect()->route('admin.info.index')->with(['success' => 'Səhifə uğurla silindi!']);
     }
 }

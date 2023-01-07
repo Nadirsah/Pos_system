@@ -26,7 +26,7 @@ class LinkPostRequest extends FormRequest
         return [
             'info' => 'required',
             'name' => 'required',
-            
+
         ];
     }
 }

@@ -27,8 +27,7 @@ class XronikaPostRequest extends FormRequest
             'info' => 'required',
             'name' => 'required',
             'content' => 'required',
-            
-            
+
         ];
     }
 }

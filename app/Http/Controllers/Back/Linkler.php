@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LinkPostRequest;
 use App\Models\HeaderModel;
 use App\Models\LinkModel;
-use Illuminate\Http\Request;
-use App\Http\Requests\LinkPostRequest;
 use Illuminate\Support\Str;
 
 class Linkler extends Controller
@@ -44,8 +43,8 @@ class Linkler extends Controller
     public function store(LinkPostRequest $request)
     {
         $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',
-        'fon' => 'required|image|mimes:jpeg,png,jpg|max:200']);
-       
+            'fon' => 'required|image|mimes:jpeg,png,jpg|max:200']);
+
         $data = new LinkModel;
         $data->header_id = $request->info;
         $data->name = $request->name;
@@ -61,7 +60,7 @@ class Linkler extends Controller
 
         $data->save();
 
-        return  redirect()->route('admin.linkler.index')->with(["success"=>"Məlumat əlavə olundu!"]);
+        return  redirect()->route('admin.linkler.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -99,7 +98,7 @@ class Linkler extends Controller
     public function update(LinkPostRequest $request, $id)
     {
         $request->validate([
-            
+
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
 
         ]);
@@ -118,7 +117,7 @@ class Linkler extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.linkler.index')->with(["success"=>"Məlumat uğurla yeniləndi!"]);
+        return  redirect()->route('admin.linkler.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -137,6 +136,6 @@ class Linkler extends Controller
         $data = LinkModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.linkler.index')->with(["success"=>"Məlumat uğurla silindi!"]);
+        return redirect()->route('admin.linkler.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

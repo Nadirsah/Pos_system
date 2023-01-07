@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\HeaderModel;
 use App\Models\QezetModel;
 use Illuminate\Http\Request;
-use App\Http\Requests\QezetPostRequest;
 use Illuminate\Support\Str;
 
 class Qezet extends Controller
@@ -42,8 +41,9 @@ class Qezet extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',
-        'image_1' => 'required|image|mimes:jpeg,png,jpg|max:200']);
+    {
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200',
+            'image_1' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new qezetModel;
         $data->header_id = $request->info;
 
@@ -57,7 +57,7 @@ class Qezet extends Controller
         }
         $data->save();
 
-        return  redirect()->route('admin.qezet.index') ->with(["success"=>"Məlumat əlavə olundu!"]);
+        return  redirect()->route('admin.qezet.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -107,7 +107,7 @@ class Qezet extends Controller
         }
         $data->update();
 
-        return  redirect()->route('admin.qezet.index') ->with(["success"=>"Məlumat uğurla yeniləndi!"]);
+        return  redirect()->route('admin.qezet.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -126,6 +126,6 @@ class Qezet extends Controller
         $data = QezetModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.qezet.index')->with(["success"=>"Məlumat uğurla silindi!"]);
+        return redirect()->route('admin.qezet.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

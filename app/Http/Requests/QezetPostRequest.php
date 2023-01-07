@@ -25,8 +25,7 @@ class QezetPostRequest extends FormRequest
     {
         return [
             'info' => 'required',
-            
-            
+
         ];
     }
 }
