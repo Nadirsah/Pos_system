@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('page_models', function (Blueprint $table) {
+        Schema::create('headerindex_models', function (Blueprint $table) {
             $table->id();
+            $table->string('header_id');
             $table->string('name');
-            $table->string('slug');
-            $table->integer('orders');
+            $table->string('img');
+          
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_models');
+        Schema::dropIfExists('headerindex_models');
     }
 };

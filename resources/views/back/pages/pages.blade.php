@@ -12,6 +12,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>Sirala</th> 
                         <th>Ad</th>
                         <th>Yenilə</th>
                         <th>Sil</th>
@@ -20,15 +21,17 @@
                 </thead>
                 <tfoot>
                     <tr>
-                    <th>Ad</th>
+                       <th>Sirala</th> 
+                        <th>Ad</th>
                         <th>Yenilə</th>
                         <th>Sil</th>
 
                     </tr>
                 </tfoot>
-                <tbody>
+                <tbody id="orders">
                     @foreach($data as $datas)
-                    <tr>
+                    <tr id="page_{{$datas->id}}">
+                        <td style="width:20px" class="text-center"><i class="handle fa-solid fa-arrows-up-down-left-right " style="cursor:move"></i></td>
                         <td>{{$datas->name}}</td>
                         <td><a href="{{route('admin.page.edit',$datas->id)}}"><i
                                     class="btn btn-info fa-solid fa-pen-to-square"></i></a></td>
@@ -43,6 +46,25 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+
+$('#orders').sortable({
+handle:'.handle',
+update:function(){
+    var siralama=$('#orders').sortable('serialize');
+    $.get("{{route('admin.page.orders')}}?"+siralama,function(data){});
+}
+});
+
+</script>
+
 
 @endsection
 

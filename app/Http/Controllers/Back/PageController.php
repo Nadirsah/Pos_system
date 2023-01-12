@@ -21,6 +21,13 @@ class PageController extends Controller
         return view('back.pages.pages', compact('data'));
     }
 
+         public function orders(Request $request)
+         {
+             foreach ($request->get('page') as $key => $order) {
+                 PageModel::where('id', $order)->update(['orders' => $key]);
+             }
+         }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,9 +46,15 @@ class PageController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $data = new PageModel;
+        $pages = [$request->name];
+        $count = PageModel::count('name');
+
+        for ($i = 0; $i <= $count; $i++) {
+            $data = new PageModel;
+        }
         $data->name = $request->name;
         $data->slug = Str::slug($request->name);
+        $data->orders = $i;
         $data->save();
 
         return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);

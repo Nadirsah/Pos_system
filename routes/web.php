@@ -14,6 +14,7 @@ use App\Http\Controllers\Back\Qarabag;
 use App\Http\Controllers\Back\Qezet;
 use App\Http\Controllers\Back\Xeberler;
 use App\Http\Controllers\Back\Xronika;
+use App\Http\Controllers\Back\IndexHeader;
 use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,12 +40,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
     Route::get('/panel', [Dashboard::class, 'index'])->name('panel');
+    // Basliq melumatlar
     Route::resource('/profile', Profile::class);
     Route::get('/deleteprofile/{id}', [Profile::class, 'delete'])->name('delete.profile');
+    // Basliq melumatlar
     Route::resource('/page', PageController::class);
     Route::get('/deletepage/{id}', [PageController::class, 'delete'])->name('delete.page');
+    Route::get('/page/siralama', [PageController::class, 'orders'])->name('page.orders');
+    // Basliq melumatlar
     Route::resource('/info', InfoController::class);
     Route::get('/deleteinfo/{id}', [InfoController::class, 'delete'])->name('delete.info');
+    // Basliq melumatlar
     Route::resource('/header', HomeHeader::class);
     Route::get('/deleteheader/{id}', [HomeHeader::class, 'delete'])->name('delete.header');
     Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
@@ -72,14 +78,11 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     // Basliq melumatlar
     Route::resource('/xronika', Xronika::class);
     Route::get('/deletexronika/{id}', [Xronika::class, 'delete'])->name('delete.xronika');
+    //indexheader
+    Route::resource('/indexheader', IndexHeader::class);
+    Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
 });
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
-Route::get('/tarix', [FrontController::class, 'tarix'])->name('tarix');
-Route::get('/tebiet', [FrontController::class, 'tebiet'])->name('tebiet');
-Route::get('/sehiyye', [FrontController::class, 'sehiyye'])->name('sehiyye');
-Route::get('/iqtisadiyyat', [FrontController::class, 'iqtisadiyyat'])->name('iqtisadiyyat');
-Route::get('/medeniyyet', [FrontController::class, 'medeniyyet'])->name('medeniyyet');
-Route::get('/elm_tehsil', [FrontController::class, 'elm_tehsil'])->name('elm_tehsil');
 Route::get('/news/{id}', [FrontController::class, 'news'])->name('news');
-Route::get('/{page}', [FrontController::class, 'page'])->name('pages');
+Route::get('/{sayfa}', [FrontController::class, 'page'])->name('pages');

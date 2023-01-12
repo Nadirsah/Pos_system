@@ -9,14 +9,14 @@
 
     <div class="mb-3">
         <label for="#" class="form-label">Səhifə</label>
-        <select name="info" class="form-select" id="">
+        <select name="page_id" class="form-select" id="">
             <option value="">Səhifə seçin</option>
             @foreach ($page as $pages)
             <option @if($data->page_id==$pages->id) selected @endif value="{{$pages->id}}">{{$pages->name}}</option>
             @endforeach
 
         </select>
-        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+        <span class="text-danger">@error('page_id'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3" >

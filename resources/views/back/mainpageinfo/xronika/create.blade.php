@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Xronika elave et")
+@section("title","Xronika əlavə et")
 @section('content')
 
 <!-- @if($errors->any())

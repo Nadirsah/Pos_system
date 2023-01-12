@@ -67,6 +67,10 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('Back/')}}/js/demo/datatables-demo.js"></script>
     <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script> -->
+
+    
+
+    
     
     
     @yield("js")

@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Xronikanı yenilə")
+@section("title","Məlumatları yenilə")
 @section('content')
 
 <!-- @if($errors->any())
@@ -9,7 +9,7 @@
     @endforeach
 </div>
 @endif -->
-<form method="Post" action="{{route('admin.xronika.update',$data->id)}}" enctype="multipart/form-data" >
+<form method="Post" action="{{route('admin.indexheader.update',$data->id)}}" enctype="multipart/form-data" >
     @method("PUT")
     @csrf
 
@@ -29,17 +29,12 @@
 
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" class="form-control" value='{{$data->name}}' id="title" aria-describedby="emailHelp"
+        <input type="text" name="name" class="form-control" value='{{$data->name}}' id="title" aria-describedby="emailHelp"
             autofocus>
-            <span class="text-danger">@error('title'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
-    <div class="mb-3">
-        <label for="content" class="form-label">Məzmun</label>
-        <input type="text" name="content" class="form-control" value='{{$data->content}}' id="content" aria-describedby="emailHelp"
-            >
-            <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+    
 
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label> <br>
@@ -48,14 +43,6 @@
             >
             <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
-
-   
-
-
-   
-
-   
-
 <br><br>
 
     <button type="submit" class="btn btn-primary btn-block">Yenilə</button>

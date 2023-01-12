@@ -2,55 +2,54 @@
 @section("title","Məlumat əlavə et")
 @section('content')
 
-
-<form method="Post" action="{{route('admin.info.store')}}" enctype="multipart/form-data">
+<!-- @if($errors->any())
+<div class="alert alert-danger">
+    @foreach($errors->all() as $error)
+   <li> {{$error}}</li>
+    @endforeach
+</div>
+@endif -->
+<form method="Post" action="{{route('admin.indexheader.store')}}"  enctype="multipart/form-data">
     @csrf
+
     <div class="mb-3">
-        <label for="#" class="form-label">Səhifə</label>
-        <select name="page_id" class="form-select" id="">
-            <option value="">Səhifə seçin</option>
-            @foreach ($page as $pages)
-            <option value="{{$pages->id}}">{{$pages->name}}</option>
+        <label for="#" class="form-label">Section</label>
+        <select name="info" class="form-select" id="">
+            <option value="">Section seçin</option>
+            @foreach ($header as $headers)
+            <option value="{{$headers->id}}">{{$headers->name}}</option>
             @endforeach
 
         </select>
-        <span class="text-danger">@error('page_id'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
-    <div class="mb-3" >
-        <label for="content1" class="form-label">Səhifə</label>
-        <input  name="page" class="form-control" value="{{old('page')}}" id="content1" aria-describedby="emailHelp"
-            autofocus>
-            <span class="text-danger">@error('page'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
 
-    </div>
     <div class="mb-3">
-        <label for="name" class="form-label">Məlumat başlıgı</label>
-        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
-            autofocus>
+        <label for="name" class="form-label">Title</label>
+        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp">
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
-
-   
+    
     
 
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label>
         <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
-            autofocus>
+            >
             <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     
 
-    <div class="mb-3" >
-        <label for="content" class="form-label">Məzmun</label>
-        <textarea  id="summernote" name="content" value="{{old('content')}}" class="form-control" id="content" aria-describedby="emailHelp"
-            autofocus>
-           
-    </textarea>
-    <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+    
+    
+
+    
+
+    
+
+    
 <br><br>
 
     <button type="submit" class="btn btn-primary btn-block">Göndər</button>

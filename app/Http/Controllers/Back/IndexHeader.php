@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Back;
-
-use App\Http\Controllers\Controller;
-use App\Http\Requests\InfoPostRequest;
-use App\Models\InfoModel;
-use App\Models\PageModel;
+use App\Http\Requests\HeaderIndexPostRequest;
+use App\Models\HeaderModel;
+use App\Models\HeaderindexModel;
 use Illuminate\Support\Str;
 
-class InfoController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class IndexHeader extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,9 @@ class InfoController extends Controller
      */
     public function index()
     {
-        $info = InfoModel::all();
+        $info = HeaderindexModel::all();
 
-        return view('back.info.info', compact('info'));
+        return view('back.mainpageinfo.header.index', compact('info'));
     }
 
     /**
@@ -29,9 +30,9 @@ class InfoController extends Controller
      */
     public function create()
     {
-        $page = PageModel::all();
+        $header = HeaderModel::all();
 
-        return view('back.info.infocreate', compact('page'));
+        return view('back.mainpageinfo.header.create', compact('header'));
     }
 
     /**
@@ -40,28 +41,23 @@ class InfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InfoPostRequest $request)
+    public function store(HeaderIndexPostRequest $request)
     {
         $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
-
-        $data = new InfoModel;
-        $data->page_id = $request->page_id;
+        $data = new HeaderindexModel;
+        $data->header_id = $request->info;
         $data->name = $request->name;
-        $data->content = $request->content;
-        $data->slug = Str::slug($request->page);
-
         if ($request->hasFile('image')) {
             $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
 
             $request->image->move(public_path('uploads'), $imagename);
-            $data->image = 'uploads/'.$imagename;
-        }
-        $data->save();
-        if ($data) {
-            return  redirect()->route('admin.info.index')->with(['success' => 'Səhifə əlavə olundu!']);
+
+            $data->img = 'uploads/'.$imagename;
         }
 
-        return  redirect()->back()->with(['error' => 'Səhifə əlavə olundu!']);
+        $data->save();
+
+        return  redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -83,10 +79,10 @@ class InfoController extends Controller
      */
     public function edit($id)
     {
-        $page = PageModel::all();
-        $data = InfoModel::findOrFail($id);
+        $header = HeaderModel::all();
+        $data = HeaderindexModel::findOrFail($id);
 
-        return view('back.info.infoupdate', compact('data', 'page'));
+        return view('back.mainpageinfo.header.update', compact('data', 'header'));
     }
 
     /**
@@ -96,23 +92,22 @@ class InfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InfoPostRequest $request, $id)
-    {
-        $data = InfoModel::findOrFail($id);
-        $data->page_id = $request->info;
-        $data->name = $request->name;
-        $data->content = $request->content;
-        $data->slug = Str::slug($request->page);
+    public function update(HeaderIndexPostRequest $request, $id)
+    { $request->validate([
 
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+
+        ]);
+        $data = HeaderindexModel::findOrFail($id);
+        $data->header_id = $request->info;
+        $data->name = $request->title;
         if ($request->hasFile('image')) {
             $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
-
             $request->image->move(public_path('uploads'), $imagename);
-            $data->image = 'uploads/'.$imagename;
+            $data->img = 'uploads/'.$imagename;
         }
         $data->update();
-
-        return  redirect()->route('admin.info.index')->with(['success' => 'Səhifə uğurla yeniləndi!']);
+        return  redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -128,9 +123,9 @@ class InfoController extends Controller
 
     public function delete($id)
     {
-        $data = InfoModel::findOrFail($id);
+        $data = HeaderindexModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.info.index')->with(['success' => 'Səhifə uğurla silindi!']);
+        return redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

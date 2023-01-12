@@ -1,3 +1,4 @@
+
 @extends("front.layouts.master")
 @section('content')
     <section class="general-info">
@@ -293,3 +294,4 @@
     <!--  -->
 
 @endsection
+

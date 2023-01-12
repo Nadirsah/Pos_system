@@ -13,6 +13,7 @@ use App\Models\QarabagModel;
 use App\Models\QezetModel;
 use App\Models\XeberlerModel;
 use App\Models\XronikaModel;
+use App\Models\HeaderindexModel;
 
 class FrontController extends Controller
 {
@@ -30,14 +31,25 @@ class FrontController extends Controller
         $qezet = QezetModel::all();
         $xronika = XronikaModel::all();
         $headerinfo = HeaderinfoModel::all();
+        $indexheader = HeaderindexModel::first();
 
-        return view('front.index', compact('xeber', 'foto', 'link', 'qarabag', 'qezet', 'xronika', 'headerinfo', 'page', 'xebertitle', 'xeberimg', 'xeberslideimg'));
+        return view('front.index', compact('xeber','indexheader', 'foto', 'link', 'qarabag', 'qezet', 'xronika', 'headerinfo', 'page', 'xebertitle', 'xeberimg', 'xeberslideimg'));
     }
 
    public function page($slug)
    {
-       $data = InfoModel::where('slug', $slug);
+       $page = PageModel::all();
+       $title = PageModel::where('slug', '=', $slug)->get();
+       $data = InfoModel::where('slug', '=', $slug)->get() ?? abort(403);
 
-       return view('front.pages', compact('data'));
+       return view('front.pages', compact('data', 'page', 'title'));
+   }
+
+   public function news($id)
+   {
+       $page = PageModel::all();
+       $data = InfoModel::findOrFail($id) ?? abort(403, 'melumat yoxdu');
+
+       return view('front.news', compact('data', 'page'));
    }
 }

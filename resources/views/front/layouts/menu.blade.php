@@ -1,8 +1,8 @@
 <body>
-    <header>
+    <header style="background-image:url('{{asset($indexheader->img)}}')">
       <div class="container">
         <div class="row1">
-          <h1>Naxçıvan Muxtar Respublikası</h1>
+          <h1>{{$indexheader->name}}</h1>
           <ul class="language-selector">
             <li>
               <img
@@ -40,9 +40,9 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav row">
             @foreach($page as $pages)
-              <li class="nav-item col-sm {{(request()->segment(1)=='tebiet') ? 'active': ''}}">
+              <li class="nav-item col-sm {{(request()->segment(1)==$pages->slug) ? 'active': ''}}">
                 <a class="nav-link" href="{{route('pages',$pages->slug)}}"
-                  >{{$pages->name}}<span class="sr-only">(current)</span></a
+                  >{{$pages->name}}</a
                 >
               </li>
              @endforeach

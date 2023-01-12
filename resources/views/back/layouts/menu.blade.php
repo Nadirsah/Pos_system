@@ -78,6 +78,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Esas sehife</h6>
                         <a class="collapse-item" href="{{route('admin.header.index')}}">Basliqlar</a>
+                        <a class="collapse-item" href="{{route('admin.indexheader.index')}}">IndexHeader</a>
                         <a class="collapse-item" href="{{route('admin.esasinfo.index')}}">Əsas məlumat</a>
                         <a class="collapse-item" href="{{route('admin.fotolar.index')}}">Fotolar</a>
                         <a class="collapse-item" href="{{route('admin.linkler.index')}}">Linklər</a>
