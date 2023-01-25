@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Models\PageModel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PageController extends Controller
@@ -24,8 +25,10 @@ class PageController extends Controller
          public function orders(Request $request)
          {
              foreach ($request->get('page') as $key => $order) {
-                 PageModel::where('id', $order)->update(['orders' => $key]);
+                 DB::table('page_models')->where('id', $order)->update(['orders' => $key]);
              }
+
+             return redirect()->back()->with(['success' => 'Səhifə əlavə olundu!']);
          }
 
     /**
@@ -48,16 +51,17 @@ class PageController extends Controller
     {
         $pages = [$request->name];
         $count = PageModel::count('name');
-
-        for ($i = 0; $i <= $count; $i++) {
-            $data = new PageModel;
-        }
-        $data->name = $request->name;
-        $data->slug = Str::slug($request->name);
-        $data->orders = $i;
-        $data->save();
-
-        return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);
+            for ($i = 0; $i <= $count; $i++) {
+                $data = new PageModel;
+                $data->name = $request->name;
+                $data->slug = Str::slug($request->name);
+                $data->orders = $i;
+                $data->save();
+            }
+    
+            return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);
+        
+        
     }
 
     /**

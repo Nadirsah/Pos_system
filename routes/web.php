@@ -5,6 +5,7 @@ use App\Http\Controllers\Back\Dashboard;
 use App\Http\Controllers\Back\Esasinfo;
 use App\Http\Controllers\Back\Fotolar;
 use App\Http\Controllers\Back\HomeHeader;
+use App\Http\Controllers\Back\IndexHeader;
 use App\Http\Controllers\Back\InfoController;
 use App\Http\Controllers\Back\Linkler;
 use App\Http\Controllers\Back\Naxcivan;
@@ -14,7 +15,6 @@ use App\Http\Controllers\Back\Qarabag;
 use App\Http\Controllers\Back\Qezet;
 use App\Http\Controllers\Back\Xeberler;
 use App\Http\Controllers\Back\Xronika;
-use App\Http\Controllers\Back\IndexHeader;
 use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 

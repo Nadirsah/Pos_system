@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Back;
-use App\Http\Requests\HeaderIndexPostRequest;
-use App\Models\HeaderModel;
-use App\Models\HeaderindexModel;
-use Illuminate\Support\Str;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\HeaderIndexPostRequest;
+use App\Models\HeaderindexModel;
+use App\Models\HeaderModel;
+use Illuminate\Support\Str;
 
 class IndexHeader extends Controller
 {
@@ -93,7 +92,8 @@ class IndexHeader extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(HeaderIndexPostRequest $request, $id)
-    { $request->validate([
+    {
+        $request->validate([
 
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
 
@@ -107,6 +107,7 @@ class IndexHeader extends Controller
             $data->img = 'uploads/'.$imagename;
         }
         $data->update();
+
         return  redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 

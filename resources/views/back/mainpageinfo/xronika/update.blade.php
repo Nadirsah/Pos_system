@@ -29,7 +29,7 @@
 
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="title" class="form-control" value='{{$data->name}}' id="title" aria-describedby="emailHelp"
+        <input type="text" name="name" class="form-control" value='{{$data->name}}' id="title" aria-describedby="emailHelp"
             autofocus>
             <span class="text-danger">@error('title'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>

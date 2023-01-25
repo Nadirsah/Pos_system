@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('header_id');
             $table->string('name');
             $table->string('img');
-          
+
             $table->timestamps();
         });
     }

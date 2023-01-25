@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\FotoModel;
+use App\Models\HeaderindexModel;
 use App\Models\HeaderinfoModel;
 use App\Models\InfoModel;
 use App\Models\LinkModel;
@@ -13,7 +14,6 @@ use App\Models\QarabagModel;
 use App\Models\QezetModel;
 use App\Models\XeberlerModel;
 use App\Models\XronikaModel;
-use App\Models\HeaderindexModel;
 
 class FrontController extends Controller
 {
@@ -33,7 +33,7 @@ class FrontController extends Controller
         $headerinfo = HeaderinfoModel::all();
         $indexheader = HeaderindexModel::first();
 
-        return view('front.index', compact('xeber','indexheader', 'foto', 'link', 'qarabag', 'qezet', 'xronika', 'headerinfo', 'page', 'xebertitle', 'xeberimg', 'xeberslideimg'));
+        return view('front.index', compact('xeber', 'indexheader', 'foto', 'link', 'qarabag', 'qezet', 'xronika', 'headerinfo', 'page', 'xebertitle', 'xeberimg', 'xeberslideimg'));
     }
 
    public function page($slug)

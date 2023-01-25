@@ -26,7 +26,6 @@ class HeaderIndexPostRequest extends FormRequest
         return [
             'info' => 'required',
             'name' => 'required',
-            
 
         ];
     }
