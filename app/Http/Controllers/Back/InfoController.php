@@ -48,6 +48,7 @@ class InfoController extends Controller
         $data->page_id = $request->page_id;
         $data->name = $request->name;
         $data->content = $request->content;
+        $data->price = $request->price;
         $data->slug = Str::slug($request->page);
 
         if ($request->hasFile('image')) {
@@ -102,6 +103,7 @@ class InfoController extends Controller
         $data->page_id = $request->info;
         $data->name = $request->name;
         $data->content = $request->content;
+        $data->price = $request->price;
         $data->slug = Str::slug($request->page);
 
         if ($request->hasFile('image')) {

@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('info_models', function (Blueprint $table) {
             $table->id();
-            $table->usignedBigInteger('page_id');
+            $table->unsignedBigInteger('page_id');
             $table->string('name');
             $table->string('image');
             $table->longText('content');
+            $table->longText('price');
             $table->string('slug');
             $table->timestamps();
             $table->foreign('page_id')

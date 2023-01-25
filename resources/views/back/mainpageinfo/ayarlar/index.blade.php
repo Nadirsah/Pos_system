@@ -1,0 +1,66 @@
+@extends("back.layouts.master")
+@section("title","Header")
+@section('content')
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Məlumatlar </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+
+
+
+                        <th>Title</th>
+                        <th>Haqqimizda</th>
+                        <th>Activ-Passiv</th>
+                        <th>Facebook</th>
+                        <th>Instagram</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Title</th>
+                        <th>Haqqimizda</th>
+                        <th>Activ-Passiv</th>
+                        <th>Facebook</th>
+                        <th>Instagram</th>
+
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach($info as $infos)
+                    <tr>
+                      
+
+                        <td>{{$infos->name}}</td>
+                        <td>{{$infos->about}}</td>
+                        <td>{{$infos->activ}}</td>
+                        <td>{{$infos->facebook}}</td>
+                        <td>{{$infos->instagram}}</td>
+
+                      
+                        <td>
+
+                            <a href="{{route('admin.indexheader.edit',$infos->id)}}"><i
+                                    class="btn btn-info fa-solid fa-pen-to-square"></i></a>
+                            <a href="{{route('admin.delete.indexheader',$infos->id)}}"><i
+                                    class="btn btn-danger fa-solid fa-trash"></i></a>
+                        </td>
+
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@endsection

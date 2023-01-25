@@ -17,9 +17,9 @@ class IndexHeader extends Controller
      */
     public function index()
     {
+       
         $info = HeaderindexModel::all();
-
-        return view('back.mainpageinfo.header.index', compact('info'));
+        return view('back.mainpageinfo.ayarlar.index',compact('info'));
     }
 
     /**
@@ -29,9 +29,9 @@ class IndexHeader extends Controller
      */
     public function create()
     {
-        $header = HeaderModel::all();
+        $info = HeaderindexModel::find(1);
 
-        return view('back.mainpageinfo.header.create', compact('header'));
+        return view('back.mainpageinfo.ayarlar.create', compact('info'));
     }
 
     /**
@@ -42,17 +42,13 @@ class IndexHeader extends Controller
      */
     public function store(HeaderIndexPostRequest $request)
     {
-        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
+        
         $data = new HeaderindexModel;
-        $data->header_id = $request->info;
+      
         $data->name = $request->name;
-        if ($request->hasFile('image')) {
-            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
-
-            $request->image->move(public_path('uploads'), $imagename);
-
-            $data->img = 'uploads/'.$imagename;
-        }
+        $data->activ = $request->activ;
+        $data->fb = $request->fb;
+        $data->ins = $request->ins;
 
         $data->save();
 
@@ -78,10 +74,10 @@ class IndexHeader extends Controller
      */
     public function edit($id)
     {
-        $header = HeaderModel::all();
-        $data = HeaderindexModel::findOrFail($id);
+        
+        $info = HeaderindexModel::findOrFail($id);
 
-        return view('back.mainpageinfo.header.update', compact('data', 'header'));
+        return view('back.mainpageinfo.ayarlar.update', compact('info'));
     }
 
     /**
@@ -93,19 +89,15 @@ class IndexHeader extends Controller
      */
     public function update(HeaderIndexPostRequest $request, $id)
     {
-        $request->validate([
-
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-
-        ]);
+       
         $data = HeaderindexModel::findOrFail($id);
-        $data->header_id = $request->info;
-        $data->name = $request->title;
-        if ($request->hasFile('image')) {
-            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('uploads'), $imagename);
-            $data->img = 'uploads/'.$imagename;
-        }
+        $data->name = $request->name;
+        $data->about = $request->about;
+        $data->activ = $request->activ;
+        $data->facebook = $request->fb;
+        $data->instagram = $request->ins;
+
+        
         $data->update();
 
         return  redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);

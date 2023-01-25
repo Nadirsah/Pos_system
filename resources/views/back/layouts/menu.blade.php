@@ -78,7 +78,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Esas sehife</h6>
                         <a class="collapse-item" href="{{route('admin.header.index')}}">Basliqlar</a>
-                        <a class="collapse-item" href="{{route('admin.indexheader.index')}}">IndexHeader</a>
+                        <a class="collapse-item" href="{{route('admin.indexheader.index')}}">Ayarlar</a>
                         <a class="collapse-item" href="{{route('admin.esasinfo.index')}}">Əsas məlumat</a>
                         <a class="collapse-item" href="{{route('admin.fotolar.index')}}">Fotolar</a>
                         <a class="collapse-item" href="{{route('admin.linkler.index')}}">Linklər</a>
@@ -141,10 +141,7 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="{{route('admin.register')}}">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Qeydiyyat
-                                </a>
+                               
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

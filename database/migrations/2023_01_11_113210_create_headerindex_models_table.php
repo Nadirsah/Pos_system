@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('headerindex_models', function (Blueprint $table) {
             $table->id();
-            $table->string('header_id');
             $table->string('name');
-            $table->string('img');
+            $table->string('about');
+            $table->string('activ');
+            $table->string('facebook');
+            $table->string('instagram');
 
             $table->timestamps();
         });

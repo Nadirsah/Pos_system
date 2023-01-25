@@ -43,9 +43,9 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Xos gelmisiz!</h1>
-                                        <!-- @if($errors->any())
+                                        @if($errors->any())
                                         <div class="alert alert-danger">{{$errors->first()}}</div>
-                                        @endif -->
+                                        @endif 
 
                                     </div>
                                     <form class="user" action="{{route('admin.login.store')}}" method="Post">
@@ -75,8 +75,7 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block"> Daxil
                                             ol</button>
 
-                                        <span class="btn btn-warning btn-user btn-block text-white"><a
-                                                href="{{route('admin.register')}}">Qeydiyyatdan kec</a></span>
+                                      
 
                                     </form>
 

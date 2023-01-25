@@ -4,7 +4,8 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Profil</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Profil</h6><span> <a class="collapse-item"
+                href="{{route('admin.profile.create')}}"><i class="btn btn-success fa-solid fa-circle-plus"></i></a></span>
     </div>
     <div class="card-body">
         <div class="table-responsive">

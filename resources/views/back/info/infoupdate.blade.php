@@ -32,7 +32,12 @@
             autofocus>
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
-
+    <div class="mb-3">
+        <label for="price" class="form-label">Qiymet</label>
+        <input type="text" name="price" value='{{$data->price}}' class="form-control" id="price" aria-describedby="emailHelp"
+            autofocus>
+            <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
     
    
 

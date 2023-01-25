@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Daxil ol</title>
+    <title>Qeydiyyat </title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('back/')}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -48,6 +48,8 @@
                                     </div>
 
                                 </div>
+
+                               
 
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">

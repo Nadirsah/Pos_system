@@ -28,14 +28,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+//
 Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'store'])->name('login.store');
+    // Route::get('/register', [AuthController::class, 'register'])->name('qeydiyyat');
+    // Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
+   
 });
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
@@ -53,6 +58,8 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     // Basliq melumatlar
     Route::resource('/header', HomeHeader::class);
     Route::get('/deleteheader/{id}', [HomeHeader::class, 'delete'])->name('delete.header');
+
+    //
     Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
     // Basliq melumatlar
     Route::resource('/esasinfo', Esasinfo::class);
@@ -84,5 +91,8 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
 });
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
-Route::get('/news/{id}', [FrontController::class, 'news'])->name('news');
+Route::get('/item/{id}', [FrontController::class, 'news'])->name('item');
 Route::get('/{sayfa}', [FrontController::class, 'page'])->name('pages');
+Route::get('/axtaris', [FrontController::class, 'search'])->name('search');
+
+

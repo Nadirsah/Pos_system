@@ -28,7 +28,7 @@ class Profile extends Controller
      */
     public function create()
     {
-        //
+        return view('back.auth.creatprofil');
     }
 
     /**
@@ -39,7 +39,20 @@ class Profile extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:5',
+            
+        ]);
+        $data = new User;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        $data->save();
+
+        return redirect()->route('admin.profile.index')->with(['success' => 'Qeydiyyat tamamlandi!']);
+    
     }
 
     /**
@@ -77,6 +90,7 @@ class Profile extends Controller
     {
         $request->validate([
             'name' => 'required',
+           
             'password' => 'required|min:5',
         ]);
         $data = User::findOrFail($id);
