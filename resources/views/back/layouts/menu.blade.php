@@ -85,7 +85,7 @@
                         <a class="collapse-item" href="{{route('admin.naxcivan.index')}}">Naxcivan MR</a>
                         <a class="collapse-item" href="{{route('admin.qarabag.index')}}">Qarabag</a>
                         <a class="collapse-item" href="{{route('admin.qezet.index')}}">Qəzet</a>
-                        <a class="collapse-item" href="{{route('admin.xeberler.index')}}">Xəbərlər</a>
+                        <a class="collapse-item" href="{{route('admin.slide.index')}}">Slide</a>
                         <a class="collapse-item" href="{{route('admin.xronika.index')}}">Xronika</a>
                       
                         <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>

@@ -43,7 +43,7 @@ class Profile extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required|min:5',
-            
+
         ]);
         $data = new User;
         $data->name = $request->name;
@@ -52,7 +52,6 @@ class Profile extends Controller
         $data->save();
 
         return redirect()->route('admin.profile.index')->with(['success' => 'Qeydiyyat tamamlandi!']);
-    
     }
 
     /**
@@ -90,7 +89,7 @@ class Profile extends Controller
     {
         $request->validate([
             'name' => 'required',
-           
+
             'password' => 'required|min:5',
         ]);
         $data = User::findOrFail($id);

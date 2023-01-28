@@ -29,8 +29,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 //
 Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -40,7 +38,6 @@ Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function ()
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
-   
 });
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
@@ -80,7 +77,7 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::resource('/qezet', Qezet::class);
     Route::get('/deleteqezet/{id}', [Qezet::class, 'delete'])->name('delete.qezet');
     // Basliq melumatlar
-    Route::resource('/xeberler', Xeberler::class);
+    Route::resource('/slide', Xeberler::class);
     Route::get('/deletexeber/{id}', [Xeberler::class, 'delete'])->name('delete.xeberler');
     // Basliq melumatlar
     Route::resource('/xronika', Xronika::class);
@@ -94,5 +91,3 @@ Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('/item/{id}', [FrontController::class, 'news'])->name('item');
 Route::get('/{sayfa}', [FrontController::class, 'page'])->name('pages');
 Route::get('/axtaris', [FrontController::class, 'search'])->name('search');
-
-

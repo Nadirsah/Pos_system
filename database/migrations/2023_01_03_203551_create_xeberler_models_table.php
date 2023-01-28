@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('xeberler_models', function (Blueprint $table) {
             $table->id();
-            $table->string('header_id');
+
             $table->string('name');
             $table->string('img');
             $table->string('content');

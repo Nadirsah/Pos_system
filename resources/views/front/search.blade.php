@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-9">
             <h3 class="category-title">Search Results</h3>
-@foreach($data->$info)
+@foreach($search as $info)
             <div class="d-md-flex post-entry-2 small-img">
               <a href="single-post.html" class="me-4 thumbnail">
                 <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">

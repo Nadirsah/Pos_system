@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HeaderIndexPostRequest;
 use App\Models\HeaderindexModel;
-use App\Models\HeaderModel;
-use Illuminate\Support\Str;
 
 class IndexHeader extends Controller
 {
@@ -17,9 +15,9 @@ class IndexHeader extends Controller
      */
     public function index()
     {
-       
         $info = HeaderindexModel::all();
-        return view('back.mainpageinfo.ayarlar.index',compact('info'));
+
+        return view('back.mainpageinfo.ayarlar.index', compact('info'));
     }
 
     /**
@@ -42,9 +40,8 @@ class IndexHeader extends Controller
      */
     public function store(HeaderIndexPostRequest $request)
     {
-        
         $data = new HeaderindexModel;
-      
+
         $data->name = $request->name;
         $data->activ = $request->activ;
         $data->fb = $request->fb;
@@ -74,7 +71,6 @@ class IndexHeader extends Controller
      */
     public function edit($id)
     {
-        
         $info = HeaderindexModel::findOrFail($id);
 
         return view('back.mainpageinfo.ayarlar.update', compact('info'));
@@ -89,7 +85,6 @@ class IndexHeader extends Controller
      */
     public function update(HeaderIndexPostRequest $request, $id)
     {
-       
         $data = HeaderindexModel::findOrFail($id);
         $data->name = $request->name;
         $data->about = $request->about;
@@ -97,7 +92,6 @@ class IndexHeader extends Controller
         $data->facebook = $request->fb;
         $data->instagram = $request->ins;
 
-        
         $data->update();
 
         return  redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);

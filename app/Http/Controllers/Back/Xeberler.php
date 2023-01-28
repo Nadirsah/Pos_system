@@ -19,7 +19,7 @@ class Xeberler extends Controller
     {
         $info = XeberlerModel::all();
 
-        return view('back.mainpageinfo.xeberler.index', compact('info'));
+        return view('back.mainpageinfo.slide.index', compact('info'));
     }
 
     /**
@@ -31,7 +31,7 @@ class Xeberler extends Controller
     {
         $header = HeaderModel::all();
 
-        return view('back.mainpageinfo.xeberler.create', compact('header'));
+        return view('back.mainpageinfo.slide.create', compact('header'));
     }
 
     /**
@@ -44,7 +44,6 @@ class Xeberler extends Controller
     {
         $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new XeberlerModel;
-        $data->header_id = $request->info;
         $data->name = $request->name;
         $data->content = $request->content;
 
@@ -57,7 +56,7 @@ class Xeberler extends Controller
         }
         $data->save();
 
-        return  redirect()->route('admin.xeberler.index')->with(['success' => 'Məlumat əlavə olundu!']);
+        return  redirect()->route('admin.slide.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -82,7 +81,7 @@ class Xeberler extends Controller
         $header = HeaderModel::all();
         $data = XeberlerModel::findOrFail($id);
 
-        return view('back.mainpageinfo.xeberler.update', compact('data', 'header'));
+        return view('back.mainpageinfo.slide.update', compact('data', 'header'));
     }
 
     /**
@@ -95,7 +94,7 @@ class Xeberler extends Controller
     public function update(XeberlerPostRequest $request, $id)
     {
         $data = XeberlerModel::findOrFail($id);
-        $data->header_id = $request->info;
+
         $data->name = $request->title;
         $data->content = $request->content;
 
@@ -109,7 +108,7 @@ class Xeberler extends Controller
 
         $data->update();
 
-        return  redirect()->route('admin.xeberler.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
+        return  redirect()->route('admin.slide.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -128,6 +127,6 @@ class Xeberler extends Controller
         $data = XeberlerModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.xeberler.index')->with(['success' => 'Məlumat uğurla silindi!']);
+        return redirect()->route('admin.slide.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

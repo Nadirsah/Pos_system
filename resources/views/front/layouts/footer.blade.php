@@ -1,151 +1,140 @@
- <!-- ======= Footer ======= -->
- <footer id="footer" class="footer">
+ <!-- Start Footer -->
+ <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
 
-     <div class="footer-content">
-         <div class="container">
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            123 Consectetur at ligula 10660
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                        </li>
+                    </ul>
+                </div>
 
-             <div class="row g-5">
-                 <div class="col-lg-4">
-                     <h3 class="footer-heading">{{$header->name}} haqqında</h3>
-                     <p>{{$header->about}}</p>
-                     <!-- <p><a href="about.html" class="footer-link-more">Learn More</a></p> -->
-                 </div>
-                 <div class="col-12 col-lg-2">
-                     <h3 class="footer-heading">Bölmələr</h3>
-                     <ul class="footer-links list-unstyled">
-                         <li><a href="index.html"><i class="bi bi-chevron-right"></i> Əsas səhifə</a></li>
-                         @foreach($page as $pages)
-                         <li><a href="{{route('pages',$pages->slug)}}"><i
-                                     class="bi bi-chevron-right"></i>{{$pages->name}}</a></li>
-                         @endforeach
-                         <li><a href="about.html"><i class="bi bi-chevron-right"></i> Çatdırılma</a></li>
-                         <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Əlaqə</a></li>
-                     </ul>
-                 </div>
-                 <!-- <div class="col-6 col-lg-2">
-            <h3 class="footer-heading">Categories</h3>
-            <ul class="footer-links list-unstyled">
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
-              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
+                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
+                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
+                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
+                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                    </ul>
+                </div>
 
-            </ul>
-          </div> -->
-                 <!-- 
-                 <div class="col-lg-4">
-                     <h3 class="footer-heading">Recent Posts</h3>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Home</a></li>
+                        <li><a class="text-decoration-none" href="#">About Us</a></li>
+                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
+                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
+                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                    </ul>
+                </div>
 
-                     <ul class="footer-links footer-blog-entry list-unstyled">
-                         <li>
-                             <a href="single-post.html" class="d-flex align-items-center">
-                                 <img src="{{asset('front/')}}/assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
-                                 <div>
-                                     <div class="post-meta d-block"><span class="date">Culture</span> <span
-                                             class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                     <span>5 Great Startup Tips for Female Founders</span>
-                                 </div>
-                             </a>
-                         </li>
+            </div>
 
-                         <li>
-                             <a href="single-post.html" class="d-flex align-items-center">
-                                 <img src="{{asset('front/')}}/assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
-                                 <div>
-                                     <div class="post-meta d-block"><span class="date">Culture</span> <span
-                                             class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                     <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
-                                 </div>
-                             </a>
-                         </li>
+            <div class="row text-light mb-4">
+                <div class="col-12 mb-3">
+                    <div class="w-100 my-3 border-top border-light"></div>
+                </div>
+                <div class="col-auto me-auto">
+                    <ul class="list-inline text-left footer-icons">
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only" for="subscribeEmail">Email address</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
+                        <div class="input-group-text btn-success text-light">Subscribe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                         <li>
-                             <a href="single-post.html" class="d-flex align-items-center">
-                                 <img src="{{asset('front/')}}/assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
-                                 <div>
-                                     <div class="post-meta d-block"><span class="date">Culture</span> <span
-                                             class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                     <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
-                                 </div>
-                             </a>
-                         </li>
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            Copyright &copy; 2021 Company Name 
+                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                         <li>
-                             <a href="single-post.html" class="d-flex align-items-center">
-                                 <img src="{{asset('front/')}}/assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
-                                 <div>
-                                     <div class="post-meta d-block"><span class="date">Culture</span> <span
-                                             class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                     <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
-                                 </div>
-                             </a>
-                         </li>
+    </footer>
+    <!-- End Footer -->
 
-                     </ul>
+    <!-- Start Script -->
+    <script src="{{asset('front/')}}/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="{{asset('front/')}}/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{asset('front/')}}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('front/')}}/assets/js/templatemo.js"></script>
+    <script src="{{asset('front/')}}/assets/js/custom.js"></script>
+    <!-- End Script -->
 
-                 </div> -->
-             </div>
-         </div>
-     </div>
+      <!-- Start Slider Script -->
+      <script src="{{asset('front/')}}/assets/js/slick.min.js"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
+        });
+    </script>
+    <!-- End Slider Script -->
+</body>
 
-     <div class="footer-legal">
-         <div class="container">
-
-             <div class="row justify-content-between">
-                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                     <div class="copyright">
-                         © Copyright {{date('Y')}} <strong><span>{{$header->name}}</span></strong>. Bütün hüquqlar
-                         qorunur
-                     </div>
-
-                     <div class="credits">
-                         <!-- All the links in the footer should remain intact. -->
-                         <!-- You can delete the links only if you purchased the pro version. -->
-                         <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-                         Designed by <a href="#">I&N</a>
-                     </div>
-
-                 </div>
-
-                 <div class="col-md-6">
-                     <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
-                         @php $sosials=['facebook','instagram'];
-                         @endphp
-                         @foreach($sosials as $sosial)
-                         @if($header->$sosial!=null)
-                         <a target="_blank" href="{{$header->$sosial}}" class="mx-2"><span
-                                 class="bi-{{$sosial}}"></span></a>
-                         @endif
-                         @endforeach
-                     </div>
-
-                 </div>
-
-             </div>
-
-         </div>
-     </div>
-
- </footer>
-
- <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-         class="bi bi-arrow-up-short"></i></a>
-
- <!-- Vendor JS Files -->
- <script src="{{asset('front/')}}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- <script src="{{asset('front/')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
- <script src="{{asset('front/')}}/assets/vendor/glightbox/js/glightbox.min.js"></script>
- <script src="{{asset('front/')}}/assets/vendor/aos/aos.js"></script>
- <script src="{{asset('front/')}}/assets/vendor/php-email-form/validate.js"></script>
-
- <!-- Template Main JS File -->
- <script src="{{asset('front/')}}/assets/js/main.js"></script>
-
- </body>
-
- </html>
+</html>

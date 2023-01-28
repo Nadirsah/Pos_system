@@ -24,7 +24,7 @@ class HeaderIndexPostRequest extends FormRequest
     public function rules()
     {
         return [
-           
+
         ];
     }
 }

@@ -17,7 +17,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $data = PageModel::orderBy("orders",'asc')->get();
+        $data = PageModel::orderBy('orders', 'asc')->get();
 
         return view('back.pages.pages', compact('data'));
     }
@@ -51,17 +51,14 @@ class PageController extends Controller
     {
         $pages = [$request->name];
         $count = PageModel::count('name');
-           
-                $data = new PageModel;
-                $data->name = $request->name;
-                $data->slug = Str::slug($request->name);
-                $data->orders =$request->order;
-                $data->save();
-            
-    
-            return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);
-        
-        
+
+        $data = new PageModel;
+        $data->name = $request->name;
+        $data->slug = Str::slug($request->name);
+        $data->orders = $request->order;
+        $data->save();
+
+        return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);
     }
 
     /**

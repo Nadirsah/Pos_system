@@ -2,37 +2,33 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ZenBlog Bootstrap Template - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <link rel="apple-touch-icon" href="{{asset('front/')}}/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('front/')}}/assets/img/favicon.ico">
 
-  <!-- Favicons -->
-  <link href="{{asset('front/')}}/'assets/img/favicon.png" rel="icon">
-  <link href="{{asset('front/')}}/'assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="{{asset('front/')}}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('front/')}}/assets/css/templatemo.css">
+    <link rel="stylesheet" href="{{asset('front/')}}/assets/css/custom.css">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{{asset('front/')}}/assets/css/fontawesome.min.css">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{asset('front/')}}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="{{asset('front/')}}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="{{asset('front/')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="{{asset('front/')}}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="{{asset('front/')}}/assets/vendor/aos/aos.css" rel="stylesheet">
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="{{asset('front/')}}/assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('front/')}}/assets/css/slick-theme.css">
 
-  <!-- Template Main CSS Files -->
-  <link href="{{asset('front/')}}/assets/css/variables.css" rel="stylesheet">
-  <link href="{{asset('front/')}}/assets/css/main.css" rel="stylesheet">
+    <!-- Load map styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+<!--
+  
+    
+TemplateMo 559 Zay Shop
 
-  <!-- =======================================================
-  * Template Name: ZenBlog - v1.3.0
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-  * Author: BootstrapMade.com
-  * License: https:///bootstrapmade.com/license/
-  ======================================================== -->
+https://templatemo.com/tm-559-zay-shop
+
+-->
 </head>
