@@ -49,4 +49,8 @@ class FrontController extends Controller
 
        return view('front.search', compact('search', 'data', 'page', 'header'));
    }
+
+   
+
+   
 }

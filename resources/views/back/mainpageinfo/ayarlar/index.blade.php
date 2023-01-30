@@ -15,7 +15,7 @@
 
 
                         <th>Title</th>
-                        <th>Haqqimizda</th>
+                        <th>Sekil</th>
                         <th>Activ-Passiv</th>
                         <th>Facebook</th>
                         <th>Instagram</th>
@@ -26,6 +26,7 @@
                 <tfoot>
                     <tr>
                         <th>Title</th>
+                        <th>Sekil</th>
                         <th>Haqqimizda</th>
                         <th>Activ-Passiv</th>
                         <th>Facebook</th>
@@ -40,6 +41,7 @@
                       
 
                         <td>{{$infos->name}}</td>
+                        <td> <img src="{{asset($infos->image)}}" width="50" alt=""></td>
                         <td>{{$infos->about}}</td>
                         <td>{{$infos->activ}}</td>
                         <td>{{$infos->facebook}}</td>

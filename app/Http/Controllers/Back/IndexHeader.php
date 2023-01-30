@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HeaderIndexPostRequest;
 use App\Models\HeaderindexModel;
+use Illuminate\Support\Str;
 
 class IndexHeader extends Controller
 {
@@ -39,14 +40,19 @@ class IndexHeader extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(HeaderIndexPostRequest $request)
-    {
+    {$request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new HeaderindexModel;
 
         $data->name = $request->name;
         $data->activ = $request->activ;
         $data->fb = $request->fb;
         $data->ins = $request->ins;
+        if ($request->hasFile('image')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
 
+            $request->image->move(public_path('uploads'), $imagename);
+            $data->image = 'uploads/'.$imagename;
+        }
         $data->save();
 
         return  redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat əlavə olundu!']);
@@ -91,7 +97,12 @@ class IndexHeader extends Controller
         $data->activ = $request->activ;
         $data->facebook = $request->fb;
         $data->instagram = $request->ins;
+        if ($request->hasFile('image')) {
+            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
 
+            $request->image->move(public_path('uploads'), $imagename);
+            $data->image = 'uploads/'.$imagename;
+        }
         $data->update();
 
         return  redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);

@@ -22,6 +22,13 @@
     </div>
     
     <div class="mb-3">
+        <label for="image" class="form-label">Şəkil</label>
+        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
+            autofocus>
+            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
+    
+    <div class="mb-3">
         <label for="activ" class="form-label">Aktiv-Passiv</label>
         <select name="activ" class="form-select" id="activ">
             <option @if ($info->activ==1) selected @endif value="1">Aktiv</option>

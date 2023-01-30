@@ -99,6 +99,7 @@
     <script src="{{asset('front/')}}/assets/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('front/')}}/assets/js/templatemo.js"></script>
     <script src="{{asset('front/')}}/assets/js/custom.js"></script>
+    <script src="{{asset('front/')}}/assets/swiper/swiper-bundle.min.js"></script>
     <!-- End Script -->
 
       <!-- Start Slider Script -->

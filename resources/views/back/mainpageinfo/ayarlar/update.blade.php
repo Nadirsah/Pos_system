@@ -18,6 +18,12 @@
         <input type="text" name="name" value="{{$info->name}}" class="form-control" id="name" aria-describedby="emailHelp">
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Şəkil</label>
+        <input type="file" name="image" value="{{$info->image}}" class="form-control" id="image" aria-describedby="emailHelp"
+            autofocus>
+            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
 
     <div class="mb-3">
         <label for="about" class="form-label">Haqqimizda</label>
