@@ -90,5 +90,5 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
 Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('/item/{id}', [FrontController::class, 'news'])->name('item');
 Route::get('/{sayfa}', [FrontController::class, 'page'])->name('pages');
-Route::get('/axtaris', [FrontController::class, 'search'])->name('search');
+Route::get('/axtaris', [FrontController::class, 'axtar'])->name('search');
 

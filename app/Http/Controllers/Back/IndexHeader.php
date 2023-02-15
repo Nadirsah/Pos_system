@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HeaderIndexPostRequest;
-use App\Models\HeaderindexModel;
+use App\Models\Ayarlar;
 use Illuminate\Support\Str;
 
 class IndexHeader extends Controller
@@ -16,7 +16,7 @@ class IndexHeader extends Controller
      */
     public function index()
     {
-        $info = HeaderindexModel::all();
+        $info = Ayarlar::all();
 
         return view('back.mainpageinfo.ayarlar.index', compact('info'));
     }
@@ -28,7 +28,7 @@ class IndexHeader extends Controller
      */
     public function create()
     {
-        $info = HeaderindexModel::find(1);
+        $info = Ayarlar::find(1);
 
         return view('back.mainpageinfo.ayarlar.create', compact('info'));
     }
@@ -41,7 +41,7 @@ class IndexHeader extends Controller
      */
     public function store(HeaderIndexPostRequest $request)
     {$request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
-        $data = new HeaderindexModel;
+        $data = new Ayarlar;
 
         $data->name = $request->name;
         $data->activ = $request->activ;
@@ -77,7 +77,7 @@ class IndexHeader extends Controller
      */
     public function edit($id)
     {
-        $info = HeaderindexModel::findOrFail($id);
+        $info = Ayarlar::findOrFail($id);
 
         return view('back.mainpageinfo.ayarlar.update', compact('info'));
     }
@@ -91,7 +91,7 @@ class IndexHeader extends Controller
      */
     public function update(HeaderIndexPostRequest $request, $id)
     {
-        $data = HeaderindexModel::findOrFail($id);
+        $data = Ayarlar::findOrFail($id);
         $data->name = $request->name;
         $data->about = $request->about;
         $data->activ = $request->activ;
@@ -121,7 +121,7 @@ class IndexHeader extends Controller
 
     public function delete($id)
     {
-        $data = HeaderindexModel::findOrFail($id);
+        $data = Ayarlar::findOrFail($id);
         $data->delete();
 
         return redirect()->route('admin.indexheader.index')->with(['success' => 'Məlumat uğurla silindi!']);

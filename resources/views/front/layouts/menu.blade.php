@@ -1,32 +1,4 @@
 <body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none"
-                        href="mailto:info@company.com">info@company.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                </div>
-                <div>
-                    @php $sosials=['facebook','instagram','youtube'];
-                    @endphp
-                    @foreach($sosials as $sosial)
-                    @if($header->$sosial!=null)
-                    <a class="text-white" target="_blank" href="{{$header->$sosial}}" class="mx-2">
-                            <i class="fa-brands fa-{{$sosial}} fa-lg fa-fw me-2"></i></a>
-                    @endif
-                    @endforeach
-                   
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Close Top Nav -->
-
-
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -49,7 +21,7 @@
                             <a class="nav-link" href="{{route('index')}}">Əsas səhifə</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('haqqimizda')}}">Haqqımızda</a>
+                            <a class="nav-link" href="#">Haqqımızda</a>
                         </li>
                         <div class="dropdown ">
                             <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -65,7 +37,7 @@
                         </div>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('contact')}}">Əlaqə</a>
+                            <a class="nav-link" href="#">Əlaqə</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Çatdırılma</a>
@@ -74,27 +46,32 @@
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
+                        <form action="{{route('search')}}" method="GET" class="modal-content modal-body border-0 p-0">
+
+                            <div class="input-group mb-2">
+                                <input type="search" name="search" class="form-control" id="inputModalSearch"
+                                    placeholder="Axtar ...">
+                                <button type="submit" class="input-group-text bg-success text-light">
+                                    <i class="fa fa-fw fa-search text-white"></i>
+                                </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
                         data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+                    <!-- sosail -->
+                    @php $sosials=['facebook','instagram'];
+                    @endphp
+                    @foreach($sosials as $sosial)
+                    @if($header->$sosial!=null)
+                    <a class="text-black" target="_blank" href="{{$header->$sosial}}" class="mx-2">
+                        <i class="fa-brands fa-{{$sosial}} fa-lg fa-fw me-2"></i></a>
+                    @endif
+                    @endforeach
+                    <!-- end sosail -->
+
                 </div>
             </div>
 
@@ -109,9 +86,11 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <form action="" method="GET" class="modal-content modal-body border-0 p-0">
+
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <input type="search" name="search" class="form-control" id="inputModalSearch"
+                        placeholder="Search ...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>

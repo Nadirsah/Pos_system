@@ -18,6 +18,8 @@
                         <th>Şəkil</th>
                         <th>Məzmun</th>
                         <th>Qiymət</th>
+                        <th>Reng</th>
+                        <th>Brand</th>
                         <th>Action</th>
 
                     </tr>
@@ -30,6 +32,8 @@
                         <th>Şəkil</th>
                         <th>Məzmun</th>
                         <th>Qiymət</th>
+                        <th>Reng</th>
+                        <th>Brand</th>
                         <th>Action</th>
 
                     </tr>
@@ -43,6 +47,8 @@
                         <td> <img src="{{asset($infos->image)}}" width="50" alt=""></td>
                         <td>{{$infos->content}}</td>
                         <td>{{$infos->price}}</td>
+                        <td>{{$infos->color}}</td>
+                        <td>{{$infos->brand}}</td>
                         <td><a href="{{route('admin.info.edit',$infos->id)}}"><i
                                     class="btn btn-info fa-solid fa-pen-to-square"></i></a>
                             <a href="{{route('admin.delete.info',$infos->id)}}"><i

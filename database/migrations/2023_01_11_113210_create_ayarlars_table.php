@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('headerindex_models', function (Blueprint $table) {
+        Schema::create('ayarlars', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('image');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('headerindex_models');
+        Schema::dropIfExists('ayarlars');
     }
 };

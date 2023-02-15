@@ -39,8 +39,19 @@
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
     
+    <div class="mb-3">
+        <label for="color" class="form-label">Reng</label>
+        <input type="text" name="color" value='{{$data->color}}' class="form-control" id="color" aria-describedby="emailHelp"
+            autofocus>
+            <span class="text-danger">@error('color'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
    
-
+    <div class="mb-3">
+        <label for="brand" class="form-label">Brand</label>
+        <input type="text" name="brand" value='{{$data->brand}}' class="form-control" id="brand" aria-describedby="emailHelp"
+            >
+            <span class="text-danger">@error('brand'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label> <br>
         <img src="{{asset($data->image)}}" alt="" width="100" class="rounded"> <br>

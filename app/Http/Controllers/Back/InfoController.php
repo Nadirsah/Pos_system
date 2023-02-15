@@ -49,6 +49,8 @@ class InfoController extends Controller
         $data->name = $request->name;
         $data->content = $request->content;
         $data->price = $request->price;
+        $data->color = $request->color;
+        $data->brand = $request->brand;
         $data->slug = Str::slug($request->page);
 
         if ($request->hasFile('image')) {
@@ -104,6 +106,8 @@ class InfoController extends Controller
         $data->name = $request->name;
         $data->content = $request->content;
         $data->price = $request->price;
+        $data->color = $request->color;
+        $data->brand = $request->brand;
         $data->slug = Str::slug($request->page);
 
         if ($request->hasFile('image')) {

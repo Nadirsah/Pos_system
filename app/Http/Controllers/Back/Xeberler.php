@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\XeberlerPostRequest;
 use App\Models\HeaderModel;
-use App\Models\XeberlerModel;
+use App\Models\Table_1;
 use Illuminate\Support\Str;
 
 class Xeberler extends Controller
@@ -17,7 +17,7 @@ class Xeberler extends Controller
      */
     public function index()
     {
-        $info = XeberlerModel::all();
+        $info = Table_1::all();
 
         return view('back.mainpageinfo.slide.index', compact('info'));
     }
@@ -43,7 +43,7 @@ class Xeberler extends Controller
     public function store(XeberlerPostRequest $request)
     {
         $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
-        $data = new XeberlerModel;
+        $data = new Table_1;
         $data->name = $request->name;
         $data->content = $request->content;
 
@@ -79,7 +79,7 @@ class Xeberler extends Controller
     public function edit($id)
     {
         $header = HeaderModel::all();
-        $data = XeberlerModel::findOrFail($id);
+        $data = Table_1::findOrFail($id);
 
         return view('back.mainpageinfo.slide.update', compact('data', 'header'));
     }
@@ -93,7 +93,7 @@ class Xeberler extends Controller
      */
     public function update(XeberlerPostRequest $request, $id)
     {
-        $data = XeberlerModel::findOrFail($id);
+        $data = Table_1::findOrFail($id);
 
         $data->name = $request->title;
         $data->content = $request->content;
@@ -124,7 +124,7 @@ class Xeberler extends Controller
 
     public function delete($id)
     {
-        $data = XeberlerModel::findOrFail($id);
+        $data = Table_1::findOrFail($id);
         $data->delete();
 
         return redirect()->route('admin.slide.index')->with(['success' => 'Məlumat uğurla silindi!']);

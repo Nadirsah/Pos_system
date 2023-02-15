@@ -20,7 +20,10 @@ return new class extends Migration
             $table->string('image');
             $table->longText('content');
             $table->longText('price');
+            $table->longText('color');
+            $table->longText('brand');
             $table->string('slug');
+            $table->string('hit');
             $table->timestamps();
             $table->foreign('page_id')
             ->references('id')

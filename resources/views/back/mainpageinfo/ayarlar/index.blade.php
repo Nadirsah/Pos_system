@@ -20,18 +20,19 @@
                         <th>Facebook</th>
                         <th>Instagram</th>
                         <th>Action</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Title</th>
+                    <th>Title</th>
                         <th>Sekil</th>
-                        <th>Haqqimizda</th>
                         <th>Activ-Passiv</th>
                         <th>Facebook</th>
                         <th>Instagram</th>
-
+                        <th>Action</th>
+                        <th>Action</th>
 
                     </tr>
                 </tfoot>

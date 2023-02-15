@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('xeberler_models', function (Blueprint $table) {
+        Schema::create('table_1s', function (Blueprint $table) {
             $table->id();
 
             $table->string('name');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('xeberler_models');
+        Schema::dropIfExists('table_1s');
     }
 };

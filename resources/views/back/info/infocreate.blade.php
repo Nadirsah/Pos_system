@@ -27,24 +27,36 @@
     <div class="mb-3">
         <label for="name" class="form-label">Məlumat başlıgı</label>
         <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
-            autofocus>
+            >
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="price" class="form-label">Qiymet</label>
         <input type="text" name="price" value="{{old('price')}}" class="form-control" id="price" aria-describedby="emailHelp"
-            autofocus>
+            >
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
-   
+    <div class="mb-3">
+        <label for="color" class="form-label">Reng</label>
+        <input type="text" name="color" value="{{old('color')}}" class="form-control" id="color" aria-describedby="emailHelp"
+            >
+            <span class="text-danger">@error('color'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
+
+    <div class="mb-3">
+        <label for="brand" class="form-label">Brand</label>
+        <input type="text" name="brand" value="{{old('brand')}}" class="form-control" id="brand" aria-describedby="emailHelp"
+            >
+            <span class="text-danger">@error('brand'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
     
 
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label>
         <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
-            autofocus>
+            >
             <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
@@ -53,7 +65,7 @@
     <div class="mb-3" >
         <label for="content" class="form-label">Məzmun</label>
         <textarea  id="summernote" name="content" value="{{old('content')}}" class="form-control" id="content" aria-describedby="emailHelp"
-            autofocus>
+            >
            
     </textarea>
     <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
