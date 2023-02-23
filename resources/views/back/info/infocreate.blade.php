@@ -6,26 +6,26 @@
 <form method="Post" action="{{route('admin.info.store')}}" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-        <label for="#" class="form-label">Səhifə</label>
+        <label for="#" class="form-label">Kategoriya</label>
         <select name="page_id" class="form-select" id="">
-            <option value="">Səhifə seçin</option>
-            @foreach ($page as $pages)
-            <option value="{{$pages->id}}">{{$pages->name}}</option>
+            <option value="">Kategoriya seçin</option>
+            @foreach ($category as $categories)
+            <option value="{{$categories->id}}">{{$categories->name}}</option>
             @endforeach
 
         </select>
         <span class="text-danger">@error('page_id'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
-    <div class="mb-3" >
+    <!-- <div class="mb-3" >
         <label for="content1" class="form-label">Səhifə</label>
-        <input  name="page" class="form-control" value="{{old('page')}}" id="content1" aria-describedby="emailHelp"
+        <input  name="page" class="form-control" value="" id="content1" aria-describedby="emailHelp"
             autofocus>
-            <span class="text-danger">@error('page'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+            <span class="text-danger"></span>
 
-    </div>
+    </div> -->
     <div class="mb-3">
-        <label for="name" class="form-label">Məlumat başlıgı</label>
+        <label for="name" class="form-label">Mehsul adi</label>
         <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
             >
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
@@ -38,38 +38,38 @@
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="color" class="form-label">Reng</label>
-        <input type="text" name="color" value="{{old('color')}}" class="form-control" id="color" aria-describedby="emailHelp"
+        <input type="text" name="color" value="" class="form-control" id="color" aria-describedby="emailHelp"
             >
-            <span class="text-danger">@error('color'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+            <span class="text-danger"></span>
+    </div> -->
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="brand" class="form-label">Brand</label>
-        <input type="text" name="brand" value="{{old('brand')}}" class="form-control" id="brand" aria-describedby="emailHelp"
+        <input type="text" name="brand" value="" class="form-control" id="brand" aria-describedby="emailHelp"
             >
-            <span class="text-danger">@error('brand'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+            <span class="text-danger"></span>
+    </div> -->
     
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label>
-        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
+        <input type="file" name="image" value="" class="form-control" id="image" aria-describedby="emailHelp"
             >
-            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+            <span class="text-danger"></span>
+    </div> -->
 
     
 
-    <div class="mb-3" >
+    <!-- <div class="mb-3" >
         <label for="content" class="form-label">Məzmun</label>
-        <textarea  id="summernote" name="content" value="{{old('content')}}" class="form-control" id="content" aria-describedby="emailHelp"
+        <textarea  id="summernote" name="content" value="" class="form-control" id="content" aria-describedby="emailHelp"
             >
            
     </textarea>
-    <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+    <span class="text-danger"></span>
+    </div> -->
 <br><br>
 
     <button type="submit" class="btn btn-primary btn-block">Göndər</button>

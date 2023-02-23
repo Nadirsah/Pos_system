@@ -11,6 +11,6 @@ class InfoModel extends Model
 
     public function getPage()
     {
-        return $this->hasOne('App\Models\PageModel', 'id', 'page_id');
+        return $this->hasOne('App\Models\HeaderModel', 'id', 'page_id');
     }
 }

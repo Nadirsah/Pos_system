@@ -18,7 +18,7 @@ class HomeHeader extends Controller
     {
         $data = HeaderModel::all();
 
-        return view('back.mainpage.header', compact('data'));
+        return view('back.kategoriya.header', compact('data'));
     }
 
     /**
@@ -28,7 +28,7 @@ class HomeHeader extends Controller
      */
     public function create()
     {
-        return view('back.mainpage.headercreat');
+        return view('back.kategoriya.headercreat');
     }
 
     /**
@@ -44,7 +44,7 @@ class HomeHeader extends Controller
         $data->slug = Str::slug($request->name);
         $data->save();
 
-        return redirect()->route('admin.header.create')->with(['success' => 'Məlumat əlavə olundu!']);
+        return redirect()->route('admin.header.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -68,7 +68,7 @@ class HomeHeader extends Controller
     {
         $data = HeaderModel::findOrFail($id);
 
-        return view('back.mainpage.headerupdate', compact('data'));
+        return view('back.kategoriya.headerupdate', compact('data'));
     }
 
     /**

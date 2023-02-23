@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\InfoPostRequest;
 use App\Models\InfoModel;
 use App\Models\PageModel;
+use App\Models\HeaderModel;
 use Illuminate\Support\Str;
 
 class InfoController extends Controller
@@ -29,9 +30,9 @@ class InfoController extends Controller
      */
     public function create()
     {
-        $page = PageModel::all();
+        $category = HeaderModel::all();
 
-        return view('back.info.infocreate', compact('page'));
+        return view('back.info.infocreate', compact('category'));
     }
 
     /**
@@ -86,10 +87,10 @@ class InfoController extends Controller
      */
     public function edit($id)
     {
-        $page = PageModel::all();
+        $category = HeaderModel::all();
         $data = InfoModel::findOrFail($id);
 
-        return view('back.info.infoupdate', compact('data', 'page'));
+        return view('back.info.infoupdate', compact('data', 'category'));
     }
 
     /**

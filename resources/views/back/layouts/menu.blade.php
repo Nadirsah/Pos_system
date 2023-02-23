@@ -9,11 +9,11 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.panel')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin Panel </div>
             </a>
-            
+
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -44,28 +44,27 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Cari masalar:</h6>
                         <a class="collapse-item" href="{{route('admin.page.index')}}">Masa</a>
-                        
+
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="{{route('admin.info.index')}}"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Səhifə tərkibi</span>
+                    <span>Mehsul</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <!-- <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Səhifə tərkibi</h6>
                         <a class="collapse-item" href="{{route('admin.info.index')}}">Məlumatlar</a>
+
                        
-                        <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a> -->
-                    </div>
-                </div>
+                    </div> 
+                </div>-->
             </li>
 
             <li class="nav-item">
@@ -88,14 +87,21 @@
                         <a class="collapse-item" href="{{route('admin.qezet.index')}}">Qəzet</a>
                         <a class="collapse-item" href="{{route('admin.slide.index')}}">Slide</a>
                         <a class="collapse-item" href="{{route('admin.xronika.index')}}">Xronika</a>
-                      
+
                         <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a> -->
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('admin.header.index')}}"  data-target="#collapseUtilities2"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Kateqoriya</span>
+                </a>
+                
+            </li>
 
-           
 
         </ul>
         <!-- End of Sidebar -->
@@ -114,12 +120,12 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                   
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                      
+
                         </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -142,7 +148,7 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                               
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -170,6 +176,6 @@
                             <i class="fa-solid fa-globe fa-sm text-white-50"></i>
                             Sayta qayit</a> -->
                     </div>
-                    
+
 
                     <!-- Content Row -->
