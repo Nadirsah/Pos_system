@@ -24,10 +24,6 @@ class InfoPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'page_id' => 'required',
-            'name' => 'required',
-            'content' => 'required',
-            'page' => 'required',
 
         ];
     }

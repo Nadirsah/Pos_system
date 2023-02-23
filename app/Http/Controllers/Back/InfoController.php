@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InfoPostRequest;
-use App\Models\InfoModel;
-use App\Models\PageModel;
 use App\Models\HeaderModel;
+use App\Models\InfoModel;
 use Illuminate\Support\Str;
 
 class InfoController extends Controller
@@ -43,23 +42,10 @@ class InfoController extends Controller
      */
     public function store(InfoPostRequest $request)
     {
-        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
-
         $data = new InfoModel;
         $data->page_id = $request->page_id;
         $data->name = $request->name;
-        $data->content = $request->content;
         $data->price = $request->price;
-        $data->color = $request->color;
-        $data->brand = $request->brand;
-        $data->slug = Str::slug($request->page);
-
-        if ($request->hasFile('image')) {
-            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
-
-            $request->image->move(public_path('uploads'), $imagename);
-            $data->image = 'uploads/'.$imagename;
-        }
         $data->save();
         if ($data) {
             return  redirect()->route('admin.info.index')->with(['success' => 'Səhifə əlavə olundu!']);

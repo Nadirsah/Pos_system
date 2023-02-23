@@ -15,7 +15,6 @@ use App\Http\Controllers\Back\Qarabag;
 use App\Http\Controllers\Back\Qezet;
 use App\Http\Controllers\Back\Xeberler;
 use App\Http\Controllers\Back\Xronika;
-use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,8 +35,6 @@ Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function ()
     // Route::get('/register', [AuthController::class, 'register'])->name('qeydiyyat');
     // Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
 });
-
-
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
     Route::get('/panel', [Dashboard::class, 'index'])->name('panel');
@@ -85,6 +82,3 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::resource('/indexheader', IndexHeader::class);
     Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
 });
-
-
-

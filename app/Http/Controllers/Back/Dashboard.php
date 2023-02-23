@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\PageModel;
+use Illuminate\Http\Request;
 
 class Dashboard extends Controller
 {
@@ -14,8 +14,10 @@ class Dashboard extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $masa=PageModel::all();
-        return view('back.dashboard',compact('masa'));
+    {
+        $masa = PageModel::all();
+
+        return view('back.dashboard', compact('masa'));
     }
 
     /**
@@ -31,7 +33,6 @@ class Dashboard extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,7 +65,6 @@ class Dashboard extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

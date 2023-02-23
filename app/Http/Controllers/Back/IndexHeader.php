@@ -40,7 +40,8 @@ class IndexHeader extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(HeaderIndexPostRequest $request)
-    {$request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
+    {
+        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new Ayarlar;
 
         $data->name = $request->name;
