@@ -31,14 +31,13 @@ use Illuminate\Support\Facades\Route;
 
 //
 Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'store'])->name('login.store');
     // Route::get('/register', [AuthController::class, 'register'])->name('qeydiyyat');
     // Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
-});
+
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
     Route::get('/panel', [Dashboard::class, 'index'])->name('panel');
@@ -87,8 +86,5 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
 });
 
-Route::get('/', [FrontController::class, 'index'])->name('index');
-Route::get('/item/{id}', [FrontController::class, 'news'])->name('item');
-Route::get('/{sayfa}', [FrontController::class, 'page'])->name('pages');
-Route::get('/axtaris', [FrontController::class, 'axtar'])->name('search');
+
 

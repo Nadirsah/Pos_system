@@ -13,6 +13,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin Panel </div>
             </a>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -37,12 +38,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Səhifələr</span>
+                    <span>Masalar</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cari səhifələr:</h6>
-                        <a class="collapse-item" href="{{route('admin.page.index')}}">Səhifələr</a>
+                        <h6 class="collapse-header">Cari masalar:</h6>
+                        <a class="collapse-item" href="{{route('admin.page.index')}}">Masa</a>
                         
                     </div>
                 </div>
@@ -164,10 +165,11 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
-                        <a href="{{route('index')}}" target="blank"
+                        <!-- <a href="#" target="blank"
                             class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                             <i class="fa-solid fa-globe fa-sm text-white-50"></i>
-                            Sayta qayit</a>
+                            Sayta qayit</a> -->
                     </div>
+                    
 
                     <!-- Content Row -->

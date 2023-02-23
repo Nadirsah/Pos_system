@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PageModel;
 
 class Dashboard extends Controller
 {
@@ -13,8 +14,8 @@ class Dashboard extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('back.dashboard');
+    {   $masa=PageModel::all();
+        return view('back.dashboard',compact('masa'));
     }
 
     /**

@@ -1,10 +1,10 @@
 @extends("back.layouts.master")
-@section("title","Səhifələr")
+@section("title","Masalar")
 @section('content')
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Səhifələr <span><a class="collapse-item"
+        <h6 class="m-0 font-weight-bold text-primary">Masa <span><a class="collapse-item"
                     href="{{route('admin.page.create')}}"><i
                         class="btn btn-success fa-solid fa-circle-plus"></i></a></span></h6>
     </div>
