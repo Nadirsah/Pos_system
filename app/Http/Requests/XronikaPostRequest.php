@@ -24,9 +24,7 @@ class XronikaPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'info' => 'required',
-            'name' => 'required',
-            'content' => 'required',
+            
 
         ];
     }

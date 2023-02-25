@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\XronikaPostRequest;
 use App\Models\HeaderModel;
-use App\Models\XronikaModel;
+use App\Models\SifarisModel;
 use Illuminate\Support\Str;
 
 class Xronika extends Controller
@@ -17,9 +17,9 @@ class Xronika extends Controller
      */
     public function index()
     {
-        $info = XronikaModel::all();
+        $info = SifarisModel::all();
 
-        return view('back.mainpageinfo.xronika.index', compact('info'));
+        return view('back.mainpageinfo.sifaris.index', compact('info'));
     }
 
     /**
@@ -31,7 +31,7 @@ class Xronika extends Controller
     {
         $header = HeaderModel::all();
 
-        return view('back.mainpageinfo.xronika.create', compact('header'));
+        return view('back.mainpageinfo.sifaris.create', compact('header'));
     }
 
     /**
@@ -43,10 +43,10 @@ class Xronika extends Controller
     public function store(XronikaPostRequest $request)
     {
         $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
-        $data = new XronikaModel;
-        $data->header_id = $request->info;
-        $data->name = $request->name;
-        $data->content = $request->content;
+        $data = new SifarisModel;
+        $data->masa_id=$request->masa_id;
+        $data->kategoriya = $request->name;
+        $data->mehsul = $request->mehsul;
 
         if ($request->hasFile('image')) {
             $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
@@ -58,7 +58,7 @@ class Xronika extends Controller
 
         $data->save();
 
-        return  redirect()->route('admin.xronika.index')->with(['success' => 'Məlumat əlavə olundu!']);
+        return  redirect()->route('admin.panel')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -81,9 +81,9 @@ class Xronika extends Controller
     public function edit($id)
     {
         $header = HeaderModel::all();
-        $data = XronikaModel::findOrFail($id);
+        $data = SifarisModel::findOrFail($id);
 
-        return view('back.mainpageinfo.xronika.update', compact('data', 'header'));
+        return view('back.mainpageinfo.sifaris.update', compact('data', 'header'));
     }
 
     /**
@@ -95,7 +95,7 @@ class Xronika extends Controller
      */
     public function update(XronikaPostRequest $request, $id)
     {
-        $data = XronikaModel::findOrFail($id);
+        $data = SifarisModel::findOrFail($id);
         $data->header_id = $request->info;
         $data->name = $request->title;
         $data->content = $request->content;
@@ -125,7 +125,7 @@ class Xronika extends Controller
 
     public function delete($id)
     {
-        $data = XronikaModel::findOrFail($id);
+        $data = SifarisModel::findOrFail($id);
         $data->delete();
 
         return redirect()->route('admin.xronika.index')->with(['success' => 'Məlumat uğurla silindi!']);

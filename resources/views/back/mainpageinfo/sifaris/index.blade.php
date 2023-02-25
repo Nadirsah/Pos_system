@@ -13,7 +13,7 @@
                 <thead>
                     <tr>
 
-                        <th>Section</th>
+                       
                       
                         <th>Title</th>
                         <th>Məzmun</th>
@@ -25,7 +25,7 @@
                 </thead>
                 <tfoot>
                     <tr>
-                    <th>Section</th>
+                   
                       
                         <th>Title</th>
                         <th>Məzmun</th>
@@ -38,7 +38,7 @@
                 <tbody>
                     @foreach($info as $infos)
                     <tr>
-                        <td>{{$infos->getHeader->name}}</td>
+                       
                        
                         <td>{{$infos->name}}</td>
                         <td>{{$infos->content}}</td>

@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('xronika_models', function (Blueprint $table) {
+        Schema::create('sifaris_models', function (Blueprint $table) {
             $table->id();
-            $table->string('header_id');
-            $table->string('name');
+            $table->string('masa_id');
+            $table->string('kategoriya');
             $table->string('img');
-            $table->string('content');
+            $table->string('mehsul');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('xronika_models');
+        Schema::dropIfExists('sifaris_models');
     }
 };
