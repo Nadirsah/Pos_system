@@ -9,7 +9,7 @@
 
 </div>
 <div class="row">
-    <div class="col-xl-4 col-lg-5">
+    <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -17,8 +17,9 @@
 
             </div>
             <!-- Card Body -->
-            @foreach($masa as $masas)
-            <div class="col-lg-6 mb-4">
+           <div class="row">
+           @foreach($masa as $masas)
+            <div class="col-lg-4 mb-4">
                 <div class="card bg-primary text-white shadow">
                     <div class="card-body">
                         {{$masas->name}}
@@ -33,10 +34,14 @@
                 </div>
             </div>
             @endforeach
+           </div>
         </div>
     </div>
-    <!-- Area Chart -->
-    <div class="col-xl-8 col-lg-7">
+</div>
+
+<!-- Area Chart -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -59,15 +64,16 @@
             <!-- Card Body -->
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-striped table-success table-hover text-dark" id="dataTable"
+                        width="100%" cellspacing="0">
                         <thead>
                             <tr>
 
                                 <th>Section</th>
                                 <th>Başliq</th>
                                 <th>Məzmun</th>
+                                <th>Qiymet</th>
 
-                               
 
                             </tr>
                         </thead>
@@ -76,8 +82,8 @@
                                 <th>Section</th>
                                 <th>Başliq</th>
                                 <th>Məzmun</th>
+                                <th>Qiymet</th>
 
-                              
                             </tr>
                         </tfoot>
                         <tbody>
@@ -86,8 +92,8 @@
                                 <td>{{$sifariss->masa_id}}</td>
                                 <td>{{$sifariss->getKategory->name}}</td>
                                 <td>{{$sifariss->getMehsul->name}}</td>
+                                <td>{{$sifariss->getMehsul->price}}</td>
 
-                               
                             </tr>
                             @endforeach
 
@@ -103,6 +109,34 @@
 </div>
 
 <!-- Modal -->
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+    $("#kategory").change(function() {
+        let kid = $(this).val();
+        $.ajax({
+            url: '/getmehsul',
+            type: 'post',
+            data: 'kid=' + kid + '&_token={{csrf_token()}}',
+            success: function(result) {
+                $('#mehsul').html(result)
+            }
+        })
+    });
 
+    $("#kategory").change(function() {
+        let kid = $(this).val();
+        $.ajax({
+            url: '/getqiymet',
+            type: 'post',
+            data: 'kid=' + kid + '&_token={{csrf_token()}}',
+            success: function(result) {
+                $('#price').html(result)
+            }
+        })
+    });
+})
+</script>
 
 @endsection

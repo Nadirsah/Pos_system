@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('masa_id');
             $table->string('kategoriya');
-            $table->string('img');
+            $table->string('price');
             $table->string('mehsul');
             $table->timestamps();
         });

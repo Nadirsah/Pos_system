@@ -39,6 +39,7 @@ Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function ()
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
     Route::get('/panel', [Dashboard::class, 'index'])->name('panel');
     // Basliq melumatlar
+    
     Route::resource('/profile', Profile::class);
     Route::get('/deleteprofile/{id}', [Profile::class, 'delete'])->name('delete.profile');
     // Basliq melumatlar
@@ -82,3 +83,5 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::resource('/indexheader', IndexHeader::class);
     Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
 });
+Route::post('/getmehsul', [Dashboard::class, 'getmehsul']);
+Route::post('/getqiymet', [Dashboard::class, 'getqiymet']);

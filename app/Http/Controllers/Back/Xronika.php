@@ -42,22 +42,13 @@ class Xronika extends Controller
      */
     public function store(XronikaPostRequest $request)
     {
-        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
+       
         $data = new SifarisModel;
         $data->masa_id = $request->masa_id;
         $data->kategoriya = $request->name;
         $data->mehsul = $request->mehsul;
-
-        if ($request->hasFile('image')) {
-            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
-
-            $request->image->move(public_path('uploads'), $imagename);
-
-            $data->img = 'uploads/'.$imagename;
-        }
-
-        $data->save();
-
+        $data->price = $request->price;
+$data->save();
         return  redirect()->route('admin.panel')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 

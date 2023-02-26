@@ -20,7 +20,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Kategoriya</label>
-                        <select name="name" class="form-select" id="">
+                        <select name="name" class="form-select" id="kategory">
                             <option value="">Kategoriya seçin</option>
                             @foreach ($kategoriya as $kategories)
                             <option value="{{$kategories->id}}">{{$kategories->name}}</option>
@@ -32,22 +32,21 @@
 
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Mehsul</label>
-                        <select name="mehsul" class="form-select" id="">
+                        <select name="mehsul" class="form-select" id="mehsul">
                             <option value="">Mehsul seçin</option>
-                            @foreach ($mehsul as $mehsuls)
-                            <option value="{{$mehsuls->id}}">{{$mehsuls->name}}</option>
-                            @endforeach
-
+                            
                         </select>
                         <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
 
                     <div class="mb-3">
-                        <label for="image" class="form-label">Şəkil</label>
-                        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image"
-                            aria-describedby="emailHelp">
-                        <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+                        <label for="content" class="form-label text-info">Qiymet</label>
+                        <select name="price" class="form-select" id="price">
+                            <option value="">Qiymet</option>
+                        </select>
+                        <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
+
                     <br><br>
 
                     <button type="submit" class="btn btn-primary btn-block">Göndər</button>
@@ -60,3 +59,4 @@
         </div>
     </div>
 </div>
+
