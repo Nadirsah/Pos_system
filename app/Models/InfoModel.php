@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class InfoModel extends Model
 {
     use HasFactory;
-
-    public function getPage()
+    public function getKategory()
     {
         return $this->hasOne('App\Models\HeaderModel', 'id', 'page_id');
     }
+    
 }

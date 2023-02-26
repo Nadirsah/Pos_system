@@ -33,7 +33,7 @@
                     @foreach($info as $infos)
                     <tr>
                         <td>{{$infos->id}}</td>
-                        <td>{{$infos->getPage->name}}</td>
+                        <td>{{$infos->getKategory->name}}</td>
                         <td>{{$infos->name}}</td>
                         <td>{{$infos->price}}</td>
 

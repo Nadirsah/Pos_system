@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\PageModel;
 use App\Models\HeaderModel;
 use App\Models\InfoModel;
+use App\Models\PageModel;
+use App\Models\SifarisModel;
 use Illuminate\Http\Request;
-
 
 class Dashboard extends Controller
 {
@@ -19,10 +19,11 @@ class Dashboard extends Controller
     public function index()
     {
         $masa = PageModel::all();
-        $kategoriya=HeaderModel::all();
-$mehsul=InfoModel::all();
-        
-        return view('back.dashboard', compact('masa','kategoriya','mehsul'));
+        $kategoriya = HeaderModel::all();
+        $mehsul = InfoModel::all();
+        $sifaris=SifarisModel::all();
+
+        return view('back.dashboard', compact('masa', 'kategoriya', 'mehsul','sifaris'));
     }
 
     /**

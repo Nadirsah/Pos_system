@@ -23,7 +23,8 @@
                     <div class="card-body">
                         {{$masas->name}}
                         <div class="text-white small"> {{$masas->orders}}
-                            <a class="dropdown-item text-danger" style="font-size:16px" href="#order{{$masas->id}}" data-toggle="modal">
+                            <a class="dropdown-item text-danger" style="font-size:16px" href="#order{{$masas->id}}"
+                                data-toggle="modal">
                                 Sifaris et
                             </a>
                             @include('back.modal')
@@ -39,7 +40,7 @@
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Satis cedveli</h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -57,8 +58,41 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>Section</th>
+                                <th>Başliq</th>
+                                <th>Məzmun</th>
+
+                               
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Section</th>
+                                <th>Başliq</th>
+                                <th>Məzmun</th>
+
+                              
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach($sifaris as $sifariss)
+                            <tr>
+                                <td>{{$sifariss->masa_id}}</td>
+                                <td>{{$sifariss->getKategory->name}}</td>
+                                <td>{{$sifariss->getMehsul->name}}</td>
+
+                               
+                            </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

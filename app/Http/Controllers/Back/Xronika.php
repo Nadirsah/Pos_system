@@ -44,7 +44,7 @@ class Xronika extends Controller
     {
         $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
         $data = new SifarisModel;
-        $data->masa_id=$request->masa_id;
+        $data->masa_id = $request->masa_id;
         $data->kategoriya = $request->name;
         $data->mehsul = $request->mehsul;
 

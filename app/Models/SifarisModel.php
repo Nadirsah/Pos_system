@@ -9,8 +9,12 @@ class SifarisModel extends Model
 {
     use HasFactory;
 
-    public function getHeader()
+    public function getKategory()
     {
-        return $this->hasOne('App\Models\HeaderModel', 'id', 'header_id');
+        return $this->hasOne('App\Models\HeaderModel', 'id', 'kategoriya');
+    }
+    public function getMehsul()
+    {
+        return $this->hasOne('App\Models\InfoModel', 'id', 'mehsul');
     }
 }
