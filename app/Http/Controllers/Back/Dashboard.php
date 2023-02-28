@@ -8,7 +8,6 @@ use App\Models\InfoModel;
 use App\Models\PageModel;
 use App\Models\SifarisModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Controller
 {
@@ -21,31 +20,34 @@ class Dashboard extends Controller
     {
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
-        
-        $sifaris=SifarisModel::all();
 
-        return view('back.dashboard', compact('masa', 'kategoriya','sifaris'));
+        $sifaris = SifarisModel::all();
+
+        return view('back.dashboard', compact('masa', 'kategoriya', 'sifaris'));
     }
 
-    public function getmehsul(Request $request){
-       $kid=$request->post('kid');
-       $mehsul=InfoModel::where('page_id',$kid)->get();
-      $html='<option value="">Mehsul seçin</option>';
-      foreach($mehsul as $list){
-        $html.='<option value="'.$list->id.'">'.$list->name.'</option>';
-      }
-      echo $html;
+    public function getmehsul(Request $request)
+    {
+        $kid = $request->post('kid');
+        $mehsul = InfoModel::where('page_id', $kid)->get();
+        $html = '<option value="">Mehsul seçin</option>';
+        foreach ($mehsul as $list) {
+            $html .= '<option value="'.$list->id.'">'.$list->name.'</option>';
+        }
+        echo $html;
     }
 
-    public function getqiymet(Request $request){
-        $kid=$request->post('kid');
-        $mehsul=InfoModel::where('page_id',$kid)->get();
-       $html='<option value="">Qiymet</option>';
-       foreach($mehsul as $list){
-         $html.='<option value="'.$list->id.'">'.$list->price.'</option>';
-       }
-       echo $html;
-     }
+    public function getqiymet(Request $request)
+    {
+        $kid = $request->post('kid');
+        $mehsul = InfoModel::where('page_id', $kid)->get();
+        $html = '<option value="">Qiymet</option>';
+        foreach ($mehsul as $list) {
+            $html .= '<option value="'.$list->id.'">'.$list->price.'</option>';
+        }
+        echo $html;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

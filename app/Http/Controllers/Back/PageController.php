@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePostRequest;
 use App\Models\PageModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -44,19 +43,18 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
-        $pages = [$request->name];
-        $count = PageModel::count('name');
-
-        $data = new PageModel;
-        $data->name = $request->name;
-        $data->slug = Str::slug($request->name);
-        $data->orders = $request->order;
-        $data->save();
+        $request->validate([
+            'inputs.*name' => 'reuqired',
+            'inputs.*orders' => 'reuqired',
+        ]);
+        $data=new Pagemodel;
+        foreach ($request->inputs as $key => $value) {
+            PageModel::create($value);
+        }
 
         return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);
     }

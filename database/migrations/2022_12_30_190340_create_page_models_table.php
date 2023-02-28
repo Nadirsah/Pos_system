@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('page_models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
-            $table->integer('orders');
+            $table->string('orders');
             $table->timestamps();
         });
     }

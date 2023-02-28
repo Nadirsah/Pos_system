@@ -42,13 +42,16 @@ class Xronika extends Controller
      */
     public function store(XronikaPostRequest $request)
     {
-       
-        $data = new SifarisModel;
-        $data->masa_id = $request->masa_id;
-        $data->kategoriya = $request->name;
-        $data->mehsul = $request->mehsul;
-        $data->price = $request->price;
-$data->save();
+        // $data = new SifarisModel;
+        // $data->masa_id = $request->masa_id;
+        // $data->kategoriya = $request->kategoriya;
+        // $data->mehsul = $request->mehsul;
+        // $data->price = $request->price;
+        // $data->save();
+        foreach ($request->inputs as $key => $value) {
+            SifarisModel::create($value);
+        }
+
         return  redirect()->route('admin.panel')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 

@@ -6,7 +6,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Sizin saytiniz {{date("Y")}}</span>
+            <span>Copyright &copy; POS_SYSTEM {{date("Y")}}</span>
         </div>
     </div>
 </footer>
