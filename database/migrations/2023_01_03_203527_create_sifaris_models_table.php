@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('kategoriya');
             $table->string('price');
             $table->string('mehsul');
+            $table->string('sifaris')->default(0)->comment('0:passiv 1:aktiv');
             $table->timestamps();
         });
     }

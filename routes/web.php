@@ -32,8 +32,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::post('/auth', [AuthController::class, 'store'])->name('login.store');
-    // Route::get('/register', [AuthController::class, 'register'])->name('qeydiyyat');
-    // Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
+    Route::get('/register', [AuthController::class, 'register'])->name('qeydiyyat');
+    Route::post('/register', [AuthController::class, 'registerstore'])->name('register.store');
 });
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {

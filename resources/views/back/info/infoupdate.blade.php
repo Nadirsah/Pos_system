@@ -11,8 +11,8 @@
         <label for="#" class="form-label">Kategoriya</label>
         <select name="page_id" class="form-select" id="">
             <option value="">Kategoriya seçin</option>
-            @foreach ($page as $pages)
-            <option @if($data->page_id==$pages->id) selected @endif value="{{$pages->id}}">{{$pages->name}}</option>
+            @foreach ($category as $categorie)
+            <option @if($data->page_id==$categorie->id) selected @endif value="{{$categorie->id}}">{{$categorie->name}}</option>
             @endforeach
 
         </select>

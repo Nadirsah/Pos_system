@@ -16,7 +16,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $data = PageModel::orderBy('orders', 'asc')->get();
+        $data = PageModel::all();
 
         return view('back.pages.pages', compact('data'));
     }
@@ -51,10 +51,9 @@ class PageController extends Controller
             'inputs.*name' => 'reuqired',
             'inputs.*orders' => 'reuqired',
         ]);
-        $data=new Pagemodel;
-        foreach ($request->inputs as $key => $value) {
-            PageModel::create($value);
-        }
+        $data = new Pagemodel;
+        $data->name = $request->name;
+        $data->save();
 
         return redirect()->route('admin.page.create')->with(['success' => 'Səhifə əlavə olundu!']);
     }
@@ -86,15 +85,13 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = PageModel::findOrFail($id);
         $data->name = $request->name;
-        $data->orders = $request->order;
         $data->update();
 
         return redirect()->route('admin.page.index')->with(['success' => 'Səhifə uğurla yeniləndi!']);

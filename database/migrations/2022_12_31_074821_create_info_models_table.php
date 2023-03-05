@@ -19,9 +19,6 @@ return new class extends Migration
             $table->string('name');
             $table->longText('price');
             $table->timestamps();
-            $table->foreign('page_id')
-            ->references('id')
-            ->on('page_models');
         });
     }
 

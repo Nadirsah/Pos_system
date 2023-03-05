@@ -14,13 +14,13 @@
 
                     <div class="mb-3">
                         <label for="name" class="form-label text-info">Masa</label>
-                        <input type="text" name="masa_id" value="{{$masas->name}}:{{$masas->orders}}"
+                        <input type="text" name="masa_id" value="{{$masas->id}}"
                             class="form-control" id="name" aria-describedby="emailHelp" readonly>
                         <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Kategoriya</label>
-                        <select name="name" class="form-select" id="kategory">
+                        <select name="kategoriya" class="form-select" id="kategory">
                             <option value="">Kategoriya seçin</option>
                             @foreach ($kategoriya as $kategories)
                             <option value="{{$kategories->id}}">{{$kategories->name}}</option>
@@ -46,7 +46,10 @@
                         </select>
                         <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="content" class="form-label text-info">Activ</label>
+                        <input type="checkbox" name="sifaris" id="" value="0" required>
+                    </div>
                     <br><br>
 
                     <button type="submit" class="btn btn-primary btn-block">Göndər</button>

@@ -16,14 +16,14 @@ class Dashboard extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
 
         $sifaris = SifarisModel::all();
-
-        return view('back.dashboard', compact('masa', 'kategoriya', 'sifaris'));
+        
+        return view('back.dashboard', compact('masa', 'kategoriya', 'sifaris', 'orderposition'));
     }
 
     public function getmehsul(Request $request)

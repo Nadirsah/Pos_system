@@ -12,13 +12,7 @@
 
     </div>
 
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Sıra</label>
-        <input type="text" name="order" class="form-control" value="{{old('order')}}" id="exampleInputEmail1"
-            aria-describedby="emailHelp" autofocus>
-        <span class="text-danger">@error('order'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-
-    </div>
+   
 
     <button type="submit" class="btn btn-primary">Göndər</button>
 </form>

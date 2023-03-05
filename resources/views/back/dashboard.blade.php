@@ -11,7 +11,7 @@
                     <div class="text-white small">
                         <button type="button" class="dropdown-item text-danger" style="font-size:16px"
                             data-bs-toggle="modal" data-bs-target="#exampleModalSifaris">
-                            Sifaris et
+                            <i class="fa-solid fa-utensils fa-lg"></i>
                         </button>
 
                     </div>
@@ -33,15 +33,20 @@
             </div>
             <!-- Card Body -->
             <div class="row">
-                @foreach($masa as $masas)
-                <div class="col-lg-4 mb-4">
-                    <div class="card bg-primary text-white shadow">
+                @foreach($sifaris as $activ)
+                <div class="col-2 mb-4">
+
+                    <div class="card bg-primary text-white shadow" style="width:100px;height:100px;">
                         <div class="card-body">
-                            {{$masas->name}}
-                            <div class="text-white small"> {{$masas->orders}}
-                                <a class="dropdown-item text-danger" style="font-size:16px" href="#order{{$masas->id}}"
+                            {{$activ->getMasa->name}}
+
+                            <div>{!!$activ->sifaris==0 ? "<span class='text-danger'>Mesgul</span>" : "<span
+                                    class='text-success'>Bos</span>"!!}</div>
+
+                            <div class="text-white small">
+                                <a class="dropdown-item text-danger" style="font-size:16px" href="#order{{$activ->id}}"
                                     data-toggle="modal">
-                                    Sifaris et
+                                    <i class="fa-solid fa-chair"></i>
                                 </a>
 
                             </div>
@@ -84,30 +89,34 @@
                         <thead>
                             <tr>
 
-                                <th>Section</th>
+                                <th>Masa</th>
                                 <th>Başliq</th>
                                 <th>Məzmun</th>
                                 <th>Qiymet</th>
+                                <th>Veziyyet</th>
 
 
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Section</th>
+                                <th>Masa</th>
                                 <th>Başliq</th>
                                 <th>Məzmun</th>
                                 <th>Qiymet</th>
+                                <th>Veziyyet</th>
 
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach($sifaris as $sifariss)
                             <tr>
-                                <td>{{$sifariss->masa_id}}</td>
+                                <td>{{$sifariss->getMasa->name}}</td>
                                 <td>{{$sifariss->getKategory->name}}</td>
                                 <td>{{$sifariss->getMehsul->name}}</td>
                                 <td>{{$sifariss->getMehsul->price}}</td>
+                                <td>{!!$sifariss->sifaris==0 ? "<span class='text-danger'>Mesgul</span>" : "<span
+                                        class='text-success'>Bos</span>" !!}</td>
 
                             </tr>
                             @endforeach
@@ -142,7 +151,6 @@
                                 <th scope="col">Mehsul</th>
                                 <th scope="col">Qiymet</th>
                                 <th scope="col">Action</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -152,41 +160,34 @@
                                         @foreach ($masa as $masas)
                                         <option value="{{$masas->id}}">{{$masas->name}}</option>
                                         @endforeach
-
                                     </select>
-
-
-
                                 </td>
-
                                 <td><select name="inputs[0][kategoriya]" class="form-select" id="kategory">
                                         <option value="">Kategoriya seçin</option>
                                         @foreach ($kategoriya as $kategories)
                                         <option value="{{$kategories->id}}">{{$kategories->name}}</option>
                                         @endforeach
-
                                     </select>
-
-
-
                                 </td>
                                 <td>
                                     <div class="mb-3">
-                                        <label for="content" class="form-label text-info">Mehsul</label>
+
                                         <select name="inputs[0][mehsul]" class="form-select" id="mehsul">
                                             <option value="">Mehsul seçin</option>
-
                                         </select>
-
                                     </div>
                                 </td>
                                 <td>
                                     <div class="mb-3">
-                                        <label for="content" class="form-label text-info">Qiymet</label>
+
                                         <select name="inputs[0][price]" class="form-select" id="price">
                                             <option value="">Qiymet</option>
                                         </select>
-
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="mb-3">
+                                        <input type="checkbox" name="inputs[0][sifaris]" id="" value="0">
                                     </div>
                                 </td>
                                 <td><button type="button" name="add" id="add" class="btn btn-success">Elave et</button>
@@ -210,6 +211,27 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script>
+var i = 0;
+$('#add').click(function() {
+    ++i;
+    $('#table').append(
+        '<tr><td> <select name="inputs[' + i +
+        '][masa_id]" class="form-select" id="masa"><option value="">Masa seçin</option>@foreach ($masa as $masas)<option value="{{$masas->id}}">{{$masas->name}}</option>@endforeach</select></td><td><select name="inputs[' +
+        i +
+        '][kategoriya]" class="form-select" id="kategory"><option value="">Kategoriya seçin</option>@foreach ($kategoriya as $kategories)<option value="{{$kategories->id}}">{{$kategories->name}}</option>@endforeach</select></td><td><div class="mb-3"><select name="inputs[' +
+        i +
+        '][mehsul]" class="form-select" id="mehsul"><option value="">Mehsul seçin</option></select></div></td><td><div class="mb-3"><select name="inputs[' +
+        i +
+        '][price]" class="form-select" id="price"><option value="">Qiymet</option></select></div></td><td><button type="button"  class="btn btn-danger remove-table-row">Sil</button></td></tr>'
+    );
+});
+
+$(document).on('click', '.remove-table-row', function() {
+    $(this).parents('tr').remove();
+})
+
+
+
 $(document).ready(function() {
     $("#kategory").change(function() {
         let kid = $(this).val();
@@ -234,25 +256,6 @@ $(document).ready(function() {
             }
         })
     });
-})
-
-var i = 0;
-$('#add').click(function() {
-    ++i;
-    $('#table').append(
-        '<tr><td> <select name="inputs[' + i +
-        '][masa_id]" class="form-select" id="masa"><option value="">Masa seçin</option>@foreach ($masa as $masas)<option value="{{$masas->id}}">{{$masas->name}}</option>@endforeach</select></td><td><select name="inputs[' +
-        i +
-        '][kategoriya]" class="form-select" id="kategory"><option value="">Kategoriya seçin</option>@foreach ($kategoriya as $kategories)<option value="{{$kategories->id}}">{{$kategories->name}}</option>@endforeach</select></td><td><div class="mb-3"><label for="content" class="form-label text-info">Mehsul</label><select name="inputs[' +
-        i +
-        '][mehsul]" class="form-select" id="mehsul"><option value="">Mehsul seçin</option></select></div></td><td><div class="mb-3"><label for="content" class="form-label text-info">Qiymet</label><select name="inputs[' +
-        i +
-        '][price]" class="form-select" id="price"><option value="">Qiymet</option></select></div></td><td><button type="button"  class="btn btn-danger remove-table-row">Sil</button></td></tr>'
-    );
-});
-
-$(document).on('click', '.remove-table-row', function() {
-    $(this).parents('tr').remove();
 })
 </script>
 

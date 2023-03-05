@@ -47,6 +47,7 @@ class Xronika extends Controller
         // $data->kategoriya = $request->kategoriya;
         // $data->mehsul = $request->mehsul;
         // $data->price = $request->price;
+        // $data->sifaris = $request->sifaris;
         // $data->save();
         foreach ($request->inputs as $key => $value) {
             SifarisModel::create($value);

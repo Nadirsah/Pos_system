@@ -13,12 +13,7 @@
         <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Sıra</label>
-        <input type="text" name="order" value='{{$data->orders}}' class="form-control" id="exampleInputEmail1"
-            aria-describedby="emailHelp" autofocus>
-        <span class="text-danger">@error('order'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+    
 
     <button type="submit" class="btn btn-primary">Yenilə</button>
 </form>

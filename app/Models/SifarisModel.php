@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class SifarisModel extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'masa_id',
         'kategoriya',
         'mehsul',
-        'price'
+        'price',
     ];
 
     public function getKategory()
@@ -23,5 +24,9 @@ class SifarisModel extends Model
     public function getMehsul()
     {
         return $this->hasOne('App\Models\InfoModel', 'id', 'mehsul');
+    }
+    public function getMasa()
+    {
+        return $this->hasOne('App\Models\PageModel', 'id', 'masa_id');
     }
 }

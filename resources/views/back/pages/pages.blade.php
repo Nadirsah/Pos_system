@@ -15,7 +15,7 @@
                     <tr>
                         <th>Sirala</th>
                         <th>Ad</th>
-                        <th>Sıra</th>
+                       
                         <th>Yenilə</th>
                         <th>Sil</th>
 
@@ -25,7 +25,7 @@
                     <tr>
                         <th>Sirala</th>
                         <th>Ad</th>
-                        <th>Sıra</th>
+                       
                         <th>Yenilə</th>
                         <th>Sil</th>
 
