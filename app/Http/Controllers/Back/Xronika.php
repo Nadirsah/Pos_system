@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\XronikaPostRequest;
 use App\Models\HeaderModel;
 use App\Models\SifarisModel;
-use Illuminate\Support\Str;
 
 class Xronika extends Controller
 {
@@ -91,20 +90,17 @@ class Xronika extends Controller
     public function update(XronikaPostRequest $request, $id)
     {
         $data = SifarisModel::findOrFail($id);
-        $data->header_id = $request->info;
-        $data->name = $request->title;
-        $data->content = $request->content;
+        $data->masa_id = $request->masa_id;
+        $data->kategoriya = $request->kategoriya;
+        $data->mehsul = $request->mehsul;
+        $data->price = $request->price;
+        $data->sifaris = $request->sifaris;
 
-        if ($request->hasFile('image')) {
-            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
-
-            $request->image->move(public_path('uploads'), $imagename);
-
-            $data->img = 'uploads/'.$imagename;
-        }
         $data->update();
-
-        return  redirect()->route('admin.xronika.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
+if($request->sifaris==0){
+    return  redirect()->route('admin.panel')->with(['success' => 'Məlumat uğurla yeniləndi!']);
+}else
+        return  redirect()->route('admin.print.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**

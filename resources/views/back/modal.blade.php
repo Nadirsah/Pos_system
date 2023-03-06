@@ -1,4 +1,4 @@
-<div class="modal fade" id="order{{$masas->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="order{{$activ->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -9,19 +9,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="Post" action="{{route('admin.xronika.store')}}" enctype="multipart/form-data">
-                    @csrf
+                <form method="Post" action="{{route('admin.xronika.update',$activ->id)}}" enctype="multipart/form-data">
+                @method("PUT")
+                @csrf
+                <input type="hidden" name="" value="{{$activ->id}}"
+                            class="form-control" id="name" aria-describedby="emailHelp" readonly>
 
                     <div class="mb-3">
                         <label for="name" class="form-label text-info">Masa</label>
-                        <input type="text" name="masa_id" value="{{$masas->id}}"
-                            class="form-control" id="name" aria-describedby="emailHelp" readonly>
+                        <select name="masa_id" class="form-select" >
+                            <option value="{{$activ->masa_id}}">{{$activ->getMasa->name}}</option>
+                            @foreach ($masa as $masas)
+                            <option value="{{$masas->id}}">{{$masas->name}}</option>
+                            @endforeach
+
+                        </select>
                         <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Kategoriya</label>
-                        <select name="kategoriya" class="form-select" id="kategory">
-                            <option value="">Kategoriya seçin</option>
+                        <select name="kategoriya" class="form-select" >
+                            <option value="{{$activ->kategoriya}}">{{$activ->getKategory->name}}</option>
                             @foreach ($kategoriya as $kategories)
                             <option value="{{$kategories->id}}">{{$kategories->name}}</option>
                             @endforeach
@@ -32,8 +40,8 @@
 
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Mehsul</label>
-                        <select name="mehsul" class="form-select" id="mehsul">
-                            <option value="">Mehsul seçin</option>
+                        <select name="mehsul" class="form-select" >
+                            <option value="{{$activ->mehsul}}">{{$activ->getMehsul->name}}</option>
 
                         </select>
                         <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
@@ -41,14 +49,16 @@
 
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Qiymet</label>
-                        <select name="price" class="form-select" id="price">
-                            <option value="">Qiymet</option>
+                        <select name="price" class="form-select" >
+                            <option value="{{$activ->price}}">{{$activ->getMehsul->price}}</option>
                         </select>
                         <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
                     <div class="mb-3">
-                        <label for="content" class="form-label text-info">Activ</label>
-                        <input type="checkbox" name="sifaris" id="" value="0" required>
+                        <label for="edit" class="form-label text-info">Duzelis et</label>
+                        <input type="radio" name="sifaris" id="" value="0" id="edit" >
+                        <label for="close" class="form-label text-info">Bagla</label>
+                        <input type="radio" name="sifaris" id="" value="1" id="close">
                     </div>
                     <br><br>
 

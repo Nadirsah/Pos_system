@@ -25,6 +25,7 @@ class SifarisModel extends Model
     {
         return $this->hasOne('App\Models\InfoModel', 'id', 'mehsul');
     }
+
     public function getMasa()
     {
         return $this->hasOne('App\Models\PageModel', 'id', 'masa_id');

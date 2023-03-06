@@ -3,49 +3,19 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\HeaderModel;
-use App\Models\InfoModel;
-use App\Models\PageModel;
-use App\Models\SifarisModel;
 use Illuminate\Http\Request;
+use App\Models\SifarisModel;
 
-class Dashboard extends Controller
+class Priint extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $masa = PageModel::all();
-        $kategoriya = HeaderModel::all();
-        $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $totalsifaris = SifarisModel::all();
-
-        return view('back.dashboard', compact('masa', 'kategoriya', 'sifaris', 'totalsifaris'));
-    }
-
-    public function getmehsul(Request $request)
-    {
-        $kid = $request->post('kid');
-        $mehsul = InfoModel::where('page_id', $kid)->get();
-        $html = '<option value="">Mehsul seçin</option>';
-        foreach ($mehsul as $list) {
-            $html .= '<option value="'.$list->id.'">'.$list->name.'</option>';
-        }
-        echo $html;
-    }
-
-    public function getqiymet(Request $request)
-    {
-        $kid = $request->post('kid');
-        $mehsul = InfoModel::where('page_id', $kid)->get();
-        $html = '<option value="">Qiymet</option>';
-        foreach ($mehsul as $list) {
-            $html .= '<option value="'.$list->id.'">'.$list->price.'</option>';
-        }
-        echo $html;
+        return view('back.print');
     }
 
     /**

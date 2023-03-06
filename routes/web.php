@@ -10,6 +10,7 @@ use App\Http\Controllers\Back\InfoController;
 use App\Http\Controllers\Back\Linkler;
 use App\Http\Controllers\Back\Naxcivan;
 use App\Http\Controllers\Back\PageController;
+use App\Http\Controllers\Back\Priint;
 use App\Http\Controllers\Back\Profile;
 use App\Http\Controllers\Back\Qarabag;
 use App\Http\Controllers\Back\Qezet;
@@ -82,6 +83,9 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     //indexheader
     Route::resource('/indexheader', IndexHeader::class);
     Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
+    // print
+    Route::get('/print/{id}', [Priint::class,'index']);
 });
+
 Route::post('/getmehsul', [Dashboard::class, 'getmehsul']);
 Route::post('/getqiymet', [Dashboard::class, 'getqiymet']);

@@ -6,12 +6,12 @@
     <div class="row">
 
         <div class="col-lg-6 mb-4">
-            <div class="card bg-primary text-white shadow">
+            <div class="card bg-info text-white shadow">
                 <div class="card-body">
                     <div class="text-white small">
                         <button type="button" class="dropdown-item text-danger" style="font-size:16px"
                             data-bs-toggle="modal" data-bs-target="#exampleModalSifaris">
-                            <i class="fa-solid fa-utensils fa-lg"></i>
+                            <i class="fa-solid fa-utensils fa-lg"> Sifaris</i>
                         </button>
 
                     </div>
@@ -48,7 +48,7 @@
                                     data-toggle="modal">
                                     <i class="fa-solid fa-chair"></i>
                                 </a>
-
+                                @include('back.modal')
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                                 <th>Başliq</th>
                                 <th>Məzmun</th>
                                 <th>Qiymet</th>
-                                <th>Veziyyet</th>
+                                
 
 
                             </tr>
@@ -104,20 +104,18 @@
                                 <th>Başliq</th>
                                 <th>Məzmun</th>
                                 <th>Qiymet</th>
-                                <th>Veziyyet</th>
+                               
 
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($sifaris as $sifariss)
+                            @foreach($totalsifaris as $sifariss)
                             <tr>
                                 <td>{{$sifariss->getMasa->name}}</td>
                                 <td>{{$sifariss->getKategory->name}}</td>
                                 <td>{{$sifariss->getMehsul->name}}</td>
                                 <td>{{$sifariss->getMehsul->price}}</td>
-                                <td>{!!$sifariss->sifaris==0 ? "<span class='text-danger'>Mesgul</span>" : "<span
-                                        class='text-success'>Bos</span>" !!}</td>
-
+                               
                             </tr>
                             @endforeach
 
@@ -187,7 +185,7 @@
                                 </td>
                                 <td>
                                     <div class="mb-3">
-                                        <input type="checkbox" name="inputs[0][sifaris]" id="" value="0">
+                                        <input type="checkbox" checked name="inputs[0][sifaris]" id="" value="0">
                                     </div>
                                 </td>
                                 <td><button type="button" name="add" id="add" class="btn btn-success">Elave et</button>
