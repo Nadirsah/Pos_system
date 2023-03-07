@@ -32,28 +32,8 @@
 
             </div>
             <!-- Card Body -->
-            <div class="row">
-                @foreach($sifaris as $activ)
-                <div class="col-2 mb-4">
-
-                    <div class="card bg-primary text-white shadow" style="width:100px;height:100px;">
-                        <div class="card-body">
-                            {{$activ->getMasa->name}}
-
-                            <div>{!!$activ->sifaris==0 ? "<span class='text-danger'>Mesgul</span>" : "<span
-                                    class='text-success'>Bos</span>"!!}</div>
-
-                            <div class="text-white small">
-                                <a class="dropdown-item text-danger" style="font-size:16px" href="#order{{$activ->id}}"
-                                    data-toggle="modal">
-                                    <i class="fa-solid fa-chair"></i>
-                                </a>
-                                @include('back.modal')
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+            <div class="row" id="orderList">
+                
             </div>
         </div>
     </div>
@@ -93,32 +73,22 @@
                                 <th>Başliq</th>
                                 <th>Məzmun</th>
                                 <th>Qiymet</th>
-                                
+
 
 
                             </tr>
                         </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Masa</th>
-                                <th>Başliq</th>
-                                <th>Məzmun</th>
-                                <th>Qiymet</th>
-                               
 
-                            </tr>
-                        </tfoot>
-                        <tbody>
+                        <tbody >
                             @foreach($totalsifaris as $sifariss)
                             <tr>
                                 <td>{{$sifariss->getMasa->name}}</td>
                                 <td>{{$sifariss->getKategory->name}}</td>
                                 <td>{{$sifariss->getMehsul->name}}</td>
                                 <td>{{$sifariss->getMehsul->price}}</td>
-                               
+
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
@@ -129,6 +99,8 @@
     <!-- Pie Chart -->
 
 </div>
+
+
 <!-- Modal Siafris-->
 <div class="modal fade " style="width:1250px;" id="exampleModalSifaris" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -138,7 +110,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Sifaris</h5>
 
             </div>
-            <form method="Post" action="{{route('admin.xronika.store')}}" enctype="multipart/form-data">
+            <form method="Post" action="{{route('admin.xronika.store')}}" id="addOrder" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <table class="table table-bordered" id="table">
@@ -188,7 +160,7 @@
                                         <input type="checkbox" checked name="inputs[0][sifaris]" id="" value="0">
                                     </div>
                                 </td>
-                                <td><button type="button" name="add" id="add" class="btn btn-success">Elave et</button>
+                                <td><button type="submit" name="add" id="add" class="btn btn-success">Elave et</button>
                                 </td>
                             </tr>
 
@@ -206,8 +178,12 @@
     </div>
 </div>
 <!-- Modal -->
-<script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+
+
+@endsection
+
+@section('script')
 <script>
 var i = 0;
 $('#add').click(function() {
@@ -254,7 +230,64 @@ $(document).ready(function() {
             }
         })
     });
+});
+
+$(document).ready(function(){
+    showOrder();
+    
+
+function showOrder() {
+$.get("{{route('admin.ordershow')}}",function(data){
+    $('#orderList').empty().html(data);
+});
+}
+
+showOrder();
+$('#addOrder').on('submit',function(e){
+    e.preventDefault();
+    var form=$(this).serialize();
+    var url=$(this).attr('action');
+    $.ajax({
+        type:'POST',
+        url:url,
+        data:form,
+        datatype:'json',
+        success:function(){
+            $('#exampleModalSifaris').modal('hide');
+            $('#addOrder')[0].reset();
+            showOrder();
+        }
+    });
+});
+$(document).on('click','.edit',function(event){
+    event.preventDefault();
+    var id=$(this).data('id');
+    var masa=$(this).data('masa');
+    var kategory=$(this).data('kategory');
+    var mehsul=$(this).data('mehsul');
+    var qiymet=$(this).data('price');
+    $('#editOrderModal').modal('show');
+    $("#masa_id").val(masa);
+    $("#kategoriya").val(kategory);
+    $("#mehsuls").val(mehsul);
+    $("#qiymet").val(qiymet);
+    $("#orderid").val(id);
+    
+});
+
+$('#editOrder').on('submit',function(e){
+e.preventDefault();
+var form=$(this).serialize();
+var url=$(this).attr('action');
+$.post(url,form,function(data){
+    $('#editOrderModal').modal('hide');
+    showOrder();
 })
+});
+
+});
+
 </script>
+
 
 @endsection

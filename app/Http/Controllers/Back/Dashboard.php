@@ -16,14 +16,21 @@ class Dashboard extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
-        $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
+        
         $totalsifaris = SifarisModel::all();
 
-        return view('back.dashboard', compact('masa', 'kategoriya', 'sifaris', 'totalsifaris'));
+        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris'));
+    }
+
+    public function getOrder(){
+        $masa = PageModel::all();
+        $kategoriya = HeaderModel::all();
+        $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
+        return view('back.orderlist', compact( 'sifaris','masa','kategoriya'));
     }
 
     public function getmehsul(Request $request)

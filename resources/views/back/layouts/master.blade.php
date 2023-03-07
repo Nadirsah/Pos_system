@@ -1,4 +1,5 @@
 @include("back.layouts.header")
 @include("back.layouts.menu")
 @yield('content')
+@yield('script')
 @include("back.layouts.footer")

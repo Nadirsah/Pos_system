@@ -85,7 +85,12 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
     // print
     Route::get('/print/{id}', [Priint::class,'index']);
+
+    Route::post('/update',[Xronika::class, 'orderUpdate'])->name('orderupdate');
+
+    Route::get('/show',[Dashboard::class,'getOrder'])->name('ordershow');
 });
 
 Route::post('/getmehsul', [Dashboard::class, 'getmehsul']);
 Route::post('/getqiymet', [Dashboard::class, 'getqiymet']);
+

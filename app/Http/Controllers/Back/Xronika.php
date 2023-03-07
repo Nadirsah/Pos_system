@@ -48,11 +48,16 @@ class Xronika extends Controller
         // $data->price = $request->price;
         // $data->sifaris = $request->sifaris;
         // $data->save();
-        foreach ($request->inputs as $key => $value) {
-            SifarisModel::create($value);
-        }
+        if($request->ajax()){
+            foreach ($request->inputs as $key => $value) {
+                SifarisModel::create($value);
+            }
 
-        return  redirect()->route('admin.panel')->with(['success' => 'Məlumat əlavə olundu!']);
+            return response($value);
+        }
+        
+
+        // return  redirect()->route('admin.panel')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -87,20 +92,19 @@ class Xronika extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(XronikaPostRequest $request, $id)
-    {
-        $data = SifarisModel::findOrFail($id);
+    public function orderUpdate(XronikaPostRequest $request)
+    {   if($request->ajax()){
+        $data = SifarisModel::find($request->id);
         $data->masa_id = $request->masa_id;
         $data->kategoriya = $request->kategoriya;
         $data->mehsul = $request->mehsul;
         $data->price = $request->price;
         $data->sifaris = $request->sifaris;
-
         $data->update();
-if($request->sifaris==0){
-    return  redirect()->route('admin.panel')->with(['success' => 'Məlumat uğurla yeniləndi!']);
-}else
-        return  redirect()->route('admin.print.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
+        dd($data);
+return response($data);
+    }
+        
     }
 
     /**

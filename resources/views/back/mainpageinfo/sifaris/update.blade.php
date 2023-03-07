@@ -9,7 +9,7 @@
     @endforeach
 </div>
 @endif -->
-<form method="Post" action="{{route('admin.xronika.update',$data->id)}}" enctype="multipart/form-data" >
+<form method="Post" action="#" enctype="multipart/form-data" >
     @method("PUT")
     @csrf
 
