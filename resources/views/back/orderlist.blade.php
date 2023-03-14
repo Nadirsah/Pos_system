@@ -8,15 +8,16 @@
             <div>{!!$activ->sifaris==0 ? "<span class='text-danger'>Mesgul</span>" : "<span
                     class='text-success'>Bos</span>"!!}</div>
 
-            <div class="text-white small">
-                <a class="dropdown-item text-danger edit" style="font-size:16px" href=""
-                data-id='{{$activ->id}}'data-masa='{{$activ->getMasa->name}}'data-kategory='{{$activ->getKategory->name}}'
-                data-mehsul='{{$activ->getMehsul->name}}'
-                data-price='{{$activ->getMehsul->price}}'
-                    data-toggle="modal">
+            <div class="text-white small d-flex justify-content-between">
+                <a class="text-warning edit" style="font-size:16px" href="#edit{{$activ->id}}" 
+                    data-bs-toggle="modal">
                     <i class="fa-solid fa-chair"></i>
                 </a>
+                <a class="text-warning edit" style="font-size:16px" href="{{route('admin.order.edit',$activ->masa_id)}}" >
+                <i class="fa-solid fa-print"></i>
+                </a>
                 @include('back.modal')
+
             </div>
         </div>
     </div>

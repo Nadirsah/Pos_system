@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\XronikaPostRequest;
 use App\Models\HeaderModel;
+use App\Models\InfoModel;
+use App\Models\PageModel;
 use App\Models\SifarisModel;
+use Illuminate\Http\Request;
 
-class Xronika extends Controller
+class Order extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,7 @@ class Xronika extends Controller
      */
     public function index()
     {
-        $info = SifarisModel::all();
-
-        return view('back.mainpageinfo.sifaris.index', compact('info'));
+        //
     }
 
     /**
@@ -28,26 +28,16 @@ class Xronika extends Controller
      */
     public function create()
     {
-        $header = HeaderModel::all();
-
-        return view('back.mainpageinfo.sifaris.create', compact('header'));
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(XronikaPostRequest $request)
+    public function store(Request $request)
     {
-        // $data = new SifarisModel;
-        // $data->masa_id = $request->masa_id;
-        // $data->kategoriya = $request->kategoriya;
-        // $data->mehsul = $request->mehsul;
-        // $data->price = $request->price;
-        // $data->sifaris = $request->sifaris;
-        // $data->save();
         if ($request->ajax()) {
             foreach ($request->inputs as $key => $value) {
                 SifarisModel::create($value);
@@ -55,8 +45,6 @@ class Xronika extends Controller
 
             return response($value);
         }
-
-        // return  redirect()->route('admin.panel')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -76,36 +64,67 @@ class Xronika extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $header = HeaderModel::all();
-        $data = SifarisModel::findOrFail($id);
-
-        return view('back.mainpageinfo.sifaris.update', compact('data', 'header'));
+    public function edit($masa_id)
+    {   $data = SifarisModel::where('masa_id', $masa_id)
+        ->where('sifaris', 0)
+        ->get();
+        return view('back.print',compact('data'));
     }
+
+    
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function orderUpdate(XronikaPostRequest $request)
-    {
-        if ($request->ajax()) {
-            $data = SifarisModel::find($request->id);
+    public function update(Request $request, $id)
+    {   
+        
+            $data = SifarisModel::find($id);
             $data->masa_id = $request->masa_id;
             $data->kategoriya = $request->kategoriya;
             $data->mehsul = $request->mehsul;
             $data->price = $request->price;
             $data->sifaris = $request->sifaris;
             $data->update();
-            dd($data);
-
-            return response($data);
-        }
+           
+            return redirect()->route('admin.panel');
     }
+
+    public function print(Request $request)
+{
+    // $data = SifarisModel::where('masa_id', $request->id)->where('sifaris', 0)->first();
+    // if ($data !== null) {
+    //     $data->masa_id = $request->masa;
+    //     $data->kategoriya = $request->kategoriya;
+    //     $data->mehsul = $request->mehsul;
+    //     $data->price = $request->qiymet;
+    //     $data->sifaris = $request->sifaris;
+    //     $data->update();
+    //     return redirect()->route('admin.panel');
+    // } else {
+    //     return redirect()->back()->with('error', 'Kayıt bulunamadı!');
+    // }
+    SifarisModel::where('masa_id', $request->id)
+    ->where('sifaris', 0)
+    ->update([
+        'masa_id' => $request->masa,
+        'kategoriya' => $request->kategoriya,
+        'mehsul' => $request->mehsul,
+        'price' => $request->qiymet,
+        'sifaris' => $request->sifaris
+    ]);
+    return redirect()->route('admin.panel');
+}
+
+
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -116,13 +135,5 @@ class Xronika extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function delete($id)
-    {
-        $data = SifarisModel::findOrFail($id);
-        $data->delete();
-
-        return redirect()->route('admin.xronika.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }

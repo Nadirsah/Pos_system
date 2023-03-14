@@ -20,18 +20,33 @@ class Dashboard extends Controller
     {
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
-        
+        $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
         $totalsifaris = SifarisModel::all();
+        $mehsul=Infomodel::all();
 
         return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris'));
     }
 
-    public function getOrder(){
+    public function getOrder()
+    {
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        return view('back.orderlist', compact( 'sifaris','masa','kategoriya'));
+        $mehsul=Infomodel::all();
+        return view('back.orderlist', compact('sifaris', 'masa', 'kategoriya','mehsul'));
     }
+
+    public function getOrderCedvel()
+    {
+        $masa = PageModel::all();
+        $kategoriya = HeaderModel::all();
+        $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
+        $mehsul=Infomodel::all();
+        $totalsifaris = SifarisModel::all();
+        return view('back.ordercedvel', compact('totalsifaris'));
+    }
+
+
 
     public function getmehsul(Request $request)
     {
@@ -47,6 +62,28 @@ class Dashboard extends Controller
     public function getqiymet(Request $request)
     {
         $kid = $request->post('kid');
+        $mehsul = InfoModel::where('page_id', $kid)->get();
+        $html = '<option value="">Qiymet</option>';
+        foreach ($mehsul as $list) {
+            $html .= '<option value="'.$list->id.'">'.$list->price.'</option>';
+        }
+        echo $html;
+    }
+
+    public function geteditmehsul(Request $request)
+    {
+        $kid = $request->post('editkid');
+        $mehsul = InfoModel::where('page_id', $kid)->get();
+        $html = '<option value="">Mehsul seçin</option>';
+        foreach ($mehsul as $list) {
+            $html .= '<option value="'.$list->id.'">'.$list->name.'</option>';
+        }
+        echo $html;
+    }
+
+    public function geteditqiymet(Request $request)
+    {
+        $kid = $request->post('editkid');
         $mehsul = InfoModel::where('page_id', $kid)->get();
         $html = '<option value="">Qiymet</option>';
         foreach ($mehsul as $list) {
@@ -118,4 +155,11 @@ class Dashboard extends Controller
     {
         //
     }
+
+    public function fetchSubCategories(Request $request)
+{
+    $kategory_id = $request->get('kategory_id');
+    $subcategories = InfoModel::where('page_id', $kategory_id)->pluck('name','price', 'id');
+    return response()->json($subcategories);
+}
 }

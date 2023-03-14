@@ -25,6 +25,10 @@ class SifarisModel extends Model
     {
         return $this->hasOne('App\Models\InfoModel', 'id', 'mehsul');
     }
+    public function getQiymet()
+    {
+        return $this->hasOne('App\Models\InfoModel', 'id', 'price');
+    }
 
     public function getMasa()
     {

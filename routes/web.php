@@ -9,6 +9,7 @@ use App\Http\Controllers\Back\IndexHeader;
 use App\Http\Controllers\Back\InfoController;
 use App\Http\Controllers\Back\Linkler;
 use App\Http\Controllers\Back\Naxcivan;
+use App\Http\Controllers\Back\Order;
 use App\Http\Controllers\Back\PageController;
 use App\Http\Controllers\Back\Priint;
 use App\Http\Controllers\Back\Profile;
@@ -84,13 +85,21 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::resource('/indexheader', IndexHeader::class);
     Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
     // print
-    Route::get('/print/{id}', [Priint::class,'index']);
+    Route::get('/print/{id}', [Priint::class, 'index']);
 
-    Route::post('/update',[Xronika::class, 'orderUpdate'])->name('orderupdate');
+    
+    
 
-    Route::get('/show',[Dashboard::class,'getOrder'])->name('ordershow');
+    Route::get('/show', [Dashboard::class, 'getOrder'])->name('ordershow');
+    Route::get('/showcedvel', [Dashboard::class, 'getOrderCedvel'])->name('ordershowcedvel');
+
+    Route::resource('/order', Order::class);
+    Route::post('printorder',[Order::class, 'print'])->name('printorder');
+   
 });
 
 Route::post('/getmehsul', [Dashboard::class, 'getmehsul']);
 Route::post('/getqiymet', [Dashboard::class, 'getqiymet']);
 
+Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul']);
+Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet']);
