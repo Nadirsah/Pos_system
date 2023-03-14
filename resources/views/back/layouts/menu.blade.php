@@ -80,7 +80,7 @@
                         <a class="collapse-item" href="{{route('admin.header.index')}}">Basliqlar</a>
                         <a class="collapse-item" href="{{route('admin.indexheader.index')}}">Ayarlar</a>
                         <a class="collapse-item" href="{{route('admin.esasinfo.index')}}">Əsas məlumat</a>
-                        <a class="collapse-item" href="{{route('admin.fotolar.index')}}">Fotolar</a>
+                        <!-- <a class="collapse-item" href="{{route('admin.fotolar.index')}}">Fotolar</a> -->
                         <a class="collapse-item" href="{{route('admin.linkler.index')}}">Linklər</a>
                         <a class="collapse-item" href="{{route('admin.naxcivan.index')}}">Naxcivan MR</a>
                         <a class="collapse-item" href="{{route('admin.qarabag.index')}}">Qarabag</a>
@@ -98,6 +98,15 @@
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Kateqoriya</span>
+                </a>
+                
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('admin.fotolar.index')}}"  data-target="#collapseUtilities2"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Kemiyyet</span>
                 </a>
                 
             </li>

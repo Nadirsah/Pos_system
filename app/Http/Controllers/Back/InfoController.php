@@ -46,6 +46,7 @@ class InfoController extends Controller
         $data->page_id = $request->page_id;
         $data->name = $request->name;
         $data->price = $request->price;
+        
         $data->save();
         if ($data) {
             return  redirect()->route('admin.info.index')->with(['success' => 'Səhifə əlavə olundu!']);

@@ -15,26 +15,21 @@
                         <th>No</th>
                         <th>Kategoriya</th>
                         <th>Mehsul</th>
+                       
+                        
                         <th>Qiymet</th>
                         <th>Action</th>
 
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Kategoriya</th>
-                        <th>Mehsul</th>
-                        <th>Qiymet</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
+                
                 <tbody>
                     @foreach($info as $infos)
                     <tr>
                         <td>{{$infos->id}}</td>
                         <td>{{$infos->getKategory->name}}</td>
                         <td>{{$infos->name}}</td>
+                       
                         <td>{{$infos->price}}</td>
 
                         <td><a href="{{route('admin.info.edit',$infos->id)}}"><i

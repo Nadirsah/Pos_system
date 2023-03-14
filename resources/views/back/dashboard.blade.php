@@ -116,6 +116,8 @@
                                 <th scope="col">Masa</th>
                                 <th scope="col">Kategoriya</th>
                                 <th scope="col">Mehsul</th>
+                                <th scope="col">Vahid</th>
+                                <th scope="col">Miqdar</th>
                                 <th scope="col">Qiymet</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -142,6 +144,20 @@
                                         <select name="inputs[0][mehsul]" class="form-select" id="mehsul">
                                             <option value="">Mehsul seçin</option>
                                         </select>
+                                    </div>
+                                </td>
+                                <td> <select name="inputs[0][hecm]" class="form-select" id="hecm">
+                                        <option value="">Vahid secin</option>
+                                        @foreach ($kemiyyet as $vahid)
+                                        <option value="{{$vahid->id}}">{{$vahid->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="mb-3">
+
+                                        <input type="number" name="inputs[0][miqdar]" class="form-select" id="miqdar" placeholder="miqdar">
+                                            
                                     </div>
                                 </td>
                                 <td>

@@ -87,6 +87,8 @@ class Order extends Controller
             $data->kategoriya = $request->kategoriya;
             $data->mehsul = $request->mehsul;
             $data->price = $request->price;
+            $data->hecm = $request->hecm;
+            $data->miqdar = $request->miqdar;
             $data->sifaris = $request->sifaris;
             $data->update();
            

@@ -7,6 +7,7 @@ use App\Models\HeaderModel;
 use App\Models\InfoModel;
 use App\Models\PageModel;
 use App\Models\SifarisModel;
+use App\Models\FotoModel;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
@@ -22,9 +23,10 @@ class Dashboard extends Controller
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
         $totalsifaris = SifarisModel::all();
+        $kemiyyet=FotoModel::all();
         $mehsul=Infomodel::all();
 
-        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris'));
+        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris','kemiyyet'));
     }
 
     public function getOrder()
@@ -33,7 +35,8 @@ class Dashboard extends Controller
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
         $mehsul=Infomodel::all();
-        return view('back.orderlist', compact('sifaris', 'masa', 'kategoriya','mehsul'));
+        $kemiyyet=FotoModel::all();
+        return view('back.orderlist', compact('sifaris', 'masa', 'kategoriya','mehsul','kemiyyet'));
     }
 
     public function getOrderCedvel()

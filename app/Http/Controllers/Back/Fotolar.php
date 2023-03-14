@@ -19,7 +19,7 @@ class Fotolar extends Controller
     {
         $info = FotoModel::all();
 
-        return view('back.mainpageinfo.fotolar.index', compact('info'));
+        return view('back.mainpageinfo.kemiyyet.index', compact('info'));
     }
 
     /**
@@ -31,7 +31,7 @@ class Fotolar extends Controller
     {
         $header = HeaderModel::all();
 
-        return view('back.mainpageinfo.fotolar.create', compact('header'));
+        return view('back.mainpageinfo.kemiyyet.create', compact('header'));
     }
 
     /**
@@ -42,17 +42,12 @@ class Fotolar extends Controller
      */
     public function store(FotoPostRequest $request)
     {
-        $request->validate(['image' => 'required|image|mimes:jpeg,png,jpg|max:200']);
+        
         $data = new FotoModel;
-        $data->header_id = $request->info;
+       
         $data->name = $request->name;
 
-        if ($request->hasFile('image')) {
-            $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
-
-            $request->image->move(public_path('uploads'), $imagename);
-            $data->img = 'uploads/'.$imagename;
-        }
+        
         $data->save();
 
         return  redirect()->route('admin.fotolar.index')->with(['success' => 'Məlumat əlavə olundu!']);
@@ -80,7 +75,7 @@ class Fotolar extends Controller
         $header = HeaderModel::all();
         $data = FotoModel::findOrFail($id);
 
-        return view('back.mainpageinfo.fotolar.update', compact('data', 'header'));
+        return view('back.mainpageinfo.kemiyyet.update', compact('data', 'header'));
     }
 
     /**
@@ -92,18 +87,13 @@ class Fotolar extends Controller
      */
     public function update(FotoPostRequest $request, $id)
     {
-        $request->validate(['image' => 'image|mimes:jpeg,png,jpg|max:200']);
+       
         $data = FotoModel::findOrFail($id);
 
-        $data->header_id = $request->info;
+        
         $data->name = $request->name;
 
-        if ($request->hasFile('image')) {
-            $imagename = ($request->name).'.'.$request->image->getClientOriginalExtension();
-
-            $request->image->move(public_path('uploads'), $imagename);
-            $data->img = 'uploads/'.$imagename;
-        }
+       
         $data->update();
 
         return  redirect()->route('admin.fotolar.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);

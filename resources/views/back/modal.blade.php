@@ -62,6 +62,28 @@
 
                         <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label text-info">Mehsul</label>
+                        <select name="hecm" class="form-select" id="hecm">
+                            <option value="">Mehsul hecmi</option>
+                            @foreach ($kemiyyet as $vahid)
+                            @if($activ->hecm == $vahid->id)
+                            <option value="{{$vahid->id}}" selected>{{$vahid->name}}</option>
+                            @else
+                            <option value="{{$vahid->id}}">{{$vahid->name}}</option>
+                            @endif
+                            @endforeach
+                        </select>
+
+                        <span class="text-danger">@error('hecm'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="content" class="form-label text-info">Mehsul</label>
+                        <input type="number" value='{{$activ->miqdar}}' name="miqdar">
+
+                        <span class="text-danger">@error('miqdar'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+                    </div>
 
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Qiymet</label>

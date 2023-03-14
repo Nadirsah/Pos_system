@@ -13,30 +13,19 @@
                 <thead>
                     <tr>
 
-                        <th>Section</th>
-                        <th>Məlumat </th>
-                        <th>Şəkil</th>
-
+                        <th>No</th>
+                        <th>Name </th>
                         <th>Action</th>
 
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                    <th>Section</th>
-                        <th>Məlumat </th>
-                        <th>Şəkil</th>
-
-                        <th>Action</th>
-
-                    </tr>
-                </tfoot>
+                
                 <tbody>
                     @foreach($info as $infos)
                     <tr>
-                        <td>{{$infos->getHeader->name}}</td>
+                    <td>{{$infos->id}}</td>
                         <td>{{$infos->name}}</td>
-                        <td> <img src="{{asset($infos->img)}}" width="50" alt=""></td>
+                        
 
                         <td>
 

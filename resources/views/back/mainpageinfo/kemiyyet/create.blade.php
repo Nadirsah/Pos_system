@@ -12,32 +12,17 @@
 <form method="Post" action="{{route('admin.fotolar.store')}}"  enctype="multipart/form-data">
     @csrf
 
-    <div class="mb-3">
-        <label for="#" class="form-label">Section</label>
-        <select name="info" class="form-select" id="">
-            <option value="">Section seçin</option>
-            @foreach ($header as $headers)
-            <option value="{{$headers->id}}">{{$headers->name}}</option>
-            @endforeach
-
-        </select>
-        <span class="text-danger">@error('info'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+    
 
 
     <div class="mb-3">
-        <label for="name" class="form-label">Məlumat başlığı</label>
+        <label for="name" class="form-label">Name</label>
         <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
-    <div class="mb-3">
-        <label for="image" class="form-label">Şəkil</label>
-        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
-            autofocus>
-            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-    </div>
+   
 
     
     
