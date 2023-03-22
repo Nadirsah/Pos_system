@@ -1,4 +1,4 @@
-<body id="page-top">
+<body id="page-top" >
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -102,14 +102,14 @@
                 
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="{{route('admin.fotolar.index')}}"  data-target="#collapseUtilities2"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Kemiyyet</span>
                 </a>
                 
-            </li>
+            </li> -->
 
 
         </ul>

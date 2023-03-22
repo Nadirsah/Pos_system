@@ -22,7 +22,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 0px !important;
-    
+
 }
 
 table thead th {
@@ -157,17 +157,15 @@ td {
     </tbody>
 </table> -->
 
-<table >
+<table>
     <thead>
-        
-            
-                <h1 class="text-center">Zeyd Halal Sufrə</h1>
-           
-            
-       
+        <h1 class="text-center">Zeyd Halal Sufrə</h1>
+
+
+
         <tr>
             <th class="no-border text-start heading" width="50%" colspan="2">
-                {{$data[0]->getMasa->name}}
+                {{$data[0]->getMasa->name}} 
             </th>
             <th width="50%" colspan="2" class="text-end company-data">
 
@@ -177,24 +175,29 @@ td {
             </th>
         </tr>
         <tr class="text-dark">
-            <th>Kategoriya</th>
+
             <th>Mehsul</th>
+            <th>Miqdar</th>
             <th>Qiymet</th>
+            <th>Cem</th>
+
         </tr>
     </thead>
     <tbody>
         @foreach($data as $info)
         <tr>
-            <td width="33%" style="font-size:16px" >{{$info->getKategory->name}}</td>
-            <td width="33%" style="font-size:16px">
+
+            <td width="25%" style="font-size:16px">
                 {{$info->getMehsul->name}}
             </td>
-            <td width="33%" style="font-size:16px" id="kategory">{{$info->getQiymet->price}}</td>
+            <td width="25%" style="font-size:16px">{{$info->miqdar}}x</td>
+            <td width="25%" style="font-size:16px" id="">{{($info->getQiymet->price)}}</td>
+            <td width="25%" style="font-size:16px" id="kategory">{{($info->getQiymet->price)*($info->miqdar)}}</td>
 
         </tr>
         @endforeach
         <tr>
-            <td colspan="4" class="total-heading" >Cəm : <span id="total"></span>-AZN</td>
+            <td colspan="4" class="total-heading">Cəm : <span id="total"></span>-AZN</td>
 
         </tr>
     </tbody>
@@ -236,17 +239,30 @@ td {
 
 
 <div style="margin-top:250px">
-<form method="Post" action="{{route('admin.printorder')}}" id="editOrder">
-    @csrf
-    <div class="mb-3">
-        <input type="hidden" value="{{$data[0]->masa_id}}" name='id'>
-        <input type="hidden" name="masa" value="{{$data[0]->masa_id}}">
-        <input type="hidden" name="kategoriya" value="{{$data[0]->kategoriya}}">
-        <input type="hidden" name="mehsul" value="{{$data[0]->mehsul}}">
-        <input type="hidden" name="qiymet" value="{{$data[0]->price}}">
-        <input type="checkbox" name="sifaris" value="1" id="activs" checked>
-    </div><button type="submit" class="" onclick="window.print()">Print</button>
-</form>
+    <form method="Post" action="{{route('admin.printorder')}}" id="editOrder">
+        @csrf
+        <div class="mb-3">
+            <input type="hidden" value="{{$data[0]->masa_id}}" name='id'>
+            <input type="hidden" name="masa" value="{{$data[0]->masa_id}}">
+            <input type="hidden" name="kategoriya" value="{{$data[0]->kategoriya}}">
+            <input type="hidden" name="mehsul" value="{{$data[0]->mehsul}}">
+            <input type="hidden" name="qiymet" value="{{$data[0]->price}}">
+            <input type="hidden" name="miqdar" value="{{$data[0]->miqdar}}">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="odenis" checked id="odenis" value="nagd">
+                <label class="form-check-label" for="odenis">
+                    Nagd
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="odenis" id="sifaris" value="bank">
+                <label class="form-check-label" for="sifaris">
+                    Kart
+                </label>
+            </div>
+            <input type="checkbox" name="sifaris" value="1" id="activs" checked>
+        </div><button type="submit" class="" onclick="window.print()">Print</button>
+    </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>

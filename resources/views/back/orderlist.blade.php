@@ -9,14 +9,11 @@
                     class='text-success'>Bos</span>"!!}</div>
 
             <div class="text-white small d-flex justify-content-between">
-                <a class="text-warning edit" style="font-size:16px" href="#edit{{$activ->id}}" 
-                    data-bs-toggle="modal">
-                    <i class="fa-solid fa-chair"></i>
-                </a>
+               
                 <a class="text-warning edit" style="font-size:16px" href="{{route('admin.order.edit',$activ->masa_id)}}" >
                 <i class="fa-solid fa-print"></i>
                 </a>
-                @include('back.modal')
+               
 
             </div>
         </div>

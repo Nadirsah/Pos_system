@@ -22,11 +22,11 @@ class Dashboard extends Controller
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $totalsifaris = SifarisModel::all();
+        $totalsifaris = SifarisModel::where('sifaris', '=', 0)->get();
         $kemiyyet=FotoModel::all();
         $mehsul=Infomodel::all();
-
-        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris','kemiyyet'));
+        
+        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris','kemiyyet','mehsul' ));
     }
 
     public function getOrder()
@@ -45,8 +45,19 @@ class Dashboard extends Controller
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
         $mehsul=Infomodel::all();
-        $totalsifaris = SifarisModel::all();
-        return view('back.ordercedvel', compact('totalsifaris'));
+        $kemiyyet=FotoModel::all();
+        $totalsifaris = SifarisModel::where('sifaris', '=', 0)->get();
+        return view('back.ordercedvel', compact('totalsifaris','masa', 'kategoriya','mehsul','kemiyyet','sifaris'));
+    }
+
+    public function getOrderPrint()
+    {
+        $masa = PageModel::all();
+        $kategoriya = HeaderModel::all();
+        $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
+        $mehsul=Infomodel::all();
+        $totalsifaris = SifarisModel::latest()->first();
+        return view('back.orderprint', compact('totalsifaris'));
     }
 
 
@@ -64,8 +75,8 @@ class Dashboard extends Controller
 
     public function getqiymet(Request $request)
     {
-        $kid = $request->post('kid');
-        $mehsul = InfoModel::where('page_id', $kid)->get();
+        $mid = $request->post('mid');
+        $mehsul = InfoModel::where('id', $mid)->get();
         $html = '<option value="">Qiymet</option>';
         foreach ($mehsul as $list) {
             $html .= '<option value="'.$list->id.'">'.$list->price.'</option>';

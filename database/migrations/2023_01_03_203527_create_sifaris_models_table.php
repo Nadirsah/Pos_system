@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('masa_id');
             $table->string('kategoriya');
-            $table->string('hecm');
             $table->string('miqdar');
             $table->string('price');
             $table->string('mehsul');
-            $table->string('sifaris')->default(0)->comment('0:passiv 1:aktiv');
+            $table->string('sifaris');
+            $table->string('odenis');
             $table->timestamps();
         });
     }

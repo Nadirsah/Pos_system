@@ -92,6 +92,7 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
 
     Route::get('/show', [Dashboard::class, 'getOrder'])->name('ordershow');
     Route::get('/showcedvel', [Dashboard::class, 'getOrderCedvel'])->name('ordershowcedvel');
+    Route::get('/showorderprint', [Dashboard::class, 'getOrderPrint'])->name('ordershowprint');
 
     Route::resource('/order', Order::class);
     Route::post('printorder',[Order::class, 'print'])->name('printorder');

@@ -2,6 +2,7 @@
 @section("title","Panel")
 @section('content')
 
+
 <div class="col-lg-6 mb-4">
     <div class="row">
 
@@ -70,22 +71,18 @@
                             <tr>
 
                                 <th>Masa</th>
-                                <th>Başliq</th>
-                                <th>Məzmun</th>
+                                <th>Mehsul</th>
                                 <th>Qiymet</th>
-
+                                <th>miqdar</th>
+                                <th>Sifaris tarixi</th>
+                                <th>Action</th>
 
 
                             </tr>
                         </thead>
 
-                        <tbody id="#">
-                            @foreach($totalsifaris as $sifaris)
-                            <tr><th>{{$sifaris->getMasa->name}}</th>
-                                <th>{{$sifaris->getKategory->name}}</th>
-                                <th>{{$sifaris->getMehsul->name}}</th>
-                                <th>{{$sifaris->getMehsul->price}}</th></tr>
-                                @endforeach
+                        <tbody id="ordercedvel">
+                        
                         </tbody>
                     </table>
                 </div>
@@ -113,32 +110,32 @@
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
-                                <th scope="col">Masa</th>
-                                <th scope="col">Kategoriya</th>
-                                <th scope="col">Mehsul</th>
-                                <th scope="col">Vahid</th>
-                                <th scope="col">Miqdar</th>
-                                <th scope="col">Qiymet</th>
-                                <th scope="col">Action</th>
+                                <th width="15%" scope="col">Masa</th>
+                                <th width="15%" scope="col">Kategoriya</th>
+                                <th width="15%" scope="col">Mehsul</th>
+                                <th width="15%" scope="col">Miqdar</th>
+                                <th width="15%" scope="col">Qiymet</th>
+                                <th width="15%" scope="col">Odenis novu</th>
+                                <th width="15%" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td> <select name="inputs[0][masa_id]" class="form-select" id="masa">
+                                <td width="15%"> <select name="inputs[0][masa_id]" class="form-select" id="masa">
                                         <option value="">Masa seçin</option>
                                         @foreach ($masa as $masas)
                                         <option value="{{$masas->id}}">{{$masas->name}}</option>
                                         @endforeach
                                     </select>
                                 </td>
-                                <td><select name="inputs[0][kategoriya]" class="form-select" id="kategory">
+                                <td width="15%"><select name="inputs[0][kategoriya]" class="form-select" id="kategory">
                                         <option value="">Kategoriya seçin</option>
                                         @foreach ($kategoriya as $kategories)
                                         <option value="{{$kategories->id}}">{{$kategories->name}}</option>
                                         @endforeach
                                     </select>
                                 </td>
-                                <td>
+                                <td width="15%">
                                     <div class="mb-3">
 
                                         <select name="inputs[0][mehsul]" class="form-select" id="mehsul">
@@ -146,21 +143,16 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td> <select name="inputs[0][hecm]" class="form-select" id="hecm">
-                                        <option value="">Vahid secin</option>
-                                        @foreach ($kemiyyet as $vahid)
-                                        <option value="{{$vahid->id}}">{{$vahid->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
+
+                                <td width="15%">
                                     <div class="mb-3">
 
-                                        <input type="number" name="inputs[0][miqdar]" class="form-select" id="miqdar" placeholder="miqdar">
-                                            
+                                        <input type="number" name="inputs[0][miqdar]" class="form-select" id="miqdar"
+                                            placeholder="miqdar">
+
                                     </div>
                                 </td>
-                                <td>
+                                <td width="15%">
                                     <div class="mb-3">
 
                                         <select name="inputs[0][price]" class="form-select" id="price">
@@ -168,12 +160,34 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="mb-3">
-                                        <input type="checkbox" checked name="inputs[0][sifaris]" id="" value="0">
+                                <td width="15%">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="inputs[0][odenis]" checked
+                                            id="odenis" value="nagd">
+                                        <label class="form-check-label" for="odenis">
+                                            Nagd
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="inputs[0][odenis]"
+                                            id="sifaris" value="kart">
+                                        <label class="form-check-label" for="sifaris">
+                                            Kart
+                                        </label>
                                     </div>
                                 </td>
-                                <td><button type="button" name="add" id="add" class="btn btn-success">Elave et</button>
+                                <td width="15%">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" checked
+                                            name="inputs[0][sifaris]" id="odenis" value="0">
+                                        <label class="form-check-label" for="odenis">
+                                            Odenis
+                                        </label>
+                                    </div>
+
+                                </td>
+                                <td width="15%"><button type="button" name="add" id="add" class="btn btn-success">Elave
+                                        et</button>
                                 </td>
                             </tr>
 
@@ -192,69 +206,11 @@
 </div>
 <!-- Modal -->
 
-<!-- edit Modal -->
-<!-- <div class="modal fade" id="#" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-danger" id="myModalLabel">Sifaris</h5>
-                <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="#" id="" enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" name="id" id="orderid" class="form-control" aria-describedby="emailHelp">
+<!-- cap Modal -->
 
-                    <div class="mb-3">
-                        <label for="name" class="form-label text-info">Masa</label>
-
-                        <input type="text" name="masa_id" id="masa_id">
-
-
-                        </select>
-                        <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="content" class="form-label text-info">Kategoriya</label>
-                        <input type="text" name="kategoriya" id="kategoriya">
-                        <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="content" class="form-label text-info">Mehsul</label>
-                        <input type="text" name="mehsul" id="mehsuls">
-
-                        <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="content" class="form-label text-info">Qiymet</label>
-                        <input type="text" name="price" id="qiymet">
-
-                        <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit" class="form-label text-info">Duzelis et</label>
-                        <input type="checkbox" name="sifaris" id="" value="1" id="edit">
-
-                    </div>
-                    <br><br>
-
-                    <button type="submit" class="btn btn-primary btn-block">Göndər</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Bagla</button>
-
-            </div>
-        </div>
-    </div>
-</div> -->
 <!--  -->
 
-
+@include('back.orderprintmodal')
 @endsection
 
 @section('script')
@@ -281,14 +237,14 @@ $(document).ready(function() {
             });
         });
 
-        $(document).on('change', '#table select[name^="inputs"][name$="[kategoriya]"]', function() {
+        $(document).on('change', '#table select[name^="inputs"][name$="[mehsul]"]', function() {
             let select = $(this);
-            let kid = select.val();
+            let mid = select.val();
             let tr = select.closest('tr');
             $.ajax({
                 url: '/getqiymet',
                 type: 'post',
-                data: 'kid=' + kid + '&_token={{csrf_token()}}',
+                data: 'mid=' + mid + '&_token={{csrf_token()}}',
                 success: function(result) {
                     tr.find('select[name$="[price]"]').html(result);
                 }
@@ -327,17 +283,27 @@ $(document).ready(function() {
 
     showOrder();
     showOrderCedvel();
+    showOrderPrint();
 
 
     function showOrder() {
         $.get("{{route('admin.ordershow')}}", function(data) {
             $('#orderList').empty().html(data);
+
         });
     }
 
     function showOrderCedvel() {
         $.get("{{route('admin.ordershowcedvel')}}", function(data) {
             $('#ordercedvel').empty().html(data);
+
+        });
+    }
+
+    function showOrderPrint() {
+        $.get("{{route('admin.ordershowprint')}}", function(data) {
+            $('#ordercap').empty().html(data);
+
         });
     }
 
@@ -354,8 +320,12 @@ $(document).ready(function() {
             success: function() {
                 $('#exampleModalSifaris').modal('hide');
                 $('#addOrder')[0].reset();
+                $('#orderprint').modal('show');
                 showOrder();
                 showOrderCedvel();
+                showOrderPrint();
+
+
             }
         });
     });
@@ -408,7 +378,7 @@ $(document).ready(function() {
     //         showOrder();
     //     })
     // });
-    
+
 
 
 });
@@ -424,11 +394,17 @@ $('#add').click(function() {
         i +
         '][kategoriya]" class="form-select" id="kategory"><option value="">Kategoriya seçin</option>@foreach ($kategoriya as $kategories)<option value="{{$kategories->id}}">{{$kategories->name}}</option>@endforeach</select></td><td><div class="mb-3"><select name="inputs[' +
         i +
-        '][mehsul]" class="form-select" id="mehsul"><option value="">Mehsul seçin</option></select></div></td><td><div class="mb-3"><select name="inputs[' +
+        '][mehsul]" class="form-select" id="mehsul"><option value="">Mehsul seçin</option></select></div></td><td><div class="mb-3"><input type="number" name="inputs[' +
         i +
-        '][price]" class="form-select" id="price"><option value="">Qiymet</option></select></div></td><td><div class="mb-3"><input type="checkbox" checked name="inputs[' +
+        '][miqdar]" class="form-select" id="miqdar" placeholder="miqdar"></div></td><td><div class="mb-3"><select name="inputs[' +
         i +
-        '][sifaris]" id="" value="0"></div></td> <td><button type="button" name="add" id="remove" class="btn btn-danger">Sil</button></td>'
+        '][price]" class="form-select" id="price"><option value="">Qiymet</option></select></div></td><td width="15%"><div class="form-check"><input class="form-check-input" type="radio" name="inputs[' +
+        i +
+        '][odenis]" checkedid="odenis" value="nagd"><label class="form-check-label" for="odenis">Nagd</label></div><div class="form-check"><input class="form-check-input" type="radio" name="inputs[' +
+        i +
+        '][odenis]"id="sifaris" value="kart"><label class="form-check-label" for="sifaris">Kart</label></div></td><td><div class="form-check"><input class="form-check-input" type="checkbox" checked name="inputs[' +
+        i +
+        '][sifaris]" id="odenis"value="0"><label class="form-check-label" for="odenis">Odenis</label></div></td> <td><button type="button" name="add" id="remove" class="btn btn-danger">Sil</button></td>'
     );
 });
 

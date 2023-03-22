@@ -1,4 +1,4 @@
-<div class="modal fade editmodal" id="edit{{$activ->id}}" tabindex="-1" role="dialog"
+<div class="modal fade editmodal" id="edit{{$sifariss->id}}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -9,11 +9,11 @@
                 </button>
             </div>
             <div class="modal-body" id='edittable'>
-                <form method="Post" action="{{route('admin.order.update',$activ->id)}}" id="editOrder"
+                <form method="Post" action="{{route('admin.order.update',$sifariss->id)}}" id="editOrder"
                     enctype="multipart/form-data">
                     @method("PUT")
                     @csrf
-                    <input type="hidden" name="id" value="{{$activ->id}}" id="id" class="form-control"
+                    <input type="hidden" name="id" value="{{$sifariss->id}}" id="id" class="form-control"
                         aria-describedby="emailHelp">
 
                     <div class="mb-3">
@@ -22,7 +22,7 @@
                         <select name="masa_id" class="form-select" id="masas">
                             <option value="">Select</option>
                             @foreach ($masa as $masas)
-                            @if($activ->masa_id == $masas->id)
+                            @if($sifariss->masa_id == $masas->id)
                             <option value="{{$masas->id}}" selected>{{$masas->name}}</option>
                             @else
                             <option value="{{$masas->id}}">{{$masas->name}}</option>
@@ -37,7 +37,7 @@
                         <select name="kategoriya" class="form-select" id="kategorys" onchange="updateSubcategory()">
                             <option value="">Kategoriya seçin</option>
                             @foreach ($kategoriya as $kategories)
-                            @if($activ->kategoriya == $kategories->id)
+                            @if($sifariss->kategoriya == $kategories->id)
                             <option value="{{$kategories->id}}" selected>{{$kategories->name}}</option>
                             @else
                             <option value="{{$kategories->id}}">{{$kategories->name}}</option>
@@ -52,7 +52,7 @@
                         <select name="mehsul" class="form-select" id="mehsuls">
                             <option value="">Mehsul seçin</option>
                             @foreach ($mehsul as $mehsuls)
-                            @if($activ->mehsul == $mehsuls->id)
+                            @if($sifariss->mehsul == $mehsuls->id)
                             <option value="{{$mehsuls->id}}" selected>{{$mehsuls->name}}</option>
                             @else
                             <option value="{{$mehsuls->id}}">{{$mehsuls->name}}</option>
@@ -62,25 +62,11 @@
 
                         <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
-                    <div class="mb-3">
-                        <label for="content" class="form-label text-info">Mehsul</label>
-                        <select name="hecm" class="form-select" id="hecm">
-                            <option value="">Mehsul hecmi</option>
-                            @foreach ($kemiyyet as $vahid)
-                            @if($activ->hecm == $vahid->id)
-                            <option value="{{$vahid->id}}" selected>{{$vahid->name}}</option>
-                            @else
-                            <option value="{{$vahid->id}}">{{$vahid->name}}</option>
-                            @endif
-                            @endforeach
-                        </select>
-
-                        <span class="text-danger">@error('hecm'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
-                    </div>
+                    
 
                     <div class="mb-3">
-                        <label for="content" class="form-label text-info">Mehsul</label>
-                        <input type="number" value='{{$activ->miqdar}}' name="miqdar">
+                        <label for="content" class="form-label text-info">Miqdar</label>
+                        <input type="number" value='{{$sifariss->miqdar}}' name="miqdar">
 
                         <span class="text-danger">@error('miqdar'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
@@ -90,7 +76,7 @@
                         <select name="price" class="form-select" id="prices">
                             <option value="">Qiymet</option>
                             @foreach ($mehsul as $mehsuls)
-                            @if($activ->mehsul == $mehsuls->id)
+                            @if($sifariss->mehsul == $mehsuls->id)
                             <option value="{{$mehsuls->id}}" selected>{{$mehsuls->price}}</option>
                             @else
                             <option value="{{$mehsuls->id}}">{{$mehsuls->price}}</option>

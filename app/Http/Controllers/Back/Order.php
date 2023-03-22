@@ -41,9 +41,10 @@ class Order extends Controller
         if ($request->ajax()) {
             foreach ($request->inputs as $key => $value) {
                 SifarisModel::create($value);
-            }
-
-            return response($value);
+             }
+                return response($value);
+             
+              
         }
     }
 
@@ -68,7 +69,10 @@ class Order extends Controller
     {   $data = SifarisModel::where('masa_id', $masa_id)
         ->where('sifaris', 0)
         ->get();
-        return view('back.print',compact('data'));
+        $odenis=SifarisModel::where('masa_id', $masa_id)
+        ->where('sifaris', 0)
+        ->first();
+        return view('back.print',compact('data','odenis'));
     }
 
     
@@ -87,7 +91,7 @@ class Order extends Controller
             $data->kategoriya = $request->kategoriya;
             $data->mehsul = $request->mehsul;
             $data->price = $request->price;
-            $data->hecm = $request->hecm;
+           
             $data->miqdar = $request->miqdar;
             $data->sifaris = $request->sifaris;
             $data->update();
@@ -116,7 +120,9 @@ class Order extends Controller
         'kategoriya' => $request->kategoriya,
         'mehsul' => $request->mehsul,
         'price' => $request->qiymet,
-        'sifaris' => $request->sifaris
+        'miqdar' => $request->miqdar,
+        'sifaris' => $request->sifaris,
+        'odenis' => $request->odenis
     ]);
     return redirect()->route('admin.panel');
 }

@@ -14,9 +14,11 @@ class SifarisModel extends Model
         'kategoriya',
         'mehsul',
         'price',
-        'hecm',
         'miqdar',
+        'sifaris',
+        'odenis',
     ];
+    
 
     public function getKategory()
     {
@@ -37,8 +39,5 @@ class SifarisModel extends Model
         return $this->hasOne('App\Models\PageModel', 'id', 'masa_id');
     }
 
-    public function getKemiyyet()
-    {
-        return $this->hasOne('App\Models\FotoModel', 'id', 'hecm');
-    }
+    
 }
