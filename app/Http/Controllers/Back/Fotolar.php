@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FotoPostRequest;
 use App\Models\FotoModel;
 use App\Models\HeaderModel;
+use App\Models\SifarisModel;
 use Illuminate\Support\Str;
 
 class Fotolar extends Controller
@@ -17,9 +18,9 @@ class Fotolar extends Controller
      */
     public function index()
     {
-        $info = FotoModel::all();
+        $order = SifarisModel::where('sifaris', '=', 1)->paginate(10);
 
-        return view('back.mainpageinfo.kemiyyet.index', compact('info'));
+        return view('back.mainpageinfo.hesabat.index', compact('order'));
     }
 
     /**
@@ -31,7 +32,7 @@ class Fotolar extends Controller
     {
         $header = HeaderModel::all();
 
-        return view('back.mainpageinfo.kemiyyet.create', compact('header'));
+        return view('back.mainpageinfo.hesabat.create', compact('header'));
     }
 
     /**
@@ -75,7 +76,7 @@ class Fotolar extends Controller
         $header = HeaderModel::all();
         $data = FotoModel::findOrFail($id);
 
-        return view('back.mainpageinfo.kemiyyet.update', compact('data', 'header'));
+        return view('back.mainpageinfo.hesabat.update', compact('data', 'header'));
     }
 
     /**

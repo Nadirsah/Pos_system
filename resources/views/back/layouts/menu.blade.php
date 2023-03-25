@@ -99,17 +99,23 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Kateqoriya</span>
                 </a>
-                
             </li>
 
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('admin.fotolar.index')}}"  data-target="#collapseUtilities2"
+           
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Kemiyyet</span>
+                    <span>Maliyye</span>
                 </a>
-                
-            </li> -->
+                <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Esas sehife</h6>
+                        <a class="collapse-item" href="{{route('admin.fotolar.index')}}" >Hesabat</a>
+                    </div>
+                </div>
+            </li>
 
 
         </ul>

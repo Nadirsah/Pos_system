@@ -72,8 +72,9 @@
 
                                 <th>Masa</th>
                                 <th>Mehsul</th>
-                                <th>Qiymet</th>
                                 <th>miqdar</th>
+                                <th>Qiymet</th>
+                                <th>Yekun mebleg</th>
                                 <th>Sifaris tarixi</th>
                                 <th>Action</th>
 
@@ -82,7 +83,7 @@
                         </thead>
 
                         <tbody id="ordercedvel">
-                        
+
                         </tbody>
                     </table>
                 </div>
@@ -251,34 +252,38 @@ $(document).ready(function() {
             })
         });
 
-        $(document).on('change', '#edittable select[name^="inputs"][name$="[kategoriya]"]', function() {
+
+        $(document).on('change', '#editOrder select[name="kategoriya"]', function() {
             let select = $(this);
-            let kid = select.val();
-            let tr = select.closest('tr');
+            let mid = select.val();
             $.ajax({
                 url: '/geteditmehsul',
                 type: 'post',
-                data: 'editkid=' + editkid + '&_token={{csrf_token()}}',
+                data: 'mid=' + mid + '&_token={{csrf_token()}}',
                 success: function(result) {
-                    tr.find('select[name$="[mehsul]"]').html(result);
+                    $("#editOrder select[name='mehsul']").html(result);
                 }
             })
         });
 
-        $(document).on('change', '#edittable select[name^="inputs"][name$="[kategoriya]"]', function() {
+        $(document).on('change', '#editOrder select[name="mehsul"]', function() {
             let select = $(this);
             let kid = select.val();
-            let tr = select.closest('tr');
             $.ajax({
                 url: '/geteditqiymet',
                 type: 'post',
-                data: 'editkid=' + editkid + '&_token={{csrf_token()}}',
+                data: 'kid=' + kid + '&_token={{csrf_token()}}',
                 success: function(result) {
-                    tr.find('select[name$="[price]"]').html(result);
+                    $("#editOrder select[name='price']").html(result);
                 }
             })
         });
+
+
     });
+
+
+
 
 
     showOrder();
@@ -330,54 +335,14 @@ $(document).ready(function() {
         });
     });
 
-    // $('#editOrder').on('submit', function(e) {
-    //     e.preventDefault();
-    //     var form = $(this).serialize();
-    //     var url = $(this).attr('action');
-    //     $.ajax({
-    //         type: 'PUT',
-    //         url: url,
-    //         data: form,
-    //         dataType: 'json',
-    //         success: function(cavab) {
-    //             $('.editmodal').modal('hide');
-    //             $('#editOrder')[0].reset();
-    //             showOrder();
-    //             console.log(cavab)
-    //         }
-    //     });
-    // });
+    
 
 
 
 
-    // $(document).on('click', '.editform', function(event) {
-    //     event.preventDefault();
-    //     var id = $(this).data('id');
-    //     var masa = $(this).data('masa');
-    //     var kategory = $(this).data('kategoriya');
-    //     var mehsul = $(this).data('mehsul');
-    //     var qiymet = $(this).data('price');
-    //     var activ = $(this).data('sifaris');
-    //     $('.editmodal').modal('show');
-    //     $("#masas").val(masa);
-    //     $("#kategorys").val(kategory);
-    //     $("#mehsuls").val(mehsul);
-    //     $("#prices").val(qiymet);
-    //     $("#activs").val(activ);
-    //     $("#id").val(id);
+   
 
-    // });
-
-    // $('#editOrder').on('submit', function(e) {
-    //     e.preventDefault();
-    //     var form = $(this).serialize();
-    //     var url = $(this).attr('action');
-    //     $.post(url, form, function() {
-    //         $('.editmodal').modal('hide');
-    //         showOrder();
-    //     })
-    // });
+    
 
 
 
@@ -400,7 +365,7 @@ $('#add').click(function() {
         i +
         '][price]" class="form-select" id="price"><option value="">Qiymet</option></select></div></td><td width="15%"><div class="form-check"><input class="form-check-input" type="radio" name="inputs[' +
         i +
-        '][odenis]" checkedid="odenis" value="nagd"><label class="form-check-label" for="odenis">Nagd</label></div><div class="form-check"><input class="form-check-input" type="radio" name="inputs[' +
+        '][odenis]" checked id="odenis" value="nagd"><label class="form-check-label" for="odenis">Nagd</label></div><div class="form-check"><input class="form-check-input" type="radio" name="inputs[' +
         i +
         '][odenis]"id="sifaris" value="kart"><label class="form-check-label" for="sifaris">Kart</label></div></td><td><div class="form-check"><input class="form-check-input" type="checkbox" checked name="inputs[' +
         i +
@@ -412,6 +377,8 @@ $(document).on('click', '#remove', function() {
     $(this).parents('tr').remove();
 })
 </script>
+
+
 
 
 @endsection

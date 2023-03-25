@@ -79,29 +79,29 @@ class Dashboard extends Controller
         $mehsul = InfoModel::where('id', $mid)->get();
         $html = '<option value="">Qiymet</option>';
         foreach ($mehsul as $list) {
-            $html .= '<option value="'.$list->id.'">'.$list->price.'</option>';
+            $html .= '<option value="'.$list->id.'">'.$list->sale_price.'</option>';
         }
         echo $html;
     }
 
     public function geteditmehsul(Request $request)
     {
-        $kid = $request->post('editkid');
-        $mehsul = InfoModel::where('page_id', $kid)->get();
-        $html = '<option value="">Mehsul seçin</option>';
+        $mid = $request->post('mid');
+        $mehsul = InfoModel::where('page_id', $mid)->get();
+        $html = '<option value="">Mehsul</option>';
         foreach ($mehsul as $list) {
-            $html .= '<option value="'.$list->id.'">'.$list->name.'</option>';
+            $html .= '<option value="'.$list->id.'">' .$list->name.'</option>';
         }
         echo $html;
     }
-
+    
     public function geteditqiymet(Request $request)
     {
-        $kid = $request->post('editkid');
-        $mehsul = InfoModel::where('page_id', $kid)->get();
+        $kid = $request->post('kid');
+        $mehsul = InfoModel::where('id', $kid)->get();
         $html = '<option value="">Qiymet</option>';
         foreach ($mehsul as $list) {
-            $html .= '<option value="'.$list->id.'">'.$list->price.'</option>';
+            $html .= '<option value="'.$list->id.'">'.$list->sale_price.'</option>';
         }
         echo $html;
     }

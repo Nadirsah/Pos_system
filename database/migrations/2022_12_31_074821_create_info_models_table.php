@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('page_id');
             $table->string('name');
-            $table->longText('price');
+            $table->string('price');
+            $table->string('sale_price');
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-<div class="modal fade editmodal" id="edit{{$sifariss->id}}" tabindex="-1" role="dialog"
+<div class="modal fade edittable" id="edit{{$sifariss->id}}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -34,7 +34,7 @@
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Kategoriya</label>
 
-                        <select name="kategoriya" class="form-select" id="kategorys" onchange="updateSubcategory()">
+                        <select name="kategoriya" class="form-select" id="kategorys" >
                             <option value="">Kategoriya seçin</option>
                             @foreach ($kategoriya as $kategories)
                             @if($sifariss->kategoriya == $kategories->id)
@@ -49,7 +49,7 @@
 
                     <div class="mb-3">
                         <label for="content" class="form-label text-info">Mehsul</label>
-                        <select name="mehsul" class="form-select" id="mehsuls">
+                        <select name="mehsul" class="form-select" id="subkategorys">
                             <option value="">Mehsul seçin</option>
                             @foreach ($mehsul as $mehsuls)
                             @if($sifariss->mehsul == $mehsuls->id)
@@ -77,9 +77,9 @@
                             <option value="">Qiymet</option>
                             @foreach ($mehsul as $mehsuls)
                             @if($sifariss->mehsul == $mehsuls->id)
-                            <option value="{{$mehsuls->id}}" selected>{{$mehsuls->price}}</option>
+                            <option value="{{$mehsuls->id}}" selected>{{$mehsuls->sale_price}}</option>
                             @else
-                            <option value="{{$mehsuls->id}}">{{$mehsuls->price}}</option>
+                            <option value="{{$mehsuls->id}}">{{$mehsuls->sale_price}}</option>
                             @endif
                             @endforeach
                         </select>

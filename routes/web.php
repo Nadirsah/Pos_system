@@ -102,5 +102,6 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
 Route::post('/getmehsul', [Dashboard::class, 'getmehsul']);
 Route::post('/getqiymet', [Dashboard::class, 'getqiymet']);
 
-Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul']);
+
 Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet']);
+Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul']);

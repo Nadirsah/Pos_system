@@ -46,6 +46,7 @@ class InfoController extends Controller
         $data->page_id = $request->page_id;
         $data->name = $request->name;
         $data->price = $request->price;
+        $data->sale_price = $request->sale_price;
         
         $data->save();
         if ($data) {
@@ -94,6 +95,7 @@ class InfoController extends Controller
         $data->page_id = $request->page_id;
         $data->name = $request->name;
         $data->price = $request->price;
+        $data->sale_price = $request->sale_price;
         $data->update();
 
         return  redirect()->route('admin.info.index')->with(['success' => 'Səhifə uğurla yeniləndi!']);

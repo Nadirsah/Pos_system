@@ -42,6 +42,13 @@
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
+    <div class="mb-3">
+        <label for="sale_price" class="form-label">Satis Qiymet</label>
+        <input type="text" name="sale_price" value="{{old('sale_price')}}" class="form-control" id="sale_price" aria-describedby="emailHelp"
+            >
+            <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+    </div>
+
     <!-- <div class="mb-3">
         <label for="color" class="form-label">Reng</label>
         <input type="text" name="color" value="" class="form-control" id="color" aria-describedby="emailHelp"

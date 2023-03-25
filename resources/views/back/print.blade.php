@@ -191,8 +191,8 @@ td {
                 {{$info->getMehsul->name}}
             </td>
             <td width="25%" style="font-size:16px">{{$info->miqdar}}x</td>
-            <td width="25%" style="font-size:16px" id="">{{($info->getQiymet->price)}}</td>
-            <td width="25%" style="font-size:16px" id="kategory">{{($info->getQiymet->price)*($info->miqdar)}}</td>
+            <td width="25%" style="font-size:16px" id="">{{($info->getQiymet->sale_price)}}</td>
+            <td width="25%" style="font-size:16px" id="kategory">{{($info->getQiymet->sale_price)*($info->miqdar)}}</td>
 
         </tr>
         @endforeach

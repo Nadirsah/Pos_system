@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::defaultView('front.layouts.my-paginate');
+        Paginator::useBootstrap();
 
         Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
     }

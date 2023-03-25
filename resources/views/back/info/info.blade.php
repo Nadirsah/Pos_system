@@ -17,7 +17,8 @@
                         <th>Mehsul</th>
                        
                         
-                        <th>Qiymet</th>
+                        <th>Maya qiymeti</th>
+                        <th>Satis qiymeti</th>
                         <th>Action</th>
 
                     </tr>
@@ -31,6 +32,7 @@
                         <td>{{$infos->name}}</td>
                        
                         <td>{{$infos->price}}</td>
+                        <td>{{$infos->sale_price}}</td>
 
                         <td><a href="{{route('admin.info.edit',$infos->id)}}"><i
                                     class="btn btn-info fa-solid fa-pen-to-square"></i></a>
