@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class HeaderModel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'slug',
+
+    ];
 }

@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('foto_models', function (Blueprint $table) {
-            $table->id();$table->string('name');
+            $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }

@@ -113,6 +113,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Esas sehife</h6>
                         <a class="collapse-item" href="{{route('admin.fotolar.index')}}" >Hesabat</a>
+                        <a class="collapse-item" href="{{route('zet')}}" >Zet hesabat</a>
+                       
                     </div>
                 </div>
             </li>

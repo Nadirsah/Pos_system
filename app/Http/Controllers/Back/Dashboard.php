@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\FotoModel;
 use App\Models\HeaderModel;
 use App\Models\InfoModel;
 use App\Models\PageModel;
 use App\Models\SifarisModel;
-use App\Models\FotoModel;
 use Illuminate\Http\Request;
 
 class Dashboard extends Controller
@@ -23,10 +23,10 @@ class Dashboard extends Controller
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
         $totalsifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $kemiyyet=FotoModel::all();
-        $mehsul=Infomodel::all();
-        
-        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris','kemiyyet','mehsul' ));
+        $kemiyyet = FotoModel::all();
+        $mehsul = Infomodel::all();
+
+        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris', 'kemiyyet', 'mehsul'));
     }
 
     public function getOrder()
@@ -34,9 +34,10 @@ class Dashboard extends Controller
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $mehsul=Infomodel::all();
-        $kemiyyet=FotoModel::all();
-        return view('back.orderlist', compact('sifaris', 'masa', 'kategoriya','mehsul','kemiyyet'));
+        $mehsul = Infomodel::all();
+        $kemiyyet = FotoModel::all();
+
+        return view('back.orderlist', compact('sifaris', 'masa', 'kategoriya', 'mehsul', 'kemiyyet'));
     }
 
     public function getOrderCedvel()
@@ -44,10 +45,11 @@ class Dashboard extends Controller
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $mehsul=Infomodel::all();
-        $kemiyyet=FotoModel::all();
+        $mehsul = Infomodel::all();
+        $kemiyyet = FotoModel::all();
         $totalsifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        return view('back.ordercedvel', compact('totalsifaris','masa', 'kategoriya','mehsul','kemiyyet','sifaris'));
+
+        return view('back.ordercedvel', compact('totalsifaris', 'masa', 'kategoriya', 'mehsul', 'kemiyyet', 'sifaris'));
     }
 
     public function getOrderPrint()
@@ -55,12 +57,11 @@ class Dashboard extends Controller
         $masa = PageModel::all();
         $kategoriya = HeaderModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $mehsul=Infomodel::all();
+        $mehsul = Infomodel::all();
         $totalsifaris = SifarisModel::latest()->first();
+
         return view('back.orderprint', compact('totalsifaris'));
     }
-
-
 
     public function getmehsul(Request $request)
     {
@@ -90,11 +91,11 @@ class Dashboard extends Controller
         $mehsul = InfoModel::where('page_id', $mid)->get();
         $html = '<option value="">Mehsul</option>';
         foreach ($mehsul as $list) {
-            $html .= '<option value="'.$list->id.'">' .$list->name.'</option>';
+            $html .= '<option value="'.$list->id.'">'.$list->name.'</option>';
         }
         echo $html;
     }
-    
+
     public function geteditqiymet(Request $request)
     {
         $kid = $request->post('kid');
@@ -171,9 +172,10 @@ class Dashboard extends Controller
     }
 
     public function fetchSubCategories(Request $request)
-{
-    $kategory_id = $request->get('kategory_id');
-    $subcategories = InfoModel::where('page_id', $kategory_id)->pluck('name','price', 'id');
-    return response()->json($subcategories);
-}
+    {
+        $kategory_id = $request->get('kategory_id');
+        $subcategories = InfoModel::where('page_id', $kategory_id)->pluck('name', 'price', 'id');
+
+        return response()->json($subcategories);
+    }
 }

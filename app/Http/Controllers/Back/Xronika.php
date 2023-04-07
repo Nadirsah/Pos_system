@@ -98,7 +98,7 @@ class Xronika extends Controller
             $data->masa_id = $request->masa_id;
             $data->kategoriya = $request->kategoriya;
             $data->mehsul = $request->mehsul;
-            
+
             $data->price = $request->price;
             $data->sifaris = $request->sifaris;
             $data->update();

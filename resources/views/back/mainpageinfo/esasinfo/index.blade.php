@@ -23,7 +23,7 @@
                 </thead>
                 <tfoot>
                     <tr>
-                    <th>Section</th>
+                        <th>Section</th>
                         <th>Başliq</th>
                         <th>Məzmun</th>
 
@@ -32,22 +32,22 @@
                     </tr>
                 </tfoot>
                 <tbody>
-@foreach($info as $infos)
+                    @foreach($info as $infos)
                     <tr>
                         <td>{{$infos->getHeader->name}}</td>
                         <td>{{$infos->name}}</td>
                         <td>{{$infos->content}}</td>
-                       
+
                         <td>
 
-                        <a href="{{route('admin.esasinfo.edit',$infos->id)}}"><i
+                            <a href="{{route('admin.esasinfo.edit',$infos->id)}}"><i
                                     class="btn btn-info fa-solid fa-pen-to-square"></i></a>
-                                    <a href="{{route('admin.delete.esas',$infos->id)}}"><i
+                            <a href="{{route('admin.delete.esas',$infos->id)}}"><i
                                     class="btn btn-danger fa-solid fa-trash"></i></a>
                         </td>
 
                     </tr>
-@endforeach
+                    @endforeach
 
                 </tbody>
             </table>

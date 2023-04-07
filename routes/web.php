@@ -87,21 +87,20 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     // print
     Route::get('/print/{id}', [Priint::class, 'index']);
 
-    
-    
-
     Route::get('/show', [Dashboard::class, 'getOrder'])->name('ordershow');
     Route::get('/showcedvel', [Dashboard::class, 'getOrderCedvel'])->name('ordershowcedvel');
     Route::get('/showorderprint', [Dashboard::class, 'getOrderPrint'])->name('ordershowprint');
 
     Route::resource('/order', Order::class);
-    Route::post('printorder',[Order::class, 'print'])->name('printorder');
-   
+    Route::post('printorder', [Order::class, 'print'])->name('printorder');
 });
 
 Route::post('/getmehsul', [Dashboard::class, 'getmehsul']);
 Route::post('/getqiymet', [Dashboard::class, 'getqiymet']);
 
-
 Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet']);
 Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul']);
+
+Route::post('/date', [Fotolar::class, 'filter'])->name('date');
+Route::get('/zet', [Fotolar::class, 'zet'])->name('zet');
+Route::post('/zetdate', [Fotolar::class, 'zetfilter'])->name('zetdate');

@@ -18,7 +18,6 @@ class SifarisModel extends Model
         'sifaris',
         'odenis',
     ];
-    
 
     public function getKategory()
     {
@@ -29,6 +28,7 @@ class SifarisModel extends Model
     {
         return $this->hasOne('App\Models\InfoModel', 'id', 'mehsul');
     }
+
     public function getQiymet()
     {
         return $this->hasOne('App\Models\InfoModel', 'id', 'price');
@@ -38,6 +38,4 @@ class SifarisModel extends Model
     {
         return $this->hasOne('App\Models\PageModel', 'id', 'masa_id');
     }
-
-    
 }
