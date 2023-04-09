@@ -47,7 +47,7 @@ class Ayarlar extends Controller
         $data->name = $request->name;
         $data->activ = $request->activ;
         $data->fb = $request->fb;
-        $data->ins = $request->ins;
+        $data->telefon = $request->ins;
         if ($request->hasFile('image')) {
             $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
 
@@ -97,7 +97,7 @@ class Ayarlar extends Controller
         $data->about = $request->about;
         $data->activ = $request->activ;
         $data->facebook = $request->fb;
-        $data->instagram = $request->ins;
+        $data->telefon = $request->telefon;
         if ($request->hasFile('image')) {
             $imagename = Str::random(5).'.'.$request->image->getClientOriginalExtension();
 

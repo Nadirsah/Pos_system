@@ -26,7 +26,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="about" class="form-label">Haqqimizda</label>
+        <label for="about" class="form-label">Unvan</label>
         <input type="text" name="about" value="{{$info->about}}" class="form-control" id="about" aria-describedby="emailHelp">
             <span class="text-danger">@error('about'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
@@ -46,8 +46,8 @@
     </div>
 
     <div class="mb-3">
-        <label for="ins" class="form-label">Instagram</label>
-        <input type="text" name="ins" value="{{$info->instagram}}" class="form-control" id="ins" aria-describedby="emailHelp">
+        <label for="ins" class="form-label">Telefon</label>
+        <input type="text" name="telefon" value="{{$info->telefon}}" class="form-control" id="ins" aria-describedby="emailHelp">
             <span class="text-danger">@error('ins'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 <br><br>

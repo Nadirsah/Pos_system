@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Models\SifarisModel;
+use App\Models\AyarlarModel;
 use Illuminate\Http\Request;
 
 class Order extends Controller
@@ -62,7 +63,7 @@ class Order extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($masa_id)
-    {
+    {   $info=AyarlarModel::first();
         $data = SifarisModel::where('masa_id', $masa_id)
             ->where('sifaris', 0)
             ->get();
@@ -70,7 +71,7 @@ class Order extends Controller
         ->where('sifaris', 0)
         ->first();
 
-        return view('back.print', compact('data', 'odenis'));
+        return view('back.print', compact('data', 'odenis','info'));
     }
 
     /**

@@ -159,7 +159,7 @@ td {
 
 <table>
     <thead>
-        <h1 class="text-center">Zeyd Halal Sufrə</h1>
+        <h1 class="text-center">{{$info->name}}</h1>
 
 
 
@@ -171,7 +171,9 @@ td {
 
                 <span>Tarix: {{date("y/m/d")}}</span> <br>
                 <span>Saat: {{date("H:i:s ")}}</span> <br>
-                <span>Unvan: Sumqayıt şəhəri. 9-cu mkr</span> <br>
+                <span>Unvan: {{$info->about}}</span> <br>
+                <span>Telefon: {{$info->telefon}}</span> <br>
+           
             </th>
         </tr>
         <tr class="text-dark">

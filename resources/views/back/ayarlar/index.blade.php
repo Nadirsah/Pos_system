@@ -15,28 +15,17 @@
 
 
 
-                        <th>Title</th>
+                        <th>Ad</th>
                         <th>Sekil</th>
                         <th>Activ-Passiv</th>
                         <th>Facebook</th>
-                        <th>Instagram</th>
-                        <th>Action</th>
+                        <th>Telefon</th>
+                        <th>Unvan</th>
                         <th>Action</th>
 
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Title</th>
-                        <th>Sekil</th>
-                        <th>Activ-Passiv</th>
-                        <th>Facebook</th>
-                        <th>Instagram</th>
-                        <th>Action</th>
-                        <th>Action</th>
-
-                    </tr>
-                </tfoot>
+                
                 <tbody>
                     @foreach($info as $infos)
                     <tr>
@@ -44,11 +33,11 @@
 
                         <td>{{$infos->name}}</td>
                         <td> <img src="{{asset($infos->image)}}" width="50" alt=""></td>
-                        <td>{{$infos->about}}</td>
+                       
                         <td>{{$infos->activ}}</td>
                         <td>{{$infos->facebook}}</td>
-                        <td>{{$infos->instagram}}</td>
-
+                        <td>{{$infos->telefon}}</td>
+                        <td>{{$infos->about}}</td>
 
                         <td>
 

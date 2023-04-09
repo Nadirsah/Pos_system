@@ -9,25 +9,26 @@
     @endforeach
 </div>
 @endif -->
-<form method="Post" action="{{route('admin.ayarlar.store')}}"  enctype="multipart/form-data">
+<form method="Post" action="{{route('admin.ayarlar.store')}}" enctype="multipart/form-data">
     @csrf
 
-   
+
 
 
     <div class="mb-3">
         <label for="name" class="form-label">Title</label>
-        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp">
-            <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name"
+            aria-describedby="emailHelp">
+        <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
-    
+
     <div class="mb-3">
         <label for="image" class="form-label">Şəkil</label>
-        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image" aria-describedby="emailHelp"
-            autofocus>
-            <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+        <input type="file" name="image" value="{{old('image')}}" class="form-control" id="image"
+            aria-describedby="emailHelp" autofocus>
+        <span class="text-danger">@error('image'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
-    
+
     <div class="mb-3">
         <label for="activ" class="form-label">Aktiv-Passiv</label>
         <select name="activ" class="form-select" id="activ">
@@ -39,29 +40,29 @@
     <div class="mb-3">
         <label for="fb" class="form-label">Facebook</label>
         <input type="text" name="fb" value="{{old('fb')}}" class="form-control" id="fb" aria-describedby="emailHelp">
-            <span class="text-danger">@error('fb'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+        <span class="text-danger">@error('fb'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
         <label for="ins" class="form-label">Instagram</label>
         <input type="text" name="ins" value="{{old('ins')}}" class="form-control" id="ins" aria-describedby="emailHelp">
-            <span class="text-danger">@error('ins'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
+        <span class="text-danger">@error('ins'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
-    
 
-   
 
-    
 
-    
-    
 
-    
 
-    
 
-    
-<br><br>
+
+
+
+
+
+
+
+
+    <br><br>
 
     <button type="submit" class="btn btn-primary btn-block">Göndər</button>
 </form>
@@ -77,24 +78,22 @@
 
 
 <script>
-    $(document).ready(function() {
-        $('#summernote').summernote(
-            {
+$(document).ready(function() {
+    $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',
         tabsize: 2,
         height: 200,
         toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
         ]
-      }
-        );
     });
-  </script>
+});
+</script>
 
 @endsection

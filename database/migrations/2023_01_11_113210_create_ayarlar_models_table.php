@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('about');
             $table->string('activ');
             $table->string('facebook');
-            $table->string('instagram');
+            $table->string('telefon');
 
             $table->timestamps();
         });
