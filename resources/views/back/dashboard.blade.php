@@ -229,7 +229,7 @@ $(document).ready(function() {
             let kid = select.val();
             let tr = select.closest('tr');
             $.ajax({
-                url: '/getmehsul',
+                url: "{{ route('admin.getmehsul') }}",
                 type: 'post',
                 data: 'kid=' + kid + '&_token={{csrf_token()}}',
                 success: function(result) {
@@ -243,7 +243,7 @@ $(document).ready(function() {
             let mid = select.val();
             let tr = select.closest('tr');
             $.ajax({
-                url: '/getqiymet',
+                url: "{{ route('admin.getqiymet') }}",
                 type: 'post',
                 data: 'mid=' + mid + '&_token={{csrf_token()}}',
                 success: function(result) {
@@ -257,7 +257,7 @@ $(document).ready(function() {
             let select = $(this);
             let mid = select.val();
             $.ajax({
-                url: '/geteditmehsul',
+                url: "{{ route('admin.geteditmehsul') }}",
                 type: 'post',
                 data: 'mid=' + mid + '&_token={{csrf_token()}}',
                 success: function(result) {
@@ -270,7 +270,7 @@ $(document).ready(function() {
             let select = $(this);
             let kid = select.val();
             $.ajax({
-                url: '/geteditqiymet',
+                url: "{{ route('admin.geteditqiymet') }}",
                 type: 'post',
                 data: 'kid=' + kid + '&_token={{csrf_token()}}',
                 success: function(result) {
@@ -335,14 +335,14 @@ $(document).ready(function() {
         });
     });
 
-    
 
 
 
 
-   
 
-    
+
+
+
 
 
 

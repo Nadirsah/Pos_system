@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Hash;
+use App\Models\Masamodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class Profile extends Controller
+class Masa extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,19 @@ class Profile extends Controller
      */
     public function index()
     {
-        $data = User::all();
+        $data = Masamodel::all();
 
-        return view('back.auth.profile', compact('data'));
+        return view('back.masa.index', compact('data'));
     }
+
+         public function orders(Request $request)
+         {
+             foreach ($request->get('page') as $key => $order) {
+                 DB::table('masa_models')->where('id', $order)->update(['orders' => $key]);
+             }
+
+             return redirect()->back()->with(['success' => 'Səhifə əlavə olundu!']);
+         }
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +37,7 @@ class Profile extends Controller
      */
     public function create()
     {
-        return view('back.auth.creatprofil');
+        return view('back.masa.create');
     }
 
     /**
@@ -39,18 +48,14 @@ class Profile extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-
-            'password' => 'required|min:5',
-
+            'inputs.*name' => 'reuqired',
+            'inputs.*orders' => 'reuqired',
         ]);
-        $data = new User;
+        $data = new Masamodel;
         $data->name = $request->name;
-        $data->role = $request->role;
-        $data->password = Hash::make($request->password);
         $data->save();
 
-        return redirect()->route('admin.profile.index')->with(['success' => 'Qeydiyyat tamamlandi!']);
+        return redirect()->route('admin.masa.index')->with(['success' => 'Səhifə əlavə olundu!']);
     }
 
     /**
@@ -72,9 +77,9 @@ class Profile extends Controller
      */
     public function edit($id)
     {
-        $data = User::findOrFail($id);
+        $data = Masamodel::findOrFail($id);
 
-        return view('back.auth.editprofile', compact('data'));
+        return view('back.masa.update', compact('data'));
     }
 
     /**
@@ -85,17 +90,11 @@ class Profile extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-
-            'password' => 'required|min:5',
-        ]);
-        $data = User::findOrFail($id);
+        $data = Masamodel::findOrFail($id);
         $data->name = $request->name;
-        $data->password = Hash::make($request->password);
         $data->update();
 
-        return redirect()->route('admin.profile.index')->with(['success' => 'Məlumat  yeniləndi!']);
+        return redirect()->route('admin.masa.index')->with(['success' => 'Səhifə uğurla yeniləndi!']);
     }
 
     /**
@@ -106,15 +105,13 @@ class Profile extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 
     public function delete($id)
     {
-        $data = User::findOrFail($id);
-
+        $data = Masamodel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.profile.index')->with(['success' => 'Məlumat uğurla silindi!']);
+        return redirect()->route('admin.masa.index')->with(['success' => 'Səhifə uğurla silindi!']);
     }
 }

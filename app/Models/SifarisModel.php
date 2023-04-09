@@ -21,21 +21,21 @@ class SifarisModel extends Model
 
     public function getKategory()
     {
-        return $this->hasOne('App\Models\HeaderModel', 'id', 'kategoriya');
+        return $this->hasOne('App\Models\KategoriyaModel', 'id', 'kategoriya');
     }
 
     public function getMehsul()
     {
-        return $this->hasOne('App\Models\InfoModel', 'id', 'mehsul');
+        return $this->hasOne('App\Models\MehsulModel', 'id', 'mehsul');
     }
 
     public function getQiymet()
     {
-        return $this->hasOne('App\Models\InfoModel', 'id', 'price');
+        return $this->hasOne('App\Models\MehsulModel', 'id', 'price');
     }
 
     public function getMasa()
     {
-        return $this->hasOne('App\Models\PageModel', 'id', 'masa_id');
+        return $this->hasOne('App\Models\MasaModel', 'id', 'masa_id');
     }
 }

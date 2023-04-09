@@ -14,7 +14,7 @@
             aria-describedby="emailHelp" autofocus>
         <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
-   
+
     <div class="form-group row">
         <div class="col-sm-12 mb-3 mb-sm-0">
             <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword"
@@ -22,6 +22,19 @@
             <span class="text-danger">@error('password'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
         </div>
 
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="role"  id="odenis" value="1">
+        <label class="form-check-label" for="odenis">
+            Admin
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="role" id="sifaris" value="0">
+        <label class="form-check-label" for="sifaris">
+            Kassir
+        </label>
     </div>
     <button type="submit" class="btn btn-primary">Göndər</button>
 </form>

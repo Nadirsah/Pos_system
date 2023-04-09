@@ -1,22 +1,15 @@
 <?php
 
 use App\Http\Controllers\Back\AuthController;
+use App\Http\Controllers\Back\Ayarlar;
 use App\Http\Controllers\Back\Dashboard;
-use App\Http\Controllers\Back\Esasinfo;
-use App\Http\Controllers\Back\Fotolar;
-use App\Http\Controllers\Back\HomeHeader;
-use App\Http\Controllers\Back\IndexHeader;
-use App\Http\Controllers\Back\InfoController;
-use App\Http\Controllers\Back\Linkler;
-use App\Http\Controllers\Back\Naxcivan;
+use App\Http\Controllers\Back\Hesabat;
+use App\Http\Controllers\Back\Kategoriya;
+use App\Http\Controllers\Back\Masa;
+use App\Http\Controllers\Back\Mehsul;
 use App\Http\Controllers\Back\Order;
-use App\Http\Controllers\Back\PageController;
 use App\Http\Controllers\Back\Priint;
 use App\Http\Controllers\Back\Profile;
-use App\Http\Controllers\Back\Qarabag;
-use App\Http\Controllers\Back\Qezet;
-use App\Http\Controllers\Back\Xeberler;
-use App\Http\Controllers\Back\Xronika;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,67 +33,43 @@ Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function ()
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
     Route::get('/panel', [Dashboard::class, 'index'])->name('panel');
-    // Basliq melumatlar
 
+    // Masa melumatlar
+    Route::resource('/masa', Masa::class);
+    Route::get('/deletemasa/{id}', [Masa::class, 'delete'])->name('delete.masa');
+    Route::get('/masa/siralama', [Masa::class, 'orders'])->name('masa.orders');
+    // Kategoriya melumatlar
+    Route::resource('/kategoriya', Kategoriya::class);
+    Route::get('/deletekategoriya/{id}', [Kategoriya::class, 'delete'])->name('delete.kategoriya');
+    // Mehsul melumatlar
+    Route::resource('/mehsul', Mehsul::class);
+    Route::get('/deletemehsul/{id}', [Mehsul::class, 'delete'])->name('delete.mehsul');
+    // Hesabat melumatlar
+    Route::resource('/hesabat', Hesabat::class);
+    Route::post('/date', [Hesabat::class, 'filter'])->name('date');
+    Route::get('/zet', [Hesabat::class, 'zet'])->name('zet');
+    Route::post('/zetdate', [Hesabat::class, 'zetfilter'])->name('zetdate');
+    //Ayarlar
+    Route::resource('/ayarlar', Ayarlar::class);
+    Route::get('/deleteayarlar/{id}', [Ayarlar::class, 'delete'])->name('delete.ayarlar');
+    // Profil melumatlar
     Route::resource('/profile', Profile::class);
     Route::get('/deleteprofile/{id}', [Profile::class, 'delete'])->name('delete.profile');
-    // Basliq melumatlar
-    Route::resource('/page', PageController::class);
-    Route::get('/deletepage/{id}', [PageController::class, 'delete'])->name('delete.page');
-    Route::get('/page/siralama', [PageController::class, 'orders'])->name('page.orders');
-    // Basliq melumatlar
-    Route::resource('/info', InfoController::class);
-    Route::get('/deleteinfo/{id}', [InfoController::class, 'delete'])->name('delete.info');
-    // Basliq melumatlar
-    Route::resource('/header', HomeHeader::class);
-    Route::get('/deleteheader/{id}', [HomeHeader::class, 'delete'])->name('delete.header');
-
-    //
     Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
-    // Basliq melumatlar
-    Route::resource('/esasinfo', Esasinfo::class);
-    Route::get('/deleteesasinfo/{id}', [Esasinfo::class, 'delete'])->name('delete.esas');
-    // Basliq melumatlar
-    Route::resource('/fotolar', Fotolar::class);
-    Route::get('/deletefoto/{id}', [Fotolar::class, 'delete'])->name('delete.fotolar');
-    // Basliq melumatlar
-    Route::resource('/linkler', Linkler::class);
-    Route::get('/deletelink/{id}', [Linkler::class, 'delete'])->name('delete.linkler');
-    // Basliq melumatlar
-    Route::resource('/naxcivan', Naxcivan::class);
-    Route::get('/deletenaxcivan/{id}', [Naxcivan::class, 'delete'])->name('delete.naxcivan');
-    // Basliq melumatlar
-    Route::resource('/qarabag', Qarabag::class);
-    Route::get('/deleteqarabag/{id}', [Qarabag::class, 'delete'])->name('delete.qarabag');
-    // Basliq melumatlar
-    Route::resource('/qezet', Qezet::class);
-    Route::get('/deleteqezet/{id}', [Qezet::class, 'delete'])->name('delete.qezet');
-    // Basliq melumatlar
-    Route::resource('/slide', Xeberler::class);
-    Route::get('/deletexeber/{id}', [Xeberler::class, 'delete'])->name('delete.xeberler');
-    // Basliq melumatlar
-    Route::resource('/xronika', Xronika::class);
-    Route::get('/deletexronika/{id}', [Xronika::class, 'delete'])->name('delete.xronika');
-    //indexheader
-    Route::resource('/indexheader', IndexHeader::class);
-    Route::get('/deleteindexheader/{id}', [IndexHeader::class, 'delete'])->name('delete.indexheader');
-    // print
-    Route::get('/print/{id}', [Priint::class, 'index']);
-
-    Route::get('/show', [Dashboard::class, 'getOrder'])->name('ordershow');
-    Route::get('/showcedvel', [Dashboard::class, 'getOrderCedvel'])->name('ordershowcedvel');
-    Route::get('/showorderprint', [Dashboard::class, 'getOrderPrint'])->name('ordershowprint');
-
+    // Sifaris melumatlar
     Route::resource('/order', Order::class);
     Route::post('printorder', [Order::class, 'print'])->name('printorder');
+    Route::post('/getmehsul', [Dashboard::class, 'getmehsul'])->name('getmehsul');
+    Route::post('/getqiymet', [Dashboard::class, 'getqiymet'])->name('getqiymet');
+    // Activ sifaris melumatlar
+    Route::get('/show', [Dashboard::class, 'getOrder'])->name('ordershow');
+    // Activ sifaris melumatlar cedveli
+    Route::get('/showcedvel', [Dashboard::class, 'getOrderCedvel'])->name('ordershowcedvel');
+    // sifaris capi
+    Route::get('/showorderprint', [Dashboard::class, 'getOrderPrint'])->name('ordershowprint');
+    // print
+    Route::get('/print/{id}', [Priint::class, 'index']);
+    // Activ sifarislerin yenilenmesi
+    Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet'])->name('geteditqiymet');
+    Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul'])->name('geteditmehsul');
 });
-
-Route::post('/getmehsul', [Dashboard::class, 'getmehsul']);
-Route::post('/getqiymet', [Dashboard::class, 'getqiymet']);
-
-Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet']);
-Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul']);
-
-Route::post('/date', [Fotolar::class, 'filter'])->name('date');
-Route::get('/zet', [Fotolar::class, 'zet'])->name('zet');
-Route::post('/zetdate', [Fotolar::class, 'zetfilter'])->name('zetdate');

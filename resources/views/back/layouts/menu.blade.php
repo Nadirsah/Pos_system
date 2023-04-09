@@ -1,4 +1,4 @@
-<body id="page-top" >
+<body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -34,74 +34,37 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Masalar</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cari masalar:</h6>
-                        <a class="collapse-item" href="{{route('admin.page.index')}}">Masa</a>
 
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('admin.info.index')}}"  data-target="#collapseUtilities"
+                <a class="nav-link collapsed" href="{{route('admin.masa.index')}}" data-target="#collapseUtilities2"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Mehsul</span>
+                    <span>Masa</span>
                 </a>
-                <!-- <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Səhifə tərkibi</h6>
-                        <a class="collapse-item" href="{{route('admin.info.index')}}">Məlumatlar</a>
-
-                       
-                    </div> 
-                </div>-->
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Əsas səhifə</span>
-                </a>
-                <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Esas sehife</h6>
-                        <a class="collapse-item" href="{{route('admin.header.index')}}">Basliqlar</a>
-                        <a class="collapse-item" href="{{route('admin.indexheader.index')}}">Ayarlar</a>
-                        <a class="collapse-item" href="{{route('admin.esasinfo.index')}}">Əsas məlumat</a>
-                        <!-- <a class="collapse-item" href="{{route('admin.fotolar.index')}}">Fotolar</a> -->
-                        <a class="collapse-item" href="{{route('admin.linkler.index')}}">Linklər</a>
-                        <a class="collapse-item" href="{{route('admin.naxcivan.index')}}">Naxcivan MR</a>
-                        <a class="collapse-item" href="{{route('admin.qarabag.index')}}">Qarabag</a>
-                        <a class="collapse-item" href="{{route('admin.qezet.index')}}">Qəzet</a>
-                        <a class="collapse-item" href="{{route('admin.slide.index')}}">Slide</a>
-                        <a class="collapse-item" href="{{route('admin.xronika.index')}}">Xronika</a>
-
-                        <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a> -->
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('admin.header.index')}}"  data-target="#collapseUtilities2"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="{{route('admin.kategoriya.index')}}"
+                    data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Kateqoriya</span>
                 </a>
             </li>
 
-           
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('admin.mehsul.index')}}" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Mehsul</span>
+                </a>
+               
+            </li>
+
+
+
+
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -112,11 +75,19 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Esas sehife</h6>
-                        <a class="collapse-item" href="{{route('admin.fotolar.index')}}" >Hesabat</a>
-                        <a class="collapse-item" href="{{route('zet')}}" >Zet hesabat</a>
-                       
+                        <a class="collapse-item" href="{{route('admin.hesabat.index')}}">Hesabat</a>
+                        <a class="collapse-item" href="{{route('admin.zet')}}">Zet hesabat</a>
+
                     </div>
                 </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{route('admin.ayarlar.index')}}"
+                    data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Ayarlar</span>
+                </a>
             </li>
 
 

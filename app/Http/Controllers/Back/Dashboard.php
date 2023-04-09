@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\FotoModel;
-use App\Models\HeaderModel;
-use App\Models\InfoModel;
-use App\Models\PageModel;
+use App\Models\KategoriyaModel;
+use App\Models\Masamodel;
+use App\Models\MehsulModel;
 use App\Models\SifarisModel;
 use Illuminate\Http\Request;
 
@@ -19,54 +18,56 @@ class Dashboard extends Controller
      */
     public function index()
     {
-        $masa = PageModel::all();
-        $kategoriya = HeaderModel::all();
+        $masa = MasaModel::all();
+        $kategoriya = KategoriyaModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
         $totalsifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $kemiyyet = FotoModel::all();
-        $mehsul = Infomodel::all();
 
-        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris', 'kemiyyet', 'mehsul'));
+        $mehsul = MehsulModel::all();
+
+        return view('back.dashboard', compact('masa', 'kategoriya', 'totalsifaris', 'mehsul'));
     }
 
+// activ sifarisler
     public function getOrder()
     {
-        $masa = PageModel::all();
-        $kategoriya = HeaderModel::all();
+        $masa = MasaModel::all();
+        $kategoriya = KategoriyaModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $mehsul = Infomodel::all();
-        $kemiyyet = FotoModel::all();
+        $mehsul = MehsulModel::all();
 
-        return view('back.orderlist', compact('sifaris', 'masa', 'kategoriya', 'mehsul', 'kemiyyet'));
+        return view('back.orderlist', compact('sifaris', 'masa', 'kategoriya', 'mehsul'));
     }
 
+// activ sifarisler cedveli
     public function getOrderCedvel()
     {
-        $masa = PageModel::all();
-        $kategoriya = HeaderModel::all();
+        $masa = MasaModel::all();
+        $kategoriya = KategoriyaModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $mehsul = Infomodel::all();
-        $kemiyyet = FotoModel::all();
+        $mehsul = MehsulModel::all();
+
         $totalsifaris = SifarisModel::where('sifaris', '=', 0)->get();
 
-        return view('back.ordercedvel', compact('totalsifaris', 'masa', 'kategoriya', 'mehsul', 'kemiyyet', 'sifaris'));
+        return view('back.ordercedvel', compact('totalsifaris', 'masa', 'kategoriya', 'mehsul', 'sifaris'));
     }
 
     public function getOrderPrint()
     {
-        $masa = PageModel::all();
-        $kategoriya = HeaderModel::all();
+        $masa = MasaModel::all();
+        $kategoriya = KategoriyaModel::all();
         $sifaris = SifarisModel::where('sifaris', '=', 0)->get();
-        $mehsul = Infomodel::all();
+        $mehsul = MehsulModel::all();
         $totalsifaris = SifarisModel::latest()->first();
 
         return view('back.orderprint', compact('totalsifaris'));
     }
 
+//sifaris melumatlari
     public function getmehsul(Request $request)
     {
         $kid = $request->post('kid');
-        $mehsul = InfoModel::where('page_id', $kid)->get();
+        $mehsul = MehsulModel::where('page_id', $kid)->get();
         $html = '<option value="">Mehsul seçin</option>';
         foreach ($mehsul as $list) {
             $html .= '<option value="'.$list->id.'">'.$list->name.'</option>';
@@ -77,7 +78,7 @@ class Dashboard extends Controller
     public function getqiymet(Request $request)
     {
         $mid = $request->post('mid');
-        $mehsul = InfoModel::where('id', $mid)->get();
+        $mehsul = MehsulModel::where('id', $mid)->get();
         $html = '<option value="">Qiymet</option>';
         foreach ($mehsul as $list) {
             $html .= '<option value="'.$list->id.'">'.$list->sale_price.'</option>';
@@ -85,10 +86,11 @@ class Dashboard extends Controller
         echo $html;
     }
 
+//end sifaris melumatlari
     public function geteditmehsul(Request $request)
     {
         $mid = $request->post('mid');
-        $mehsul = InfoModel::where('page_id', $mid)->get();
+        $mehsul = MehsulModel::where('page_id', $mid)->get();
         $html = '<option value="">Mehsul</option>';
         foreach ($mehsul as $list) {
             $html .= '<option value="'.$list->id.'">'.$list->name.'</option>';
@@ -99,7 +101,7 @@ class Dashboard extends Controller
     public function geteditqiymet(Request $request)
     {
         $kid = $request->post('kid');
-        $mehsul = InfoModel::where('id', $kid)->get();
+        $mehsul = MehsulModel::where('id', $kid)->get();
         $html = '<option value="">Qiymet</option>';
         foreach ($mehsul as $list) {
             $html .= '<option value="'.$list->id.'">'.$list->sale_price.'</option>';
@@ -174,7 +176,7 @@ class Dashboard extends Controller
     public function fetchSubCategories(Request $request)
     {
         $kategory_id = $request->get('kategory_id');
-        $subcategories = InfoModel::where('page_id', $kategory_id)->pluck('name', 'price', 'id');
+        $subcategories = MehsulModel::where('page_id', $kategory_id)->pluck('name', 'price', 'id');
 
         return response()->json($subcategories);
     }

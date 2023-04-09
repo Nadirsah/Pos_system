@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Hash;
-use Illuminate\Http\Request;
+use App\Http\Requests\HeaderPostRequest;
+use App\Models\KategoriyaModel;
+use Illuminate\Support\Str;
 
-class Profile extends Controller
+class Kategoriya extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class Profile extends Controller
      */
     public function index()
     {
-        $data = User::all();
+        $data = KategoriyaModel::all();
 
-        return view('back.auth.profile', compact('data'));
+        return view('back.kategoriya.index', compact('data'));
     }
 
     /**
@@ -28,29 +28,23 @@ class Profile extends Controller
      */
     public function create()
     {
-        return view('back.auth.creatprofil');
+        return view('back.kategoriya.creat');
     }
 
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HeaderPostRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-
-            'password' => 'required|min:5',
-
-        ]);
-        $data = new User;
+        $data = new KategoriyaModel;
         $data->name = $request->name;
-        $data->role = $request->role;
-        $data->password = Hash::make($request->password);
+        $data->slug = Str::slug($request->name);
         $data->save();
 
-        return redirect()->route('admin.profile.index')->with(['success' => 'Qeydiyyat tamamlandi!']);
+        return redirect()->route('admin.kategoriya.index')->with(['success' => 'Məlumat əlavə olundu!']);
     }
 
     /**
@@ -72,30 +66,25 @@ class Profile extends Controller
      */
     public function edit($id)
     {
-        $data = User::findOrFail($id);
+        $data = KategoriyaModel::findOrFail($id);
 
-        return view('back.auth.editprofile', compact('data'));
+        return view('back.kategoriya.update', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HeaderPostRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-
-            'password' => 'required|min:5',
-        ]);
-        $data = User::findOrFail($id);
+        $data = KategoriyaModel::findOrFail($id);
         $data->name = $request->name;
-        $data->password = Hash::make($request->password);
         $data->update();
 
-        return redirect()->route('admin.profile.index')->with(['success' => 'Məlumat  yeniləndi!']);
+        return redirect()->route('admin.kategoriya.index')->with(['success' => 'Məlumat uğurla yeniləndi!']);
     }
 
     /**
@@ -111,10 +100,9 @@ class Profile extends Controller
 
     public function delete($id)
     {
-        $data = User::findOrFail($id);
-
+        $data = KategoriyaModel::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('admin.profile.index')->with(['success' => 'Məlumat uğurla silindi!']);
+        return redirect()->route('admin.kategoriya.index')->with(['success' => 'Məlumat uğurla silindi!']);
     }
 }
