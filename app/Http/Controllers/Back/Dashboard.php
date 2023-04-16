@@ -8,7 +8,6 @@ use App\Models\Masamodel;
 use App\Models\MehsulModel;
 use App\Models\SifarisModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class Dashboard extends Controller
 {
@@ -109,8 +108,7 @@ class Dashboard extends Controller
         }
         echo $html;
     }
-    
-       
+
     /**
      * Show the form for creating a new resource.
      *

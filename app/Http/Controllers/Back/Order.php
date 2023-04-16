@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\SifarisModel;
 use App\Models\AyarlarModel;
+use App\Models\SifarisModel;
 use Illuminate\Http\Request;
-use App\Models\EndOrder;
-use Illuminate\Support\Facades\DB;
 
 class Order extends Controller
 {
@@ -42,7 +40,6 @@ class Order extends Controller
             foreach ($request->inputs as $key => $value) {
                 SifarisModel::create($value);
             }
-            
 
             return response($value);
 
@@ -68,16 +65,17 @@ class Order extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($masa_id)
-    {   $option=AyarlarModel::first();
+    {
+        $option = AyarlarModel::first();
         $data = SifarisModel::where('masa_id', $masa_id)
             ->where('sifaris', 0)
             ->get();
         $odenis = SifarisModel::where('masa_id', $masa_id)
         ->where('sifaris', 0)
         ->first();
-     //   dd($data->toArray());
+        //   dd($data->toArray());
 
-        return view('back.print', compact('data', 'odenis','option'));
+        return view('back.print', compact('data', 'odenis', 'option'));
     }
 
     /**
@@ -128,8 +126,8 @@ class Order extends Controller
     //        ]);
 
         foreach ($request->get('data') as $key => $data) {
-           // dd($data,app(SifarisModel::class)->getFillable(), collect($data)->only(app(SifarisModel::class)->getFillable()));
-            if(isset($data['id']) and isset($data['masa_id'])){
+            // dd($data,app(SifarisModel::class)->getFillable(), collect($data)->only(app(SifarisModel::class)->getFillable()));
+            if (isset($data['id']) and isset($data['masa_id'])) {
                 SifarisModel::where([
                     'sifaris' => 0,
                     'id' => $data['id'],
@@ -138,17 +136,10 @@ class Order extends Controller
 
                 // $request->only(app(SifarisModel::class)->getFillable())
             }
-         }
-        
+        }
+
         return redirect()->route('admin.panel');
-        
     }
-    
-   
-
-
-
-
 
     /**
      * Remove the specified resource from storage.

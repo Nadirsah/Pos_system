@@ -71,6 +71,4 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     // Activ sifarislerin yenilenmesi
     Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet'])->name('geteditqiymet');
     Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul'])->name('geteditmehsul');
-
-    
 });
