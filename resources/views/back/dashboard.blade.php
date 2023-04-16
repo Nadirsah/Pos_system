@@ -3,11 +3,10 @@
 @section('content')
 
 <style>
-    tr.search-result td {
-  font-weight: bold;
-  background-color: #fff2a8;
+tr.search-result td {
+    font-weight: bold;
+    background-color: #fff2a8;
 }
-
 </style>
 <div class="col-lg-6 mb-4">
     <div class="row">
@@ -53,6 +52,13 @@
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Satis cedveli</h6>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Axtar...">
+                    </div>
+                </div>
+
+
 
                 <!-- <div class="col-md-3">
                     <div class="form-group">
@@ -65,9 +71,8 @@
             <!-- Card Body -->
             <div class="card-body">
                 <div class="table-responsive">
-                    <div style="height:500px; overflow-y: scroll;" >
-                        <table class="table table-bordered text-dark"
-                            id="dataTable" width="100%" cellspacing="0">
+                    <div style="height:500px; overflow-y: scroll;">
+                        <table class="table table-bordered text-dark" id="myTable" width="100%" cellspacing="0">
                             <thead class="text-danger bg-dark" style="position: sticky; top: 0; z-index: 1;">
                                 <tr>
 
@@ -83,11 +88,11 @@
 
                                 </tr>
                             </thead>
-                            
-                                <tbody id="ordercedvel" style="position: relative;">
 
-                                </tbody>
-                            
+                            <tbody id="ordercedvel" style="position: relative;">
+
+                            </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -221,9 +226,25 @@
 @section('script')
 
 <script>
-
-
-
+$(document).ready(function() {
+    $("#searchInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tbody tr").each(function(index) {
+            if (index !== 0) {
+                $row = $(this);
+                var name = $row.find("td:first-child").text().toLowerCase();
+                var age = $row.find("td:nth-child(2)").text().toLowerCase();
+                var country = $row.find("td:nth-child(3)").text().toLowerCase();
+                if (name.indexOf(value) !== -1 || age.indexOf(value) !== -1 || country.indexOf(
+                        value) !== -1) {
+                    $row.show();
+                } else {
+                    $row.hide();
+                }
+            }
+        });
+    });
+});
 
 
 $(document).ready(function() {
