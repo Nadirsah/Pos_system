@@ -98,10 +98,6 @@
                             <span id="tarix"></span>
                         </th>
                     </tfoot>
-
-
-
-
                 </table>
             </div>
         </div>
@@ -280,7 +276,7 @@ $(document).ready(function() {
         });
 
 
-       
+
 
         $(document).ready(function() {
             $('#date').on('submit', function(e) {
@@ -334,16 +330,25 @@ $(document).ready(function() {
                                 '</td>';
                             tableBody += '</tr>';
                             totalMiqdar += parseInt(value.miqdar);
-                            totalMayaMebleg += parseFloat(value.get_mehsul.price);
-                            totalYekunMayaMebleg += parseFloat((value.get_mehsul.price) * (value.miqdar));
-                            totalSatisMebleg += parseFloat(value.get_mehsul.sale_price);
-                            totalMebleg += parseFloat((value.get_mehsul.sale_price) * (value.miqdar));
+                            totalMayaMebleg += parseFloat(value
+                                .get_mehsul.price);
+                            totalYekunMayaMebleg += parseFloat((
+                                value.get_mehsul.price) * (
+                                value.miqdar));
+                            totalSatisMebleg += parseFloat(value
+                                .get_mehsul.sale_price);
+                            totalMebleg += parseFloat((value
+                                .get_mehsul.sale_price) * (
+                                value.miqdar));
                         });
                         $('#hesabat tbody').html(tableBody);
                         $('#toplammiqdar').html(totalMiqdar);
-                        $('#totalmayamebleg').html(totalMayaMebleg.toFixed(2));
-                        $('#totalyekunmayamebleg').html(totalYekunMayaMebleg.toFixed(2));
-                        $('#totalsatismebleg').html(totalSatisMebleg.toFixed(2));
+                        $('#totalmayamebleg').html(totalMayaMebleg.toFixed(
+                            2));
+                        $('#totalyekunmayamebleg').html(totalYekunMayaMebleg
+                            .toFixed(2));
+                        $('#totalsatismebleg').html(totalSatisMebleg
+                            .toFixed(2));
                         $('#totalmebleg').html(totalMebleg.toFixed(2));
                     }
                 });
@@ -411,9 +416,6 @@ $(document).ready(function() {
     });
     $('#totalmebleg').text(sumMiqdar);
 });
-
-
-
 </script>
 
 

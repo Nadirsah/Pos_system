@@ -9,9 +9,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.panel')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-cash-register"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin Panel </div>
+                <div class="sidebar-brand-text mx-3">POS SYSTEM </div>
             </a>
 
 
@@ -21,8 +21,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{route('admin.panel')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                <i class="fa-regular fa-newspaper"></i>
+                    <span>Ana sehife</span></a>
             </li>
 
             <!-- Divider -->

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\SifarisModel;
 use App\Models\AyarlarModel;
 use Illuminate\Http\Request;
+use App\Models\EndOrder;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Controller
 {
@@ -40,8 +42,11 @@ class Order extends Controller
             foreach ($request->inputs as $key => $value) {
                 SifarisModel::create($value);
             }
+            
 
             return response($value);
+
+            dd($value);
         }
     }
 
@@ -63,15 +68,16 @@ class Order extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($masa_id)
-    {   $info=AyarlarModel::first();
+    {   $option=AyarlarModel::first();
         $data = SifarisModel::where('masa_id', $masa_id)
             ->where('sifaris', 0)
             ->get();
         $odenis = SifarisModel::where('masa_id', $masa_id)
         ->where('sifaris', 0)
         ->first();
+     //   dd($data->toArray());
 
-        return view('back.print', compact('data', 'odenis','info'));
+        return view('back.print', compact('data', 'odenis','option'));
     }
 
     /**
@@ -87,7 +93,6 @@ class Order extends Controller
         $data->kategoriya = $request->kategoriya;
         $data->mehsul = $request->mehsul;
         $data->price = $request->price;
-
         $data->miqdar = $request->miqdar;
         $data->sifaris = $request->sifaris;
         $data->update();
@@ -109,20 +114,41 @@ class Order extends Controller
         // } else {
     //     return redirect()->back()->with('error', 'Kayıt bulunamadı!');
         // }
-        SifarisModel::where('masa_id', $request->id)
-        ->where('sifaris', 0)
-        ->update([
-            'masa_id' => $request->masa,
-            'kategoriya' => $request->kategoriya,
-            'mehsul' => $request->mehsul,
-            'price' => $request->qiymet,
-            'miqdar' => $request->miqdar,
-            'sifaris' => $request->sifaris,
-            'odenis' => $request->odenis,
-        ]);
 
+    //    SifarisModel::where('masa_id', $request->masa_id)
+    //        ->where('sifaris', 0)
+    //        ->update([
+    //            'masa_id' => $request->masa,
+    //            'kategoriya' => $request->kategoriya,
+    //            'mehsul' => $request->mehsul,
+    //            'price' => $request->qiymet,
+    //            'miqdar' => $request->miqdar,
+    //            'sifaris' => $request->sifaris,
+    //            'odenis' => $request->odenis,
+    //        ]);
+
+        foreach ($request->get('data') as $key => $data) {
+           // dd($data,app(SifarisModel::class)->getFillable(), collect($data)->only(app(SifarisModel::class)->getFillable()));
+            if(isset($data['id']) and isset($data['masa_id'])){
+                SifarisModel::where([
+                    'sifaris' => 0,
+                    'id' => $data['id'],
+                    'masa_id' => $data['masa_id'],
+                ])->update(collect($data)->only(app(SifarisModel::class)->getFillable())->all());
+
+                // $request->only(app(SifarisModel::class)->getFillable())
+            }
+         }
+        
         return redirect()->route('admin.panel');
+        
     }
+    
+   
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

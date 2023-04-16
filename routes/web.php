@@ -33,27 +33,26 @@ Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function ()
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {
     Route::get('/panel', [Dashboard::class, 'index'])->name('panel');
-
     // Masa melumatlar
-    Route::resource('/masa', Masa::class);
+    Route::resource('/masa', Masa::class)->middleware('isRole');
     Route::get('/deletemasa/{id}', [Masa::class, 'delete'])->name('delete.masa');
     Route::get('/masa/siralama', [Masa::class, 'orders'])->name('masa.orders');
     // Kategoriya melumatlar
-    Route::resource('/kategoriya', Kategoriya::class);
+    Route::resource('/kategoriya', Kategoriya::class)->middleware('isRole');
     Route::get('/deletekategoriya/{id}', [Kategoriya::class, 'delete'])->name('delete.kategoriya');
     // Mehsul melumatlar
-    Route::resource('/mehsul', Mehsul::class);
+    Route::resource('/mehsul', Mehsul::class)->middleware('isRole');
     Route::get('/deletemehsul/{id}', [Mehsul::class, 'delete'])->name('delete.mehsul');
     // Hesabat melumatlar
-    Route::resource('/hesabat', Hesabat::class);
+    Route::resource('/hesabat', Hesabat::class)->middleware('isRole');
     Route::post('/date', [Hesabat::class, 'filter'])->name('date');
-    Route::get('/zet', [Hesabat::class, 'zet'])->name('zet');
+    Route::get('/zet', [Hesabat::class, 'zet'])->name('zet')->middleware('isRole');
     Route::post('/zetdate', [Hesabat::class, 'zetfilter'])->name('zetdate');
     //Ayarlar
-    Route::resource('/ayarlar', Ayarlar::class);
+    Route::resource('/ayarlar', Ayarlar::class)->middleware('isRole');
     Route::get('/deleteayarlar/{id}', [Ayarlar::class, 'delete'])->name('delete.ayarlar');
     // Profil melumatlar
-    Route::resource('/profile', Profile::class);
+    Route::resource('/profile', Profile::class)->middleware('isRole');
     Route::get('/deleteprofile/{id}', [Profile::class, 'delete'])->name('delete.profile');
     Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
     // Sifaris melumatlar
@@ -72,4 +71,6 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     // Activ sifarislerin yenilenmesi
     Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet'])->name('geteditqiymet');
     Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul'])->name('geteditmehsul');
+
+    
 });

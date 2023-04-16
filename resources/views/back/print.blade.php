@@ -159,21 +159,21 @@ td {
 
 <table>
     <thead>
-        <h1 class="text-center">{{$info->name}}</h1>
+        <h1 class="text-center">{{$option->name}}</h1>
 
 
 
         <tr>
             <th class="no-border text-start heading" width="50%" colspan="2">
-                {{$data[0]->getMasa->name}} 
+                {{$data[0]->getMasa->name}}
             </th>
             <th width="50%" colspan="2" class="text-end company-data">
 
                 <span>Tarix: {{date("y/m/d")}}</span> <br>
                 <span>Saat: {{date("H:i:s ")}}</span> <br>
-                <span>Unvan: {{$info->about}}</span> <br>
-                <span>Telefon: {{$info->telefon}}</span> <br>
-           
+                <span>Unvan: {{$option->about}}</span> <br>
+                <span>Telefon: {{$option->telefon}}</span> <br>
+
             </th>
         </tr>
         <tr class="text-dark">
@@ -243,27 +243,32 @@ td {
 <div style="margin-top:250px">
     <form method="Post" action="{{route('admin.printorder')}}" id="editOrder">
         @csrf
+        @foreach($data as $index => $row)
         <div class="mb-3">
-            <input type="hidden" value="{{$data[0]->masa_id}}" name='id'>
-            <input type="hidden" name="masa" value="{{$data[0]->masa_id}}">
-            <input type="hidden" name="kategoriya" value="{{$data[0]->kategoriya}}">
-            <input type="hidden" name="mehsul" value="{{$data[0]->mehsul}}">
-            <input type="hidden" name="qiymet" value="{{$data[0]->price}}">
-            <input type="hidden" name="miqdar" value="{{$data[0]->miqdar}}">
+            <input type="hidden" name="data[{{$index}}][id]" value="{{$row->id}}" >
+            <input type="hidden" name="data[{{$index}}][masa_id]" value="{{$row->masa_id}}" >
+            <input type="hidden" name="data[{{$index}}][kategoriya]" value="{{$row->kategoriya}}">
+            <input type="hidden" name="data[{{$index}}][mehsul]" value="{{$row->mehsul}}">
+            <input type="hidden" name="data[{{$index}}][qiymet]" value="{{$row->price}}">
+            <input type="hidden" name="data[{{$index}}][miqdar]" value="{{$row->miqdar}}">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="odenis" checked id="odenis" value="nagd">
-                <label class="form-check-label" for="odenis">
+                <input class="form-check-input" type="checkbox" name="data[{{$index}}][odenis]" checked id="odenis{{$index}}" value="nagd">
+                <label class="form-check-label" for="odenis{{$index}}">
                     Nagd
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="odenis" id="sifaris" value="bank">
-                <label class="form-check-label" for="sifaris">
-                    Kart
+                <input class="form-check-input" type="checkbox" name="data[{{$index}}][odenis]"  id="odenis{{$index}}" value="bank">
+                <label class="form-check-label" for="odenis{{$index}}">
+                    Bank
                 </label>
             </div>
-            <input type="checkbox" name="sifaris" value="1" id="activs" checked>
-        </div><button type="submit" class="" onclick="window.print()">Print</button>
+            
+            <input type="checkbox" name="data[{{$index}}][sifaris]" value="1" id="activs{{$index}}" checked>
+        </div>
+        <!-- bura niye yazdiqki? -->
+        @endforeach
+        <button type="submit" class="" onclick="window.print()">Print</button>
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>

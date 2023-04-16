@@ -2,7 +2,13 @@
 @section("title","Panel")
 @section('content')
 
+<style>
+    tr.search-result td {
+  font-weight: bold;
+  background-color: #fff2a8;
+}
 
+</style>
 <div class="col-lg-6 mb-4">
     <div class="row">
 
@@ -47,45 +53,43 @@
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Satis cedveli</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+
+                <!-- <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="search" placeholder="Axtar...">
                     </div>
-                </div>
+                </div> -->
+
+
             </div>
             <!-- Card Body -->
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-success table-hover text-dark" id="dataTable"
-                        width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
+                    <div style="height:500px; overflow-y: scroll;" >
+                        <table class="table table-bordered text-dark"
+                            id="dataTable" width="100%" cellspacing="0">
+                            <thead class="text-danger bg-dark" style="position: sticky; top: 0; z-index: 1;">
+                                <tr>
 
-                                <th>Masa</th>
-                                <th>Mehsul</th>
-                                <th>miqdar</th>
-                                <th>Qiymet</th>
-                                <th>Yekun mebleg</th>
-                                <th>Sifaris tarixi</th>
-                                <th>Action</th>
+                                    <th>Masa</th>
+                                    <th>Mehsul</th>
+                                    <th>miqdar</th>
+                                    <th>Qiymet</th>
+                                    <th>Yekun mebleg</th>
+                                    <th>Sifaris tarixi</th>
+                                    <th>Duzelis tarixi</th>
+                                    <th>Action</th>
 
 
-                            </tr>
-                        </thead>
+                                </tr>
+                            </thead>
+                            
+                                <tbody id="ordercedvel" style="position: relative;">
 
-                        <tbody id="ordercedvel">
-
-                        </tbody>
-                    </table>
+                                </tbody>
+                            
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -215,7 +219,13 @@
 @endsection
 
 @section('script')
+
 <script>
+
+
+
+
+
 $(document).ready(function() {
     $(document).ready(function() {
         $.ajaxSetup({
