@@ -8,25 +8,22 @@ tr.search-result td {
     background-color: #fff2a8;
 }
 </style>
-<div class="col-lg-6 mb-4">
-    <div class="row">
 
-        <div class="col-lg-6 mb-4">
-            <div class="card bg-info text-white shadow">
-                <div class="card-body">
-                    <div class="text-white small">
-                        <button type="button" class="dropdown-item text-danger" style="font-size:16px"
-                            data-bs-toggle="modal" data-bs-target="#exampleModalSifaris">
-                            <i class="fa-solid fa-utensils fa-lg"> Sifaris</i>
-                        </button>
-
-                    </div>
-                </div>
+<div class="row">
+    <div class="col mb-4">
+        <div class="card bg-info text-white shadow">
+            <div class="card-body text-center">
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#exampleModalSifaris">
+                    <i class="fa-solid fa-utensils fa-lg"></i> Sifaris
+                </button>
             </div>
         </div>
-
     </div>
+
+
 </div>
+
 
 
 <div class="row">
@@ -106,17 +103,19 @@ tr.search-result td {
 
 
 <!-- Modal Siafris-->
-<div class="modal fade " style="width:1250px;" id="exampleModalSifaris" tabindex="-1"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalSifaris" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Sifaris</h5>
-
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <form method="Post" action="{{route('admin.order.store')}}" id="addOrder" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.order.store') }}" id="addOrder" enctype="multipart/form-data">
                 @csrf
-                <div class="modal-body">
+                <div class="modal-body ">
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
@@ -131,40 +130,37 @@ tr.search-result td {
                         </thead>
                         <tbody>
                             <tr>
-                                <td width="15%"> <select name="inputs[0][masa_id]" class="form-select" id="masa">
+                                <td width="15%">
+                                    <select name="inputs[0][masa_id]" class="form-select" id="masa">
                                         <option value="">Masa seçin</option>
                                         @foreach ($masa as $masas)
-                                        <option value="{{$masas->id}}">{{$masas->name}}</option>
+                                        <option value="{{ $masas->id }}">{{ $masas->name }}</option>
                                         @endforeach
                                     </select>
                                 </td>
-                                <td width="15%"><select name="inputs[0][kategoriya]" class="form-select" id="kategory">
+                                <td width="15%">
+                                    <select name="inputs[0][kategoriya]" class="form-select" id="kategory">
                                         <option value="">Kategoriya seçin</option>
                                         @foreach ($kategoriya as $kategories)
-                                        <option value="{{$kategories->id}}">{{$kategories->name}}</option>
+                                        <option value="{{ $kategories->id }}">{{ $kategories->name }}</option>
                                         @endforeach
                                     </select>
                                 </td>
                                 <td width="15%">
                                     <div class="mb-3">
-
                                         <select name="inputs[0][mehsul]" class="form-select" id="mehsul">
                                             <option value="">Mehsul seçin</option>
                                         </select>
                                     </div>
                                 </td>
-
                                 <td width="15%">
                                     <div class="mb-3">
-
                                         <input type="number" name="inputs[0][miqdar]" class="form-select" id="miqdar"
                                             placeholder="miqdar">
-
                                     </div>
                                 </td>
                                 <td width="15%">
                                     <div class="mb-3">
-
                                         <select name="inputs[0][price]" class="form-select" id="price">
                                             <option value="">Qiymet</option>
                                         </select>
@@ -208,8 +204,7 @@ tr.search-result td {
 
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
