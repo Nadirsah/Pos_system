@@ -13,22 +13,10 @@
                 <thead>
                     <tr>
                         <th>Kategoriya</th>
-
                         <th>Action</th>
-
-
                     </tr>
                 </thead>
-                <tfoot>
-
-                    <tr>
-                        <th>Kategoriyaşlıq</th>
-
-                        <th>Action</th>
-
-                    </tr>
-
-                </tfoot>
+               
                 <tbody>
                     @foreach($data as $datas)
                     <tr>

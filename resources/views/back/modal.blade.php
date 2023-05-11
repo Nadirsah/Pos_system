@@ -48,9 +48,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="content" class="form-label text-info">Mehsul</label>
+                        <label for="content" class="form-label text-info">Məhsul</label>
                         <select name="mehsul" class="form-select" id="subkategorys">
-                            <option value="">Mehsul seçin</option>
+                            <option value="">Məhsul seçin</option>
                             @foreach ($mehsul as $mehsuls)
                             @if($sifariss->mehsul == $mehsuls->id)
                             <option value="{{$mehsuls->id}}" selected>{{$mehsuls->name}}</option>
@@ -72,9 +72,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="content" class="form-label text-info">Qiymet</label>
+                        <label for="content" class="form-label text-info">Qiymət</label>
                         <select name="price" class="form-select" id="prices">
-                            <option value="">Qiymet</option>
+                            <option value="">Qiymət</option>
                             @foreach ($mehsul as $mehsuls)
                             @if($sifariss->mehsul == $mehsuls->id)
                             <option value="{{$mehsuls->id}}" selected>{{$mehsuls->sale_price}}</option>
@@ -87,7 +87,7 @@
                         <span class="text-danger">@error('content'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
                     </div>
                     <div class="mb-3">
-                        <label for="edit" class="form-label text-info">Duzelis et</label>
+                        <label for="edit" class="form-label text-info">Düzəliş et</label>
                         <input type="checkbox" name="sifaris" id="" value="0" id="activs" checked>
 
                     </div>
@@ -97,7 +97,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Bagla</button>
+                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Bağla</button>
 
             </div>
         </div>

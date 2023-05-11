@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Header")
+@section("title","Məlumatlar")
 @section('content')
 
 <div class="card shadow mb-4">
@@ -16,11 +16,11 @@
 
 
                         <th>Ad</th>
-                        <th>Sekil</th>
+                        <th>Şəkil</th>
                         <th>Activ-Passiv</th>
                         <th>Facebook</th>
                         <th>Telefon</th>
-                        <th>Unvan</th>
+                        <th>Ünvan</th>
                         <th>Action</th>
 
                     </tr>

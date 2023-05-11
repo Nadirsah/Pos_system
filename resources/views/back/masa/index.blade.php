@@ -13,31 +13,21 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Sirala</th>
+                        <th>Sırala</th>
                         <th>Ad</th>
-                       
-                        <th>DUzelis et</th>
+                        <th>Düzəliş et</th>
                         <th>Sil</th>
 
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Sirala</th>
-                        <th>Ad</th>
-                       
-                        <th>DUzelis et</th>
-                        <th>Sil</th>
-
-                    </tr>
-                </tfoot>
+              
                 <tbody id="orders">
                     @foreach($data as $datas)
                     <tr id="page_{{$datas->id}}">
                         <td style="width:20px" class="text-center"><i
                                 class="handle fa-solid fa-arrows-up-down-left-right " style="cursor:move"></i></td>
                         <td>{{$datas->name}}</td>
-                       
+
                         <td><a href="{{route('admin.masa.edit',$datas->id)}}"><i
                                     class="btn btn-info fa-solid fa-pen-to-square"></i></a></td>
                         <td><a href="{{route('admin.delete.masa',$datas->id)}}"><i

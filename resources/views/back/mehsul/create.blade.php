@@ -25,7 +25,7 @@
 
     </div> -->
     <div class="mb-3">
-        <label for="name" class="form-label">Mehsul adi</label>
+        <label for="name" class="form-label">Məhsul adi</label>
         <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" aria-describedby="emailHelp"
             >
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
@@ -36,14 +36,14 @@
     
 
     <div class="mb-3">
-        <label for="price" class="form-label">Qiymet</label>
+        <label for="price" class="form-label">Qiymət</label>
         <input type="text" name="price" value="{{old('price')}}" class="form-control" id="price" aria-describedby="emailHelp"
             >
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
-        <label for="sale_price" class="form-label">Satis Qiymet</label>
+        <label for="sale_price" class="form-label">Satiş Qiymət</label>
         <input type="text" name="sale_price" value="{{old('sale_price')}}" class="form-control" id="sale_price" aria-describedby="emailHelp"
             >
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>

@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('title',"Admin Panel")</title>
+    <title>@yield('title')</title>
 
     <!-- Custom fonts for this template-->
     @yield("css")

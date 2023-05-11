@@ -25,7 +25,7 @@
     <thead>
         <tr>
 
-            <th>Toplam satis</th>
+            <th>Toplam satış</th>
             <th>Nagd</th>
             <th>Kart</th>
         </tr>

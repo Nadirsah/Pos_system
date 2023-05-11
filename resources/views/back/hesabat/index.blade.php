@@ -1,12 +1,12 @@
 @extends("back.layouts.master")
-@section("title","Satis hesabati")
+@section("title","Satış hesabatı")
 @section('content')
 
 
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Satislar</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Satışlar</h6>
 
     </div>
 
@@ -43,13 +43,13 @@
 
                             <th>No</th>
                             <th>Kategoriya </th>
-                            <th>Mehsul</th>
+                            <th>Məhsul</th>
                             <th>Miqdar</th>
-                            <th>Maya qiymeti</th>
-                            <th>Yekun Maya qiymeti</th>
-                            <th>Satis qiymeti</th>
-                            <th>Yekun qiymeti</th>
-                            <th>Odenis novu</th>
+                            <th>Maya qiyməti</th>
+                            <th>Yekun Maya qiyməti</th>
+                            <th>Satış qiyməti</th>
+                            <th>Yekun qiymət</th>
+                            <th>Ödəniş növü</th>
                             <th>Tarix</th>
 
 

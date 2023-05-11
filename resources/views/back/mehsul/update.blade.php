@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Mehsulu yenilə")
+@section("title","Məhsulu yenilə")
 @section('content')
 
 
@@ -21,21 +21,21 @@
 
     
     <div class="mb-3">
-        <label for="name" class="form-label">Mehsul adi</label>
+        <label for="name" class="form-label">Məhsul adi</label>
         <input type="text" name="name" value='{{$data->name}}' class="form-control" id="name" aria-describedby="emailHelp"
             autofocus>
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
    
     <div class="mb-3">
-        <label for="price" class="form-label">Qiymet</label>
+        <label for="price" class="form-label">Qiymət</label>
         <input type="text" name="price" value='{{$data->price}}' class="form-control" id="price" aria-describedby="emailHelp"
             autofocus>
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
 
     <div class="mb-3">
-        <label for="sale_price" class="form-label">Satis Qiymet</label>
+        <label for="sale_price" class="form-label">Satış qiymət</label>
         <input type="text" name="sale_price" value='{{$data->sale_price}}' class="form-control" id="sale_price" aria-describedby="emailHelp"
             autofocus>
             <span class="text-danger">@error('price'){{'Bu sahə boş ola bilməz!'}}@enderror</span>

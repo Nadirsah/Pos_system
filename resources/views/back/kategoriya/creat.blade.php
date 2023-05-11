@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Kategoriya elave et")
+@section("title","Kategoriya əlave et")
 @section('content')
 
 <form method="Post" action="{{route('admin.kategoriya.store')}}">

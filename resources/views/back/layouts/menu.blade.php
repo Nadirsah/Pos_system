@@ -1,10 +1,10 @@
-<body id="page-top">
+<body id="page-top" >
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" >
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.panel')}}">
@@ -22,16 +22,13 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{route('admin.panel')}}">
                 <i class="fa-regular fa-newspaper"></i>
-                    <span>Ana sehife</span></a>
+                    <span>Ana səhifə</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
+           
 
             <!-- Nav Item - Pages Collapse Menu -->
 
@@ -56,7 +53,7 @@
                 <a class="nav-link collapsed" href="{{route('admin.mehsul.index')}}" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Mehsul</span>
+                    <span>Məhsul</span>
                 </a>
                
             </li>
@@ -69,12 +66,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Maliyye</span>
+                    <span>Maliyyə</span>
                 </a>
                 <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Esas sehife</h6>
                         <a class="collapse-item" href="{{route('admin.hesabat.index')}}">Hesabat</a>
                         <a class="collapse-item" href="{{route('admin.zet')}}">Zet hesabat</a>
 
@@ -132,15 +128,12 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profil
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
+                               
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Tehlukesiz cixis
+                                    Təhlükəsiz çıxış.
                                 </a>
                             </div>
                         </li>

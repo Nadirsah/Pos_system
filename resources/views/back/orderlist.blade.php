@@ -5,8 +5,8 @@
         <div class="card-body">
             {{$activ->getMasa->name}}
 
-            <div>{!!$activ->sifaris==0 ? "<span class='text-danger'>Mesgul</span>" : "<span
-                    class='text-success'>Bos</span>"!!}</div>
+            <div>{!!$activ->sifaris==0 ? "<span class='text-danger'>Məşğul</span>" : "<span
+                    class='text-success'>Boş</span>"!!}</div>
 
             <div class="text-white small d-flex justify-content-between">
                

@@ -1,5 +1,5 @@
 @extends("back.layouts.master")
-@section("title","Panel")
+@section("title") {{"Pos System"}} @endsection
 @section('content')
 
 <style>
@@ -11,17 +11,15 @@ tr.search-result td {
 
 <div class="row">
     <div class="col mb-4">
-        <div class="card bg-info text-white shadow">
+        <div class="card bg-secondary text-white shadow">
             <div class="card-body text-center">
-                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                <button type="button" class="btn btn-danger btn-lg " data-bs-toggle="modal"
                     data-bs-target="#exampleModalSifaris">
-                    <i class="fa-solid fa-utensils fa-lg"></i> Sifaris
+                        <i class="fa-solid fa-utensils fa-lg"></i> Sifariş
                 </button>
             </div>
         </div>
     </div>
-
-
 </div>
 
 
@@ -48,7 +46,7 @@ tr.search-result td {
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Satis cedveli</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Satış cədvəli</h6>
                 <div class="col-md-3">
                     <div class="form-group">
                         <input type="text" class="form-control" id="searchInput" placeholder="Axtar...">
@@ -74,13 +72,13 @@ tr.search-result td {
                                 <tr>
 
                                     <th>Masa</th>
-                                    <th>Mehsul</th>
-                                    <th>miqdar</th>
-                                    <th>Qiymet</th>
-                                    <th>Yekun mebleg</th>
+                                    <th>Məhsul</th>
+                                    <th>Miqdar</th>
+                                    <th>Qiymət</th>
+                                    <th>Yekun məbləğ</th>
                                     <th>Sifaris tarixi</th>
-                                    <th>Duzelis tarixi</th>
-                                    <th>Action</th>
+                                    <th>Düzəliş tarixi</th>
+                                    <th>Düzəliş</th>
 
 
                                 </tr>
@@ -108,7 +106,7 @@ tr.search-result td {
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Sifaris</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Sifariş</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -121,11 +119,11 @@ tr.search-result td {
                             <tr>
                                 <th width="15%" scope="col">Masa</th>
                                 <th width="15%" scope="col">Kategoriya</th>
-                                <th width="15%" scope="col">Mehsul</th>
+                                <th width="15%" scope="col">Məhsul</th>
                                 <th width="15%" scope="col">Miqdar</th>
-                                <th width="15%" scope="col">Qiymet</th>
-                                <th width="15%" scope="col">Odenis novu</th>
-                                <th width="15%" scope="col">Action</th>
+                                <th width="15%" scope="col">Qiymət</th>
+                                <th width="15%" scope="col">Ödəniş növü</th>
+                                <th width="15%" scope="col">Düzəliş</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -149,7 +147,7 @@ tr.search-result td {
                                 <td width="15%">
                                     <div class="mb-3">
                                         <select name="inputs[0][mehsul]" class="form-select" id="mehsul">
-                                            <option value="">Mehsul seçin</option>
+                                            <option value="">Məhsul seçin</option>
                                         </select>
                                     </div>
                                 </td>
@@ -162,7 +160,7 @@ tr.search-result td {
                                 <td width="15%">
                                     <div class="mb-3">
                                         <select name="inputs[0][price]" class="form-select" id="price">
-                                            <option value="">Qiymet</option>
+                                            <option value="">Qiymət</option>
                                         </select>
                                     </div>
                                 </td>
@@ -187,12 +185,12 @@ tr.search-result td {
                                         <input class="form-check-input" type="checkbox" checked
                                             name="inputs[0][sifaris]" id="odenis" value="0">
                                         <label class="form-check-label" for="odenis">
-                                            Odenis
+                                            Ödəniş
                                         </label>
                                     </div>
 
                                 </td>
-                                <td width="15%"><button type="button" name="add" id="add" class="btn btn-success">Elave
+                                <td width="15%"><button type="button" name="add" id="add" class="btn btn-success">Əlavə
                                         et</button>
                                 </td>
                             </tr>
@@ -204,7 +202,7 @@ tr.search-result td {
 
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
             </div>
         </div>
     </div>

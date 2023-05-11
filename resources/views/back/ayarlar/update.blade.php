@@ -14,7 +14,7 @@
     @csrf
 
     <div class="mb-3">
-        <label for="name" class="form-label">Title</label>
+        <label for="name" class="form-label">Başlıq</label>
         <input type="text" name="name" value="{{$info->name}}" class="form-control" id="name" aria-describedby="emailHelp">
             <span class="text-danger">@error('name'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="about" class="form-label">Unvan</label>
+        <label for="about" class="form-label">Ünvan</label>
         <input type="text" name="about" value="{{$info->about}}" class="form-control" id="about" aria-describedby="emailHelp">
             <span class="text-danger">@error('about'){{'Bu sahə boş ola bilməz!'}}@enderror</span>
     </div>
