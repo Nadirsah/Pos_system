@@ -12,4 +12,6 @@ class Excel extends Controller
     $data=User::all();
     return view('back.excel.profil',compact('data'));
    }
+
+   
 }

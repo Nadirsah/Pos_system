@@ -7,6 +7,8 @@ use App\Http\Requests\FotoPostRequest;
 use App\Models\SifarisModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\HesabatExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Hesabat extends Controller
 {
@@ -150,4 +152,9 @@ public function zetfilter(Request $request)
 
     return response()->json($zet);
 }
+
+public function export() 
+    {
+        return Excel::download(new HesabatExport, 'hesabat.xlsx');
+    }
 }

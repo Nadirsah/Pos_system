@@ -6,8 +6,8 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Satışlar</h6>
-
+        <h6 class="m-0 font-weight-bold text-primary">Satişlar</h6> <br><span>Excel<a href="{{ route('admin.hesabat.export') }}"><i
+                    class="btn btn-success fa-solid fa-arrow-up" style="margin-left:10px"></i></a></span>
     </div>
 
     <div class="card-body">

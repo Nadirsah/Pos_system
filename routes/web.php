@@ -77,6 +77,7 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
      Route::get('/excel',[Excel::class,'index'])->name('excel');
      Route::get('users-export', [Profile::class, 'export'])->name('users.export');
      Route::post('users-import', [Profile::class, 'import'])->name('users.import');
+     Route::get('hesabat-export', [Hesabat::class, 'export'])->name('hesabat.export');
 
      
 });
