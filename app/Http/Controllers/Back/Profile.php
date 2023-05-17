@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
-
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 class Profile extends Controller
 {
     /**
@@ -116,5 +118,16 @@ class Profile extends Controller
         $data->delete();
 
         return redirect()->route('admin.profile.index')->with(['success' => 'Məlumat uğurla silindi!']);
+    }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+
+    public function import() 
+    {
+        Excel::import(new UsersImport,request()->file('file'));
+        return back();
     }
 }

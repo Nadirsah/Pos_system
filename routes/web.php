@@ -10,6 +10,7 @@ use App\Http\Controllers\Back\Mehsul;
 use App\Http\Controllers\Back\Order;
 use App\Http\Controllers\Back\Priint;
 use App\Http\Controllers\Back\Profile;
+use App\Http\Controllers\Back\Excel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,4 +72,12 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     // Activ sifarislerin yenilenmesi
     Route::post('/geteditqiymet', [Dashboard::class, 'geteditqiymet'])->name('geteditqiymet');
     Route::post('/geteditmehsul', [Dashboard::class, 'geteditmehsul'])->name('geteditmehsul');
+
+     //Excel
+     Route::get('/excel',[Excel::class,'index'])->name('excel');
+     Route::get('users-export', [Profile::class, 'export'])->name('users.export');
+     Route::post('users-import', [Profile::class, 'import'])->name('users.import');
+
+     
 });
+
